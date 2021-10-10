@@ -2,7 +2,7 @@
 ---
 
 ## Application name 
-____: An all-in-one media tracking system
+**MyMediaMix**: An all-in-one media tracking system
 
 ## Team Overview
 
