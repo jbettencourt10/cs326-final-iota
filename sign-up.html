@@ -20,58 +20,63 @@
   <body>
     <div class="container">
       <form>
-        <div class="form-group">
-          <label for="input-email">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email-input"
-            aria-describedby="emailHelp"
-            placeholder="example@xyz.com"
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
+        <br /><br /><br /><br />
+        <div class="row align-items-center">
+          <div class="col-sm-4 mx-auto border">
+            <h1 class="text-center">Sign Up</h1>
+            <div class="form-group">
+              <label for="email-input">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email-input"
+                placeholder="example@xyz.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="name-input">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name-input"
+                placeholder="Tim Apple"
+              />
+            </div>
+            <div class="form-group">
+              <label for="username-input">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username-input"
+                placeholder="A unique username"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password-input">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password-input"
+                placeholder="Password"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                id="password-verify"
+                placeholder="Verify Password"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-outline-primary mx-auto d-block"
+            >
+              Start Tracking!
+            </button>
+            <br />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="input-email">Name</label>
-          <input
-            type="name"
-            class="form-control"
-            id="name-input"
-            aria-describedby="emailHelp"
-            placeholder="Tim Apple"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Username</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="A unique username"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Verify Password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary btn-outline-primary">
-          Start Tracking!
-        </button>
       </form>
     </div>
 

@@ -1,4 +1,9 @@
-html, body, .container, .leftwrapper {height:100%;}
+html,
+body,
+.container,
+.leftwrapper {
+  height: 100%;
+}
 body {
   background-color: rgb(225, 247, 243);
   margin: 10px;
@@ -10,7 +15,7 @@ body {
   width: 200px;
   height: 100vh;
   background-color: #f1f1f1;
-  float:left;
+  float: left;
   height: 100%;
 }
 
@@ -31,7 +36,7 @@ body {
   background-color: rgb(145, 145, 145);
   color: white;
 }
-.sidebar b{
+.sidebar b {
   display: block;
   color: black;
   padding: 30px;
