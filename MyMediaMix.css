@@ -1,4 +1,7 @@
-body {background-color: rgb(225, 247, 243);}
+body {
+  background-color: rgb(225, 247, 243);
+  margin: 10px;
+}
 
 .sidebar {
   margin: 0;
@@ -34,5 +37,6 @@ body {background-color: rgb(225, 247, 243);}
 }
 h2 {
   text-align: center;
+  padding-top: 50px;
 }
 
