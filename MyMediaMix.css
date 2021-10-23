@@ -19,7 +19,7 @@ body {
   padding: 16px;
   text-decoration: none;
 }
- 
+
 .sidebar a.active {
   background-color: #047baa;
   color: white;
@@ -40,3 +40,6 @@ h2 {
   padding-top: 50px;
 }
 
+.centered {
+  text-align: center;
+}
