@@ -45,3 +45,10 @@ This page displays search results when searching from the list page. This is the
 The wireframe was done on whimsical and we did it while talking on a zoom. Consequently, everyone in the group did the same amount of work on the wireframe.
 
 ## HTML/CSS
+Again, the entire group worked very evenly on the html/css. More specifically, we had
+
+Bill - Landing & ___ pages
+
+Thao - List & ___ pages
+
+Jarred - Signup & Account pages
