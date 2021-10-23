@@ -1,3 +1,4 @@
+html, body, .container, .leftwrapper {height:100%;}
 body {
   background-color: rgb(225, 247, 243);
   margin: 10px;
