@@ -78,3 +78,56 @@ body {
 .autoHeight{
   height:auto;
 }
+
+.toprow{
+  display: grid; 
+  grid-template-columns: repeat(3, auto);
+}
+
+.sitename{
+  float: left; 
+  margin: 20px;
+}
+
+.searchbar{
+  width: 1000px; 
+  height: 50px; 
+  margin-top: 20px;
+}
+
+.userName{
+  float: right; 
+  margin: 30px;
+}
+
+.menubar{
+  display: grid; 
+  grid-template-columns: repeat(7, 150px);
+  margin-left: 20px
+}
+
+.menuitem{
+  float: left; 
+  margin: 20px 0px;
+}
+
+.show{
+  margin: 20px;
+}
+
+.product{
+  background-color: white; 
+  width: 100%; 
+  height: 200px;
+  margin: 20px 0px;
+}
+
+.yourLists{
+  margin: 20px;
+  float: left;
+}
+
+.addList{
+  float: right;
+  margin: 20px;
+}

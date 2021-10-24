@@ -52,6 +52,6 @@ Again, the entire group worked very evenly on the html/css. More specifically, w
 
 Bill - Landing page and tabs
 
-Thao - ___ & ___ pages
+Thao - List, Custom List, and Search pages
 
 Jarred - Signup & Account pages
