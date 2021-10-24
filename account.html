@@ -16,75 +16,188 @@
 
     <title>MyMediaMix</title>
   </head>
-
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Disabled</a
-              >
-            </li>
-          </ul>
-          <form class="d-flex">
+    <h1>MyMediaMix</h1>
+    <div class="container">
+      <br /><br /><br />
+      <h2 class="text-center">Account</h2>
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Account Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Account Settings</a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <h3>Change Name</h3>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="name-input">Current Name: </label>
+            <br />
             <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              type="text"
+              class="form-control"
+              id="name-input"
+              placeholder="Tim Apple"
             />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="newname-input">New Name: </label>
+            <br />
+            <input
+              type="text"
+              class="form-control"
+              id="newname-input"
+              placeholder="Tim Google"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
+            Change Name
+          </button>
         </div>
       </div>
-    </nav>
-
+      <hr />
+      <h3>Change Username</h3>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="username-input">Current Username: </label>
+            <br />
+            <input
+              type="text"
+              class="form-control"
+              id="username-input"
+              placeholder="tim_apple_01"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="newusername-input">New Username: </label>
+            <br />
+            <input
+              type="text"
+              class="form-control"
+              id="newusername-input"
+              placeholder="tim_google_01"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
+            Change Username
+          </button>
+        </div>
+      </div>
+      <hr />
+      <h3>Change Password</h3>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="password-input">Current Password:</label>
+            <br />
+            <input
+              type="password"
+              class="form-control"
+              id="password-input"
+              placeholder="******"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="newpassword-input">New Password: </label>
+            <br />
+            <input
+              type="password"
+              class="form-control"
+              id="newpassword-input"
+              placeholder="*******"
+            />
+            <br />
+            <label for="verifynewpassword-input">Verify Password: </label>
+            <br />
+            <input
+              type="password"
+              class="form-control"
+              id="verifynewpassword-input"
+              placeholder="*******"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
+            Change Password
+          </button>
+        </div>
+      </div>
+      <hr />
+      <h3>Change Email</h3>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="email-input">Current Email:</label>
+            <br />
+            <input
+              type="email"
+              class="form-control"
+              id="email-input"
+              placeholder="tim@apple.com"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <br />
+            <label for="newemail-input">New Email: </label>
+            <br />
+            <input
+              type="email"
+              class="form-control"
+              id="newemail-input"
+              placeholder="tim@google.com"
+            />
+            <br />
+            <label for="verifynewemail-input">Verify Email: </label>
+            <br />
+            <input
+              type="email"
+              class="form-control"
+              id="verifynewemail-input"
+              placeholder="tim@google.com"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
+            Change Email
+          </button>
+        </div>
+      </div>
+      <hr />
+    </div>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
