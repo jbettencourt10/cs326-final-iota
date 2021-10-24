@@ -38,6 +38,7 @@ This page defines some settings that users may like to have the ability to chang
 
 ### Search Page
 ![Search Page](../docs/wireframe_figures/326-iota_search.png "Search Page")
+![Search Page HTML](../docs/HTML_figures/326-iota-search.png "Search Page HTML")
 This page displays search results when searching from the list page. This is the main page where a user would add things to their list, and this can be done with the '+' button.
 
 
