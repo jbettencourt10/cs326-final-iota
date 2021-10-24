@@ -50,3 +50,22 @@ h2 {
 .centered {
   text-align: center;
 }
+
+.backgroundColor {
+  background-color: #f1f1f1;
+}
+
+.homeButton{
+  background-color: #047baa;
+  width: 200px;
+  height:60px;
+  border-radius: 0 !important;
+}
+
+.homeButtonInner{
+  color: white;
+  font-size: larger;
+  padding-left: 15px;
+  padding-top: 15px;
+  
+}
