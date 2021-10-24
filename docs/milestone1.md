@@ -2,10 +2,12 @@
 
 ### Landing Page
 ![Landing Page](../docs/wireframe_figures/326-iota_landing.png "Landing Page")
+![Landing Page](../docs/html_figures/326-iota_landing.png "Landing Page")
 This is the page that a user will land on when they go the MyMediaMix website assuming they are not signed in. Here, we show the media that is trending across the website globally, along with their ratings and the ability to add them to your list.
 
 ### Signup Page
-![Landing Page](../docs/wireframe_figures/326-iota_signup.png "Signup Page")
+![Signup Page](../docs/wireframe_figures/326-iota_signup.png "Signup Page")
+![Signup Page](../docs/html_figures/326-iota_signup.png "Signup Page")
 Here is our proposed implementation of a signup page. It is relatively basic and respects your privacy (as a media tracking website should). We require first name, username, email, and password.
 
 
@@ -24,6 +26,7 @@ This page is like the list page, but works for user-defined tags. An example is 
 
 ### Account Info Page
 ![Account Info Page](../docs/wireframe_figures/326-iota_accountinfo.png "Account Info Page")
+![Account Info Page HTML](../docs/html_figures/326-iota_account.png "Account Info Page")
 This page allows users to change their information to be more dynamic as a site.
 
 ### Settings Page
@@ -47,8 +50,8 @@ The wireframe was done on whimsical and we did it while talking on a zoom. Conse
 ## HTML/CSS
 Again, the entire group worked very evenly on the html/css. More specifically, we had
 
-Bill - Landing & ___ pages
+Bill - Landing page and tabs
 
-Thao - List & ___ pages
+Thao - ___ & ___ pages
 
 Jarred - Signup & Account pages
