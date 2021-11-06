@@ -1,4 +1,7 @@
 import express from 'express';
+// import { getIMDBSearch } from './client/imdbFunctions.js';
+
+const IMDB_API_KEY = 'k_t249l7q8';
 
 const app = express();
 
@@ -24,7 +27,7 @@ app.get('/login', (req, res) => {
     const { password } = req;
 });
 
-app.get('register', (req, res) => {
+app.post('register', (req, res) => {
     const emailAddress = req.email;
     const { name } = req;
     const { username } = req;
@@ -34,11 +37,10 @@ app.get('register', (req, res) => {
     }
 });
 
-app.post('/pcreate', (req, res) => {
+app.get('/search', async (req, res) => {
     // TODO: PARSE OUT KEY AND VALUE FROM req.body INTO k and v
-    datastore[k] = v;
-    console.log(`Set ${k} to ${v}, body = ${JSON.stringify(req.body)}`);
-    res.send('Set.');
+    const searchResults = await getIMDBSearch(req.query.title, req.query.media);
+    res.send(searchResults);
 });
 
 app.get('*', (req, res) => {

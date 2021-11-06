@@ -6,6 +6,11 @@
 ### Representation of API for application
 As our focus is on a media tracking service, most of our API includes queries for media items, and then the ability to add or remove them from a particular user's list. Our endpoints are as follows:
 
+-   **/signup-page** This will simply route a user to the signup page in order to make a new account.
+
+-   **\***  This is the wildcard route and it will tell a user that the specified page does not exist.
+-   **/** This will route users to the landing page of the website (index.html).
+
 -   **/register** Each user will be required to make an account (which will eventually occur within our database), and this will be used to store their tracked media list between sessions. This could be possible with cookies or sessions, but we want to ensure security of users' lists.
 
 -   **/login** Similarly, users can login to their account to see their tracked media. Logging in is essential to keep persistence between visits and also security.
@@ -16,7 +21,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 -  **/user/get/{item}** When a user is specified (i.e. a user is logged in), they can use this endpoint to simply view the item specified on their list. This will additionally return other external features, like rating, etc. If the item is not on their list, then they will receive some kind of error telling gthem that the requested media is not on their list.
 
--  **/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an errorm essage will be shown to the user.
+-  **/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an error message will be shown to the user.
 
 
 

@@ -2,6 +2,7 @@ window.addEventListener('load', loadLandingMediaList);
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
+
 function landingBooks() {
   document.getElementById('trendingText').innerHTML = 'Trending Books';
   // Temporary until we get a book API
@@ -31,6 +32,8 @@ async function getTopIMDB(media) {
   const top100 = await response.json();
   return top100;
 }
+
+
 
 // Takes argument 'Movies' or 'TVs'
 
@@ -70,19 +73,8 @@ async function loadLandingMediaList(media) {
   }
 }
 
-function switchToSignUp() {
-  window.location.href = '/sign-up.html';
-}
-
-function switchToLanding() {
-  window.location.href = '/index.html';
-}
-
-function switchToHome() {
-  window.location.href = '/list.html';
-}
 
 function processSignIn() {
   // do somthing
   switchToHome();
-}
+};;
