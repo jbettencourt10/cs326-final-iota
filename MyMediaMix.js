@@ -49,10 +49,19 @@ function loadLandingMediaList(){
   }
 }
 
-function loadSignUp(){
+function switchToSignUp(){
   window.location.href = "/sign-up.html";
 }
 
-function loadLanding(){
+function switchToLanding(){
   window.location.href = "/index.html";
+}
+
+function switchToHome(){
+  window.location.href = "/list.html";
+}
+
+function processSignIn(){
+  //do somthing
+  switchToHome();
 }
