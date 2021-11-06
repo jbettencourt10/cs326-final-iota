@@ -31,7 +31,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 
 ### Heroku URL
-https://mymediamix.herokuapp.com/
+https://mymediamix.herokuapp.com
 
 
 ### Divison of Labor
