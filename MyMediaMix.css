@@ -131,3 +131,7 @@ body {
   float: right;
   margin: 20px;
 }
+
+.clickable{
+  cursor: pointer;
+}

@@ -48,3 +48,11 @@ function loadLandingMediaList(){
     mediaList.appendChild(row);
   }
 }
+
+function loadSignUp(){
+  window.location.href = "/sign-up.html";
+}
+
+function loadLanding(){
+  window.location.href = "/index.html";
+}
