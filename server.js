@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json()); // lets you handle JSON input
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const datastore = {};
 app.use(express.static('client'));
