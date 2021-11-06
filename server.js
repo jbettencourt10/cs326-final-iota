@@ -1,9 +1,6 @@
-
-const express = require('express');
+import express from 'express';
 
 const app = express();
-
-
 
 app.use(express.json()); // lets you handle JSON input
 
@@ -23,21 +20,19 @@ app.get('/signup-page', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  const username = req.username;
-  const password = req.password;
+    const { username } = req;
+    const { password } = req;
 });
 
 app.get('register', (req, res) => {
     const emailAddress = req.email;
-    const name = req.name;
-    const username = req.username;
+    const { name } = req;
+    const { username } = req;
     // TODO: check for different passwords
     if (req.password === req.verifypassword) {
-        const password = req.password;
+        const { password } = req;
     }
-
 });
-
 
 app.post('/pcreate', (req, res) => {
     // TODO: PARSE OUT KEY AND VALUE FROM req.body INTO k and v
