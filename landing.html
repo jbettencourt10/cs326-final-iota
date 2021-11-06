@@ -7,15 +7,16 @@
     <title>MyMediaMix</title>
     <meta name="description" content="An all-in-one media tracking system">
     <link rel="stylesheet" href="MyMediaMix.css">
+    <script src = "MyMediaMix.js"></script>
   </head>
   <body>
     <div class="sidebar" >
-      <a class="active" href="#home">MyMediaMix</a>
+      <a class="active" href="" onclick=landingBooks()>MyMediaMix</a>
       <b></b>
-      <a href="#books">Books</a>
-      <a href="#movies">Movies</a>
-      <a href="#tv_shows">TV Shows</a>
-      <a href="#music">Music</a>
+      <a href="#books" onclick=landingBooks()>Books</a>
+      <a href="#movies" onclick=landingMovies()>Movies</a>
+      <a href="#tv_shows" onclick=landingTVShows()>TV Shows</a>
+      <a href="#music" onclick=landingMusic()>Music</a>
     </div>
     <div class="row g-3 float-end">
       <div class="col-auto">
@@ -32,7 +33,7 @@
         <!-- <button type="submit" class="btn btn-primary mb-2" ">Sign Up</button> -->
       </div>
     </div>
-    <h2 class="trendingText">Trending Books</h2>
+    <h2 class="trendingText" id="trendingText">Trending Books</h2>
     <!-- Use javascript for here later -->
     <div class="container bg-light" id="mediaList">
       <div class="row">
