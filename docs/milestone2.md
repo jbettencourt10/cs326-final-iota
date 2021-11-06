@@ -27,3 +27,6 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 ### Heroku URL
 **Insert URL here**
+
+
+### Divison of Labor
