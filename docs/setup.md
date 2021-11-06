@@ -3,7 +3,7 @@ The project has already been deployed and are now presented at the URL: https://
 # Build the project
 - After making changes on the project, developers need to commit, merge, and push the changes to the main branch.
 - Then, developers need to push the main branch to "heroku" in addition to the push to "origin" as we normally do.
-```json
+```
     >> git add .
     >> git commit -m "message here"
     >> git push origin main
@@ -14,7 +14,7 @@ The project has already been deployed and are now presented at the URL: https://
 
 # NOTE:
 - For the first time launching the project, you should install "express" on your machine to update package.json and then push the new change to the main branch before pushing the project to Heroku. 
-```json
+```
     >> npm install express
     >> git add .
     >> git commit -m "installing express"
