@@ -4,30 +4,38 @@ const IMDB_API_KEY = 'k_t249l7q8';
 
 function landingBooks() {
   document.getElementById("trendingText").innerHTML = "Trending Books";
+  // Temporary until we get a book API
+  document.getElementById("mediaList").innerHTML = '';
 }
 
 function landingMovies() {
   document.getElementById("trendingText").innerHTML = "Trending Movies";
+  loadLandingMediaList('Movies');
 }
 
 function landingTVShows() {
   document.getElementById("trendingText").innerHTML = "Trending TV Shows";
+  loadLandingMediaList('TVs');
 }
 
 function landingMusic() {
   document.getElementById("trendingText").innerHTML = "Trending Music";
+  // Temporary until we get a music API
 }
 
-async function getTopMovies() {
+// Takes argument 'Movies' or 'TVs'
+async function getTopIMDB(media) {
   // TODO: error check
-  const response = await fetch('https://imdb-api.com/en/API/MostPopularMovies/'.concat(IMDB_API_KEY));
-  const top100Movies = await response.json();
-  return top100Movies;
+  const response = await fetch('https://imdb-api.com/en/API/MostPopular' + media + '/'.concat(IMDB_API_KEY));
+  const top100 = await response.json();
+  return top100;
 };
 
+// Takes argument 'Movies' or 'TVs'
 
-async function loadLandingMediaList() {
-  const top100MoviesObject = await getTopMovies();
+async function loadLandingMediaList(media) {
+  document.getElementById("mediaList").innerHTML = '';
+  const top100MoviesObject = await getTopIMDB(media);
   const top100Movies = top100MoviesObject['items'].slice(0,5);
   const mediaList = document.getElementById("mediaList");
   for (let i = 0; i < 5; ++i) {
