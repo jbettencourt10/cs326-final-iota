@@ -1,40 +1,44 @@
 
-'use strict';
 import express from 'express';
 
 const app = express();
+
+
 
 app.use(express.json()); // lets you handle JSON input
 
 const port = 8080;
 
 const datastore = {};
+app.use(express.static('client'));
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.sendFile('client/index.html', { root: '.' });
+    // TODO: RESPONSE
 });
 
-app.get('/create', (req, res) => {
-    // TODO: PARSE OUT KEY AND VALUE FROM *QUERY* INTO k AND v
-    datastore[k] = v;
-    console.log(`Set ${k} to ${v}`);
-    res.send('Set.');
+app.get('/signup-page', (req, res) => {
+    res.sendFile('client/sign-up.html', { root: '.' });
+    // TODO: RESPONSE
 });
 
-app.get('/read', (req, res) => {
-    // TODO: PARSE OUT KEY FROM *QUERY* into k
-    const v = datastore[k];
-    res.send(`key = ${k}, value = ${v}`);
+app.get('/login', (req, res) => {
+  const username = req.username;
+  const password = req.password;
 });
 
-//   curl -d '{ "value" : "12" }' -H "Content-Type: application/json" http://localhost:3000/read/x
-app.get('/read/:key', (req, res) => {
-    // TODO: PARSE OUT KEY FROM *PARAMS* INTO k
-    const v = datastore[k];
-    res.send(`key = ${k}, value = ${v}`);
+app.get('register', (req, res) => {
+    const emailAddress = req.email;
+    const name = req.name;
+    const username = req.username;
+    // TODO: check for different passwords
+    if (req.password === req.verifypassword) {
+        const password = req.password;
+    }
+
 });
 
-//   curl -d '{ "key" : "x", "value" : "12" }' -H "Content-Type: application/json" http://localhost:3000/pcreate
+
 app.post('/pcreate', (req, res) => {
     // TODO: PARSE OUT KEY AND VALUE FROM req.body INTO k and v
     datastore[k] = v;
@@ -43,7 +47,7 @@ app.post('/pcreate', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('NO FOOL, BAD COMMAND');
+    res.send('404: Page not found');
 });
 
 app.listen(port, () => {
