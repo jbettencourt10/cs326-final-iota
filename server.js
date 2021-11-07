@@ -11,7 +11,6 @@ const app = express();
 const testAccount = JSON.parse(fs.readFileSync('./user.json'));
 
 
-
 app.use(express.json()); // lets you handle JSON input
 
 const port = process.env.PORT || 8080;
@@ -51,14 +50,12 @@ app.post('register', (req, res) => {
 });
 
 app.get('/search', async(req, res) => {
-    const searchResult = await getIMDBSearch(req.query.title, req.query.media);
     res.sendFile('client/search.html', { root: '.' });
 
 });
 
 app.get('/delete', (req, res) => {
     // const searchResult = await getIMDBSearch(req.query.title, req.query.media);
-    // console.log(searchResult);
     res.sendFile('client/search.html', { root: '.' });
 
 });
