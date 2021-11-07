@@ -135,3 +135,19 @@ body {
 .clickable{
   cursor: pointer;
 }
+.menubar{
+  margin: 0;
+  padding: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+  float: left;
+}
+
+.menubar a{
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  border: 1px;
+  border-color: green;
+}
