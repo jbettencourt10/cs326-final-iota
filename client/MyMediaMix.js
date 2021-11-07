@@ -17,7 +17,7 @@ function loadMovieList(){
 
 function loadTVShowList(){
   let tvList = "";
-  testAccount.tv_list.forEach(e => movieList.concat(e+" "));
+  testAccount.tv_list.forEach(e => tvList.concat(e+" "));
   document.getElementById("inProgress").innerHTML = tvList;
 }
 
