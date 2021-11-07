@@ -1,5 +1,6 @@
 import express from 'express';
-// import { getIMDBSearch } from './client/imdbFunctions.js';
+import faker from 'faker';
+import { getIMDBSearch } from './client/imdbFunctions.js';
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
@@ -23,28 +24,27 @@ app.get('/signup-page', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    const { username } = req;
-    const { password } = req;
+    res.sendFile('client/list.html', { root: '.' });
 });
 
 app.post('register', (req, res) => {
-    const emailAddress = req.email;
-    const { name } = req;
-    const { username } = req;
-    // TODO: check for different passwords
-    if (req.password === req.verifypassword) {
-        const { password } = req;
-    }
+    // const emailAddress = req.email;
+    // const { name } = req;
+    // const { username } = req;
+    // // TODO: check for different passwords
+    // if (req.password === req.verifypassword) {
+    //     const { password } = req;
+    // }
 });
 
-app.get('/search', async (req, res) => {
-    // TODO: PARSE OUT KEY AND VALUE FROM req.body INTO k and v
-    const searchResults = await getIMDBSearch(req.query.title, req.query.media);
-    res.send(searchResults);
+app.get('/search', (req, res) => {
+    // const searchResult = await getIMDBSearch(req.query.title, req.query.media);
+    res.sendFile('client/search.html', { root: '.' });
+
 });
 
 app.get('*', (req, res) => {
-    res.send('404: Page not found');
+    res.send('Error 404: Page not found');
 });
 
 app.listen(port, () => {

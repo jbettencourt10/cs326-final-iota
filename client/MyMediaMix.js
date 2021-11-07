@@ -1,4 +1,6 @@
 window.addEventListener('load', loadLandingMediaList);
+import fetch from 'node-fetch';
+
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
@@ -77,4 +79,4 @@ async function loadLandingMediaList(media) {
 function processSignIn() {
   // do somthing
   switchToHome();
-};;
+};

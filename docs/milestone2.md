@@ -4,7 +4,12 @@
 
 
 ### Representation of API for application
-As our focus is on a media tracking service, most of our API includes queries for media items, and then the ability to add or remove them from a particular user's list. Our endpoints are as follows:
+As our focus is on a media tracking service, most of our API includes queries for media items, and then the ability to add or remove them from a particular user's list. We define
+
+
+
+
+ Our endpoints are as follows:
 
 -   **/signup-page** This will simply route a user to the signup page in order to make a new account.
 
