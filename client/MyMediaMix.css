@@ -96,8 +96,8 @@ body {
 }
 
 .userName {
-  float: right;
-  margin: 30px;
+  /* float: right; */
+  margin-left: 9px;
 }
 
 .menubar {
