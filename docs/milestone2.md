@@ -39,6 +39,13 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 ### Client Interface with descriptions
 
+### Listing Most Popular 5 movies on IMDB currently (Read)
+![Landing Page Read](../docs/html_figures/326-landing-page-read-movies.png "Read Operation on Landing Page")
+Above, we see the results of clicking on trending movies on the landing page, which shows the top 250 most popular movies on IMDB.
+
+![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
+Above, we see the results of clicking on trending Tv Shows on the landing page, which shows the top 250 most popular TV shows on IMDB.
+
 
 
 
