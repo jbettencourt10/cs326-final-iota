@@ -27,13 +27,13 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 -   **/login** Similarly, users can login to their account to see their tracked media. Logging in is essential to keep persistence between visits and also security This will also be performed with a database.
 
--  **/add?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to add a media item to their list. Additionally, they can add ratings, and other external features when they are adding a media item to their list/
+-  **/add?{title=item}&media={Movie,TV}&rating={number}** When a user is specified (i.e. a user is logged in), they can use this endpoint to add a media item to their list. Additionally, they can add a rating if they choose to.
 
 -  **/delete?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to remove a media item from their list.
 
--  **/read?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to simply view the item specified on their list. This will additionally return other external features, like rating, etc. If the item is not on their list, then they will receive some kind of error telling gthem that the requested media is not on their list.
+-  **/read** When a user is specified (i.e. a user is logged in), they can use this endpoint to be routed to the list.html page and thus view their list. This list will change dynamically as a user updates, deletes, or creates from their list.
 
--  **/search/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an error message will be shown to the user. Query string will be of form **search.html?title={media_title}?media={Series, Movie}**
+-  **/update?{title=item}&media={Movie,TV}&rating={number}** This endpoint will update the specified media item with the new specified rated indicated in the query string. This will replace all instances in the list with the title to the new rating specified in the query string.
 
 
 
@@ -55,8 +55,8 @@ https://mymediamix.herokuapp.com
 
 
 ### Divison of Labor
-Jarred: I handled the server.js routing and setting up the IMDB api (which is limited to 100 calls per day).
+Jarred: Handled the server.js routing and setting up the IMDB api (which is limited to 100 calls per day).
 
-Bill: Linked pages together and updated old html/javascript
+Bill: Linked pages together and updated old html/javascript.
 
-Thao:
+Thao: Handled Heroku deployment and updating CSS and HTML.

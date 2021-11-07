@@ -49,10 +49,9 @@ app.post('register', (req, res) => {
     // }
 });
 
-app.get('/search', async(req, res) => {
-    res.sendFile('client/list.html', { root: '.' });
-
-});
+// app.get('/search', async(req, res) => {
+//     res.sendFile('client/list.html', { root: '.' });
+// });
 
 app.get('/create', async (req, res) => {
     if (req.query.media === 'TV'){
@@ -92,17 +91,23 @@ app.get('/read', (req, res) => {
 });
 
 app.get('/update', (req, res) => {
-    if (req.query.media === 'TV' && testAccount['tv_list'].includes(req.query.title)) {
-        res.send('TV Show is in list');
+    if (req.query.media === 'TV') {
+        for (let x of testAccount['tv_list']){
+            if (x[0] === req.query.title){
+                console.log(x);
+                x[1] = req.query.rating;
+            }
+        }
     }
-    else if (req.query.media === 'Movie' && testAccount['movie_list'].includes(req.query.title)) {
-        res.send('Movie is in list');
+    if (req.query.media === 'Movie') {
+        for (let x of testAccount['movie_list']) {
+            if (x[0] === req.query.title) {
+                x[1] = req.query.rating;
+            }
+        }
     }
-    else {
-        res.send('Movie or Tv show is not in list');
-    }
+    fs.writeFileSync(userFile, JSON.stringify(testAccount));
     res.sendFile('client/list.html', { root: '.' });
-
 });
 
 

@@ -61,81 +61,81 @@ body {
   background-color: #f1f1f1;
 }
 
-.homeButton{
+.homeButton {
   background-color: #047baa;
   width: 200px;
-  height:60px;
+  height: 60px;
   border-radius: 0 !important;
 }
 
-.homeButtonInner{
+.homeButtonInner {
   color: white;
   font-size: larger;
   padding-left: 15px;
   padding-top: 15px;
 }
 
-.autoHeight{
-  height:auto;
+.autoHeight {
+  height: auto;
 }
 
-.toprow{
-  display: grid; 
+.toprow {
+  display: grid;
   grid-template-columns: repeat(3, auto);
 }
 
-.sitename{
-  float: left; 
+.sitename {
+  float: left;
   margin: 20px;
 }
 
-.searchbar{
-  width: 1000px; 
-  height: 50px; 
+.searchbar {
+  width: 350px;
+  height: 50px;
   margin-top: 20px;
 }
 
-.userName{
-  float: right; 
+.userName {
+  float: right;
   margin: 30px;
 }
 
-.menubar{
-  display: grid; 
+.menubar {
+  display: grid;
   grid-template-columns: repeat(7, 150px);
-  margin-left: 20px
+  margin-left: 20px;
 }
 
-.menuitem{
-  float: left; 
+.menuitem {
+  float: left;
   margin: 20px 0px;
 }
 
-.show{
+.show {
   margin: 20px;
 }
 
-.product{
-  background-color: white; 
-  width: 100%; 
+.product {
+  background-color: white;
+  width: 100%;
   height: 200px;
   margin: 20px 0px;
 }
 
-.yourLists{
+.yourLists {
   margin: 20px;
   float: left;
 }
 
-.addList{
+.addList {
   float: right;
   margin: 20px;
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
-.menubar{
+.menubar {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -143,7 +143,7 @@ body {
   float: left;
 }
 
-.menubar a{
+.menubar a {
   display: block;
   color: black;
   padding: 16px;
