@@ -50,16 +50,16 @@ app.post('register', (req, res) => {
 });
 
 app.get('/search', async(req, res) => {
-    res.sendFile('client/search.html', { root: '.' });
+    res.sendFile('client/list.html', { root: '.' });
 
 });
 
-app.get('/add', async (req, res) => {
+app.get('/create', async (req, res) => {
     if (req.query.media === 'TV'){
-        testAccount['tv_list'].push(req.query.title);
+        testAccount['tv_list'].push([req.query.title, req.query.rating]);
     }
     else if (req.query.media === 'Movie') {
-        testAccount['movie_list'].push(req.query.title);
+        testAccount['movie_list'].push([req.query.title, req.query.rating]);
     }
     fs.writeFileSync(userFile, JSON.stringify(testAccount));
     res.sendFile('client/list.html', { root: '.' });
@@ -68,15 +68,44 @@ app.get('/add', async (req, res) => {
 
 app.get('/delete', (req, res) => {
     if (req.query.media === 'TV') {
-        testAccount.tv_list = testAccount.tv_list.filter(t => t !== req.query.title);
+        for (let i=0; i < testAccount['tv_list'].length; i++) {
+            if (testAccount['tv_list'][i][0] === req.query.title){
+                testAccount['tv_list'].splice(i, 1);
+            }
+        }
     }
     else if (req.query.media === 'Movie') {
-        testAccount.movie_list = testAccount.movie_list.filter(t => t !== req.query.title);
+        for (let i = 0; i < testAccount['movie_list'].length; i++) {
+            if (testAccount['movie_list'][i][0] === req.query.title) {
+                testAccount['movie_list'].splice(i, 1);
+            }
+        }
     }
     fs.writeFileSync(userFile, JSON.stringify(testAccount));
     res.sendFile('client/list.html', { root: '.' });
 
 });
+
+app.get('/read', (req, res) => {
+    res.sendFile('client/list.html', { root: '.' });
+
+});
+
+app.get('/update', (req, res) => {
+    if (req.query.media === 'TV' && testAccount['tv_list'].includes(req.query.title)) {
+        res.send('TV Show is in list');
+    }
+    else if (req.query.media === 'Movie' && testAccount['movie_list'].includes(req.query.title)) {
+        res.send('Movie is in list');
+    }
+    else {
+        res.send('Movie or Tv show is not in list');
+    }
+    res.sendFile('client/list.html', { root: '.' });
+
+});
+
+
 
 app.get('*', (req, res) => {
     res.send('Error 404: Page not found');

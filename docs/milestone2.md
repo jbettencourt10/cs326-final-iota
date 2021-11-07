@@ -27,11 +27,11 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 -   **/login** Similarly, users can login to their account to see their tracked media. Logging in is essential to keep persistence between visits and also security This will also be performed with a database.
 
--  **/add/{item}** When a user is specified (i.e. a user is logged in), they can use this endpoint to add a media item to their list. Additionally, they can add ratings, and other external features when they are adding a media item to their list/
+-  **/add?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to add a media item to their list. Additionally, they can add ratings, and other external features when they are adding a media item to their list/
 
--  **/remove/{item}** When a user is specified (i.e. a user is logged in), they can use this endpoint to remove a media item from their list.
+-  **/delete?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to remove a media item from their list.
 
--  **/get/{item}** When a user is specified (i.e. a user is logged in), they can use this endpoint to simply view the item specified on their list. This will additionally return other external features, like rating, etc. If the item is not on their list, then they will receive some kind of error telling gthem that the requested media is not on their list.
+-  **/read?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to simply view the item specified on their list. This will additionally return other external features, like rating, etc. If the item is not on their list, then they will receive some kind of error telling gthem that the requested media is not on their list.
 
 -  **/search/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an error message will be shown to the user. Query string will be of form **search.html?title={media_title}?media={Series, Movie}**
 
