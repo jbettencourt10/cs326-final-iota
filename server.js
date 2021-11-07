@@ -1,6 +1,5 @@
 import express from 'express';
 import faker from 'faker';
-import { getIMDBSearch } from './client/imdbFunctions.js';
 import fs from 'fs';
 
 const IMDB_API_KEY = 'k_t249l7q8';
@@ -8,7 +7,8 @@ const IMDB_API_KEY = 'k_t249l7q8';
 const app = express();
 
 // Just for testing, emulates a database
-const testAccount = JSON.parse(fs.readFileSync('./user.json'));
+const userFile = './user.json';
+const testAccount = JSON.parse(fs.readFileSync(userFile));
 
 
 app.use(express.json()); // lets you handle JSON input
@@ -54,9 +54,27 @@ app.get('/search', async(req, res) => {
 
 });
 
+app.get('/add', async (req, res) => {
+    if (req.query.media === 'TV'){
+        testAccount['tv_list'].push(req.query.title);
+    }
+    else if (req.query.media === 'Movie') {
+        testAccount['movie_list'].push(req.query.title);
+    }
+    fs.writeFileSync(userFile, JSON.stringify(testAccount));
+    res.sendFile('client/list.html', { root: '.' });
+
+});
+
 app.get('/delete', (req, res) => {
-    // const searchResult = await getIMDBSearch(req.query.title, req.query.media);
-    res.sendFile('client/search.html', { root: '.' });
+    if (req.query.media === 'TV') {
+        testAccount.tv_list = testAccount.tv_list.filter(t => t !== req.query.title);
+    }
+    else if (req.query.media === 'Movie') {
+        testAccount.movie_list = testAccount.movie_list.filter(t => t !== req.query.title);
+    }
+    fs.writeFileSync(userFile, JSON.stringify(testAccount));
+    res.sendFile('client/list.html', { root: '.' });
 
 });
 

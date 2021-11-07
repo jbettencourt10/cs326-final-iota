@@ -1,9 +1,1 @@
-
-
-
-{
-    "username": "testuser",
-    "password": "plaintext",
-    "movie_list": [],
-    "tv_list": []
-}
+{"username":"testuser","password":"plaintext","movie_list":[null,null,"hello","hello"],"tv_list":[]}
