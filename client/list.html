@@ -1,95 +1,122 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <title>MyMediaMix</title>
+    <meta name="homepage" content="An all-in-one media tracking system" />
+    <link rel="stylesheet" href="MyMediaMix.css" />
+  </head>
 
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-        <meta charset="UTF-8">
-        <title>MyMediaMix</title>
-        <meta name="homepage" content="An all-in-one media tracking system">
-        <link rel="stylesheet" href="MyMediaMix.css">
-    </head>
-
-    <body>
-        <div class="toprow grid-container">
-            <div class="card homeButton">
-                <p class="homeButtonInner">MyMediaMix</p>
-                <div class="card-body">
-                    <a href="/" class="btn btn-primary-outline stretched-link "></a>
-                </div>
-            </div>
-
-            <form action='/search' method='get'>
-                <div style="float: left; ">
-                    <input id="searchbar" placeholder="Search" class="searchbar grid-item" name='title'>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="media"
-                            value="Movie">
-                        <label class="form-check-label">Movies</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="media"
-                            value="Series">
-                        <label class="form-check-label">TV Shows</label>
-                    </div>
-
-                </div>
-
-                <br>
-                <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-                    Search
-                </button>
-            </form>
-
-            <div class="userName grid-item">
-                <h5>USERNAME</h5>
-            </div>
+  <body>
+    <div class="toprow grid-container">
+      <div class="card homeButton">
+        <p class="homeButtonInner">MyMediaMix</p>
+        <div class="card-body">
+          <a href="/" class="btn btn-primary-outline stretched-link"></a>
         </div>
-        
-        <div class="menubar grid-container">
-            <a class="grid-item" href="#all">All</a>
-            <a class="grid-item" href="#books">Books</a>
-            <a class="grid-item" href="#movies">Movies</a>
-            <a class="grid-item" href="#tv_shows">TV shows</a>
-            <a class="grid-item" href="#music">Music</a>
-            <a class="grid-item" href="#custom">Custom Lists</a>
-            <a class="grid-item" href="#analytics">Analytics</a>
+      </div>
+
+      <form method="get">
+        <div style="float: left">
+          <input
+            id="searchbar"
+            placeholder="Movie/TV Show Title"
+            class="searchbar grid-item"
+            name="title"
+          />
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="media"
+              value="Movie"
+            />
+            <label class="form-check-label">Movies</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="media"
+              value="TV"
+            />
+            <label class="form-check-label">TV Shows</label>
+          </div>
         </div>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Add Cool Movie
+
+        <br />
+        <button
+          formaction="/create"
+          type="submit"
+          class="btn btn-outline-primary mx-auto d-block"
+        >
+          Add Movie/TV Show
         </button>
-        <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Delete Cool Movie
+        <button
+          formaction="/delete"
+          type="submit"
+          class="btn btn-outline-primary mx-auto d-block"
+        >
+          Delete Movie/TV Show
         </button>
         <input
           type="text"
           id="ratingInput"
           class="form-control"
           placeholder="Rating"
-          name = "username"
-          style="width:100px; margin:auto"
+          name="rating"
+          style="width: 100px; margin: auto"
         />
-        <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Add Rating
+        <button
+          formaction="/update"
+          type="submit"
+          class="btn btn-outline-primary mx-auto d-block"
+        >
+          Update Rating
         </button>
-        <div class="show grid-container">
-            <h5>In progress</h5>
-            <div class="product grid-container" id=inProgress>Movie Name</div>
-        </div>
+      </form>
 
-        <div class="show grid-container">
-            <h5>Wishlist</h5>
-            <div class="product grid-container"></div>
-        </div>
+      <div class="userName grid-item">
+        <h5>USERNAME</h5>
+      </div>
+    </div>
 
-        <div class="show grid-container">
-            <h5>Past History</h5>
-            <div class="product grid-container"></div>
-        </div>
-    </body>
+    <div class="menubar grid-container">
+      <a class="grid-item" href="#all">All</a>
+      <a class="grid-item" href="#books">Books</a>
+      <a class="grid-item" href="#movies">Movies</a>
+      <a class="grid-item" href="#tv_shows">TV shows</a>
+      <a class="grid-item" href="#music">Music</a>
+      <a class="grid-item" href="#custom">Custom Lists</a>
+      <a class="grid-item" href="#analytics">Analytics</a>
+    </div>
+    <br />
+    <br />
+    <div class="show grid-container">
+      <h5>In progress</h5>
+      <div class="product grid-container" id="inProgress">Movie Name</div>
+    </div>
+
+    <div class="show grid-container">
+      <h5>Wishlist</h5>
+      <div class="product grid-container"></div>
+    </div>
+
+    <div class="show grid-container">
+      <h5>Past History</h5>
+      <div class="product grid-container"></div>
+    </div>
+  </body>
+</html>
