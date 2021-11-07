@@ -45,7 +45,17 @@ Above, we see the results of clicking on trending movies on the landing page, wh
 ![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
 Above, we see the results of clicking on trending Tv Shows on the landing page, which shows the top 250 most popular TV shows on IMDB.
 
+### Listing Most Popular 5 TV shows on IMDB currently (Create)
+![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
+Here, we see the addition of a movie/tv show to a user's list.
 
+### Listing Most Popular 5 TV shows on IMDB currently (Update)
+![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
+Here, we see the updating of a rating (relative to last picture) of a movie/tv show to a user's list.
+
+### Listing Most Popular 5 TV shows on IMDB currently (Delete)
+![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
+Here, we see the deletion of a movie/tv show from a user's list.
 
 
 ### Heroku URL
