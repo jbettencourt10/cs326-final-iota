@@ -6,14 +6,12 @@
 ### Representation of API for application
 As our focus is on a media tracking service, most of our API includes queries for media items, and then the ability to add or remove them from a particular user's list. We define two types of objects in our system:
 
-- **Media Item**: Media items contain different field depending on their type. For now, we have TV shows and Movies which are queried from an IMDB api (with 100 free api calls per day).
-  - **Movies**: Title, Image, Rating. Year, Crew, Rank, RatingCount
-  - **TV Shows**: Title, Image, Rating. Year, Crew, Rank, RatingCount
+- **Media Item**: Media items contain different field depending on their type. For now, we have TV shows and Movies which are input by the user. But, when database implementation occurs, we will have movies and TV shows taken from IMDB and added to a user's list to allow for a greater amount of data to be process. Currently, we have:
+  - **Movies**: Title, User Rating
+  - **TV Shows**: Title, User Rating
 
-- **User Account**: User accounts will have three lists when created in the database. These lists are
-  - **Plan to watch**: A list of media that a user is currently preoccupied with.
+- **User Account**: User accounts will have three lists when finally created in the database. Currently, the application supports one list,
   - **Watched**: A list of media that a user has watched/read/listened to before.
-  - **Currently Watching**: A list of media that a user is currently preoccuped with.
 
 
  Our endpoints are as follows:
