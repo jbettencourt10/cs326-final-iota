@@ -1,0 +1,9 @@
+
+
+
+{
+    "username": "testuser",
+    "password": "plaintext",
+    "movie_list": [],
+    "tv_list": []
+}

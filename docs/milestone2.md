@@ -33,7 +33,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 -  **/get/{item}** When a user is specified (i.e. a user is logged in), they can use this endpoint to simply view the item specified on their list. This will additionally return other external features, like rating, etc. If the item is not on their list, then they will receive some kind of error telling gthem that the requested media is not on their list.
 
--  **/search/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an error message will be shown to the user.
+-  **/search/{item}** This endpoint will query all media available on the website for the specific media that the user requested. If it is available on the website, all relevant information about the media will be returned to the user which includes title, cast, director, rating, etc. If it is not available on the website, an error message will be shown to the user. Query string will be of form **search.html?title={media_title}?media={Series, Movie}**
 
 
 
@@ -43,6 +43,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
 ![Landing Page Read](../docs/html_figures/326-landing-page-read-movies.png "Read Operation on Landing Page")
 Above, we see the results of clicking on trending movies on the landing page, which shows the top 250 most popular movies on IMDB.
 
+### Listing Most Popular 5 TV shows on IMDB currently (Read)
 ![Landing Page Read](../docs/html_figures/326-landing-page-read-tv.png "Read Operation on Landing Page")
 Above, we see the results of clicking on trending Tv Shows on the landing page, which shows the top 250 most popular TV shows on IMDB.
 
