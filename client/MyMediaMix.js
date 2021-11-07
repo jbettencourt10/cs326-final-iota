@@ -1,13 +1,13 @@
-import fs from 'fs';
+// import fs from 'fs';
 
-window.addEventListener('load', loadLandingMediaList);
+window.addEventListener('load', loadLandingMediaList());
 
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
 
-const userFile = './user.json';
-const testAccount = JSON.parse(fs.readFileSync(userFile));
+// const userFile = './user.json';
+// const testAccount = JSON.parse(fs.readFileSync(userFile));
 
 function loadMovieList(){
   let movieList = "";
