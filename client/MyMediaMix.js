@@ -1,5 +1,5 @@
 window.addEventListener('load', loadLandingMediaList);
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 
 const IMDB_API_KEY = 'k_t249l7q8';
@@ -35,8 +35,6 @@ async function getTopIMDB(media) {
   return top100;
 }
 
-
-
 // Takes argument 'Movies' or 'TVs'
 
 async function loadLandingMediaList(media) {
@@ -54,6 +52,8 @@ async function loadLandingMediaList(media) {
     figure.classList.add('figure');
 
     const img = document.createElement('img');
+    img.height = 500;
+    img.width = 250;
     img.src = top100Movies[i].image;
     img.classList.add('figure-img', 'img-fluid', 'rounded');
     img.alt = 'Image Placeholder';
