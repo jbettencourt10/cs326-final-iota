@@ -57,6 +57,6 @@ https://mymediamix.herokuapp.com
 ### Divison of Labor
 Jarred: I handled the server.js routing and setting up the IMDB api (which is limited to 100 calls per day).
 
-Bill:
+Bill: Linked pages together and updated old html/javascript
 
 Thao:
