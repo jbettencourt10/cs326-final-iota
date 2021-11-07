@@ -1,9 +1,28 @@
+import fs from 'fs';
+
 window.addEventListener('load', loadLandingMediaList);
 // import fetch from 'node-fetch';
 
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
+
+
+
+const userFile = './user.json';
+const testAccount = JSON.parse(fs.readFileSync(userFile));
+
+function loadMovieList(){
+  let movieList = "";
+  testAccount.movieList.forEach(e => movieList.concat(e+" "));
+  document.getElementById("inProgress").innerHTML = movieList;
+}
+
+function loadTVShowList(){
+  let tvList = "";
+  testAccount.tv_list.forEach(e => movieList.concat(e+" "));
+  document.getElementById("inProgress").innerHTML = tvList;
+}
 
 function landingBooks() {
   document.getElementById('trendingText').innerHTML = 'Trending Books';
