@@ -11,7 +11,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
   - **TV Shows**: Title, User Rating
 
 - **User Account**: User accounts will have three lists when finally created in the database. Currently, the application supports one list,
-  - **Watched**: A list of media that a user has watched/read/listened to before.
+  - **In progress**: A list of media that a user is currently watching.
 
 
  Our endpoints are as follows:
