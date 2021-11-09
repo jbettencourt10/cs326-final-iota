@@ -6,7 +6,7 @@
 ### Representation of API for application
 As our focus is on a media tracking service, most of our API includes queries for media items, and then the ability to add or remove them from a particular user's list. We define two types of objects in our system:
 
-- **Media Item**: Media items contain different field depending on their type. For now, we have TV shows and Movies which are input by the user. But, when database implementation occurs, we will have movies and TV shows taken from IMDB and added to a user's list to allow for a greater amount of data to be process. Currently, we have:
+- **Media Item**: Media items contain different field depending on their type. For now, we have TV shows and Movies which are input by the user. But, when database implementation occurs, we will have movies and TV shows taken from IMDB and added to a user's list to allow for a greater amount of data to be process. When database implementation occurs, we will have a way to store a user's list persistently, and the frontend will be able to accurately reflect updates to a user's list. Currently, we have:
   - **Movies**: Title, User Rating
   - **TV Shows**: Title, User Rating
 
