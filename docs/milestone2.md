@@ -29,7 +29,7 @@ As our focus is on a media tracking service, most of our API includes queries fo
 
 -  **/delete?{title=item}&media={Movie,TV}** When a user is specified (i.e. a user is logged in), they can use this endpoint to remove a media item from their list.
 
--  **/read** When a user is specified (i.e. a user is logged in), they can use this endpoint to be routed to the list.html page and thus view their list. This list will change dynamically as a user updates, deletes, or creates from their list.
+-  **/read** When a user is specified (i.e. a user is logged in), they can use this endpoint to be routed to the list.html page and thus view their list. This list will change dynamically as a user updates, deletes, or creates from their list (this can only occur when the database implementation occurs, otherwise we would have to store a user's list locally, which does not allow for correct persistence and security).
 
 -  **/update?{title=item}&media={Movie,TV}&rating={number}** This endpoint will update the specified media item with the new specified rated indicated in the query string. This will replace all instances in the list with the title to the new rating specified in the query string.
 
