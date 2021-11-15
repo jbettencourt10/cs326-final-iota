@@ -13,7 +13,7 @@ Here is our proposed implementation of a signup page. It is relatively basic and
 
 ### List Page
 ![List Page](../docs/wireframe_figures/326-iota_list.png "List Page")
-![List Page HTML](../docs/HTML_figures/326-iota-list.png "List Page")
+![List Page HTML](../docs/html_figures/326-iota-list.png "List Page")
 This is the crux of our web application. After sign in or sign up, a user will be directed here. Here, a user will see their in progress media forms (In progress), their to-watch/read/listen media forms (wishlist), and media that they have completed (Past History). Additionally, a user can sort by books, movies, etc.
 
 
@@ -38,7 +38,7 @@ This page defines some settings that users may like to have the ability to chang
 
 ### Search Page
 ![Search Page](../docs/wireframe_figures/326-iota_search.png "Search Page")
-![Search Page HTML](../docs/HTML_figures/326-iota-search.png "Search Page HTML")
+![Search Page HTML](../docs/html_figures/326-iota-search.png "Search Page HTML")
 This page displays search results when searching from the list page. This is the main page where a user would add things to their list, and this can be done with the '+' button.
 
 
