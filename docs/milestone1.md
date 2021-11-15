@@ -13,7 +13,7 @@ Here is our proposed implementation of a signup page. It is relatively basic and
 
 ### List Page
 ![List Page](../docs/wireframe_figures/326-iota_list.png "List Page")
-![List Page HTML](../docs/HTML_figures/326-iota-list.png "List Page")
+![List Page HTML](../docs/HTML_figures/326-iota_list.png "List Page")
 This is the crux of our web application. After sign in or sign up, a user will be directed here. Here, a user will see their in progress media forms (In progress), their to-watch/read/listen media forms (wishlist), and media that they have completed (Past History). Additionally, a user can sort by books, movies, etc.
 
 
@@ -23,7 +23,7 @@ This page displays analytics to the user based on their media intake. This inclu
 
 ### Custom List Page
 ![Custom List Page](../docs/wireframe_figures/326-iota_customlist.png "Custom List Page")
-![Cusotm List Page HTML](../docs/html_figures/326-iota-customlist.png "Custom List Page")
+![Cusotm List Page HTML](../docs/html_figures/326-iota_customlist.png "Custom List Page")
 This page is like the list page, but works for user-defined tags. An example is a tag that defines happy endings, and a user can set that for any media they have.
 
 ### Account Info Page
