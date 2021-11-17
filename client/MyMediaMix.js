@@ -1,7 +1,7 @@
 // import fs from 'fs';
 
-window.addEventListener('load', loadLandingMediaList());
-
+window.addEventListener('load', loadLandingMediaList);
+window.addEventListener('load', loadInProgressList);
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
@@ -54,6 +54,9 @@ async function getTopIMDB(media) {
 // Takes argument 'Movies' or 'TVs'
 
 async function loadLandingMediaList(media) {
+  if(window.location.pathname !== ''){
+    return;
+  }
   document.getElementById('mediaList').innerHTML = '';
   const top100MoviesObject = await getTopIMDB(media);
   const top100Movies = top100MoviesObject.items.slice(0, 5);
@@ -96,3 +99,16 @@ function processSignIn() {
   // do somthing
   switchToHome();
 };
+
+function loadInProgressList(){
+  console.log(window.location.pathname);
+  if(window.location.pathname !== '/login'){
+    return;
+  }
+  const container = document.getElementById("inProgress");
+  for(let i = 0; i<5; ++i){
+    const mediaItem = document.createElement('div');
+    container.appendChild(mediaItem);
+  }
+}
+
