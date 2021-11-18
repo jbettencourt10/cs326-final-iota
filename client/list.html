@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div class="toprow grid-container">
+    <div class="toprow grid-container" style="height: 100px;">
       <div class="card homeButton">
         <p class="homeButtonInner">MyMediaMix</p>
         <div class="card-body">
@@ -28,74 +28,45 @@
         </div>
       </div>
 
-      <form method="get">
-        <div style="float: left">
+      <form method="get" class="d-flex align-items-center">
+        <span>
           <input
             id="searchbar"
-            placeholder="Movie/TV Show Title"
+            placeholder="Title"
             class="searchbar grid-item"
             name="title"
+            style="margin-bottom: 20px;"
           />
-
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="media"
-              value="Movie"
-            />
-            <label class="form-check-label">Movies</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="media"
-              value="TV"
-            />
-            <label class="form-check-label">TV Shows</label>
-          </div>
-        </div>
-
-        <br />
-        <button
-          formaction="/create"
-          type="submit"
-          class="btn btn-outline-primary"
-        >
-          Add Movie/TV Show
-        </button>
-        <button
-          formaction="/delete"
-          type="submit"
-          class="btn btn-outline-primary"
-        >
-          Delete Movie/TV Show
-        </button>
-
-        <input
-          type="text"
-          id="ratingInput"
-          class="form-control form-check-inline"
-          placeholder="Rating"
-          name="rating"
-          style="width: 100px; margin: auto"
-        />
-        <button
-          formaction="/update"
-          type="submit"
-          class="btn btn-outline-primary"
-        >
-          Update Rating
-        </button>
+        </span>
+        <select id="searchbar" style="margin-left: 10px; margin-right: 10px;">
+          <option value="empty">Search Within...</option>
+          <option value="books">Books</option>
+          <option value="movies">Movies</option>
+          <option value="tv shows">TV Shows</option>
+          <option value="music">Music</option>
+        </select>
+        <!-- <span class="dropdown" style="margin-left: 10px; margin-right: 10px;">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" >
+            Search Within
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" onclick="">Books</a></li>
+            <li><a class="dropdown-item">Movies</a></li>
+            <li><a class="dropdown-item">TV Shows</a></li>
+            <li><a class="dropdown-item">Music</a></li>
+          </ul>
+        </span> -->
+        <input class="btn btn-primary" type="submit" value="Search">
       </form>
+      
 
-      <div class="userName grid-item">
-        <h5>USERNAME</h5>
+      <div class="d-flex justify-content-end align-items-start">
+        <input class="btn btn-primary" type="submit" value="Account">
+        <input class="btn btn-primary" type="submit" value="Log Out">
       </div>
     </div>
 
-    <div class="menubar grid-container">
+    <div class="menubar">
       <a class="grid-item" href="#all">All</a>
       <a class="grid-item" href="#books">Books</a>
       <a class="grid-item" href="#movies">Movies</a>
@@ -106,19 +77,51 @@
     </div>
     <br />
     <br />
-    <div class="show grid-container-item">
+    <div class="grid-container-item">
       <h5>In progress</h5>
       <div class="product grid-container-list" id="inProgress"></div>
     </div>
 
-    <div class="show grid-container">
+    <div class="grid-container">
       <h5>Wishlist</h5>
       <div class="product grid-container"></div>
     </div>
 
-    <div class="show grid-container">
+    <div class="grid-container">
       <h5>Past History</h5>
       <div class="product grid-container"></div>
     </div>
   </body>
+  <!-- <body>
+    <div class="toprow grid-container">
+      <div class="row">
+        <div class="card homeButton">
+          <p class="homeButtonInner">MyMediaMix</p>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary-outline stretched-link"></a>
+          </div>
+        </div>
+        <form method="get" class="col d-flex justify-content-center align-items-center">
+          <span>
+            <input
+              id="searchbar"
+              placeholder="Movie/TV Show Title"
+              class="searchbar"
+              name="title"
+            />
+          </span>
+          <span class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Link 1</a></li>
+              <li><a class="dropdown-item" href="#">Link 2</a></li>
+              <li><a class="dropdown-item" href="#">Link 3</a></li>
+            </ul>
+          </span>
+        </form>
+      </div>
+    </div>
+  </body> -->
 </html>
