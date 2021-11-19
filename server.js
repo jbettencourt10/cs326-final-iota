@@ -13,6 +13,8 @@ const dbURL = process.env.DATABASE_URL;
 
 const db = pgp(dbURL);
 
+console.log(db);
+
 app.use(express.static('client'));
 
 app.get('/', (req, res) => {
