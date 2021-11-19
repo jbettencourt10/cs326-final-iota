@@ -54,9 +54,11 @@ async function getTopIMDB(media) {
 // Takes argument 'Movies' or 'TVs'
 
 async function loadLandingMediaList(media) {
-  if(window.location.pathname !== ''){
-    return;
-  }
+  // If the below segment is necessary, just put it back in.
+  // It was breaking the landing page, -jb
+  // if(window.location.pathname !== ''){
+  //   return;
+  // }
   document.getElementById('mediaList').innerHTML = '';
   const top100MoviesObject = await getTopIMDB(media);
   const top100Movies = top100MoviesObject.items.slice(0, 5);
@@ -111,4 +113,3 @@ function loadInProgressList(){
     container.appendChild(mediaItem);
   }
 }
-
