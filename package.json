@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg-promise": "^10.11.1"
   }
 }

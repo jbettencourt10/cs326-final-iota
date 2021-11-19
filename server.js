@@ -1,21 +1,17 @@
 import express from 'express';
-import faker from 'faker';
-import fs from 'fs';
+import pgp from 'pg-promise';
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
 const app = express();
 
-// Just for testing, emulates a database
-const userFile = './user.json';
-const testAccount = JSON.parse(fs.readFileSync(userFile));
-
-
 app.use(express.json()); // lets you handle JSON input
 
 const port = process.env.PORT || 8080;
 
-const datastore = {};
+const dbURL = process.env.DATABASE_URL;
+
+const db = pgp(dbURL);
 
 app.use(express.static('client'));
 
