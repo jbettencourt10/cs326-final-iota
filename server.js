@@ -9,11 +9,11 @@ app.use(express.json()); // lets you handle JSON input
 
 const port = process.env.PORT || 8080;
 
-const dbURL = process.env.DATABASE_URL;
+// const dbURL = process.env.DATABASE_URL;
 
-const db = pgp(dbURL);
+// const db = pgp(dbURL);
 
-console.log(db);
+// console.log(db);
 
 app.use(express.static('client'));
 
