@@ -109,8 +109,26 @@ function loadInProgressList(){
     return;
   }
   const container = document.getElementById("inProgress");
+  // <i class="bi bi-arrow-left-square"></i>
+  const leftArrowContainer = document.createElement('div');
+  leftArrowContainer.classList.add("col-1", "arrowContainer", "d-flex", "align-items-center", "justify-content-end", "clickable");
+  const leftArrow = document.createElement('p');
+  leftArrow.classList.add("arrow");
+  leftArrow.innerHTML = "<";
+  leftArrowContainer.appendChild(leftArrow);
+  container.appendChild(leftArrowContainer);
+  
   for(let i = 0; i<5; ++i){
     const mediaItem = document.createElement('div');
+    mediaItem.classList.add("col", "mediaItem")
     container.appendChild(mediaItem);
   }
+
+  const rightArrowContainer = document.createElement('div');
+  rightArrowContainer.classList.add("col-1", "arrowContainer", "d-flex", "justify-content-start", "align-items-center", "clickable");
+  const rightArrow = document.createElement('p');
+  rightArrow.classList.add("arrow")
+  rightArrow.innerHTML = ">";
+  rightArrowContainer.appendChild(rightArrow);
+  container.appendChild(rightArrowContainer);
 }

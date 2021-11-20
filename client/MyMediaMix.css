@@ -163,3 +163,20 @@ body {
   text-align: center;
   font-size: 30px;
 }
+
+.mediaItemList{
+  height: 200px;
+  min-width: 1500px;
+}
+
+.mediaItem{
+  min-width: 100px;
+}
+
+.arrowContainer{
+  width: 60px;
+}
+
+.arrow{
+  font-size: xx-large;
+}
