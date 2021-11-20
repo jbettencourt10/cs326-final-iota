@@ -1,5 +1,6 @@
 import express from 'express';
-import pgp from 'pg-promise';
+import pgPromise from 'pg-promise';
+import {connectDB} from 'database.js'
 
 const IMDB_API_KEY = 'k_t249l7q8';
 
@@ -9,11 +10,7 @@ app.use(express.json()); // lets you handle JSON input
 
 const port = process.env.PORT || 8080;
 
-// const dbURL = process.env.DATABASE_URL;
-
-// const db = pgp(dbURL);
-
-// console.log(db);
+const db = connectDB();
 
 app.use(express.static('client'));
 
