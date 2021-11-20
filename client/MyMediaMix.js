@@ -1,5 +1,6 @@
 // import fs from 'fs';
 
+// Note:These event listeners need to check for what page actually needs to be loaded
 window.addEventListener('load', loadLandingMediaList);
 window.addEventListener('load', loadInProgressList);
 

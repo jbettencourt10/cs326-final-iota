@@ -30,6 +30,10 @@ app.get('/login', (req, res) => {
     res.sendFile('client/list.html', { root: '.' });
 });
 
+app.get('/account', (req, res) => {
+    res.sendFile('client/account.html', {root: '.'});
+});
+
 app.post('register', (req, res) => {
     // Once we have a database, the signup page will route
     // to list.html after signing up
