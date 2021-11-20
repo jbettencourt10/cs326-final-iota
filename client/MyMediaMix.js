@@ -109,7 +109,6 @@ function loadInProgressList(){
     return;
   }
   const container = document.getElementById("inProgress");
-  // <i class="bi bi-arrow-left-square"></i>
   const leftArrowContainer = document.createElement('div');
   leftArrowContainer.classList.add("col-1", "arrowContainer", "d-flex", "align-items-center", "justify-content-end", "clickable");
   const leftArrow = document.createElement('p');
@@ -120,7 +119,19 @@ function loadInProgressList(){
   
   for(let i = 0; i<5; ++i){
     const mediaItem = document.createElement('div');
-    mediaItem.classList.add("col", "mediaItem")
+    mediaItem.classList.add("col", "mediaItem", "d-flex", "align-items-center", "justify-content-center");
+    const row = document.createElement('div');
+    row.classList.add("row");
+    mediaItem.appendChild(row);
+    const mediaImage = document.createElement('div');
+    mediaImage.classList.add("col");
+    mediaImage.innerHTML = "Image Goes Here";
+    row.appendChild(mediaImage);
+    const mediaOptions = document.createElement('div');
+    mediaOptions.classList.add("col");
+    mediaOptions.innerHTML = "Title Goes Here";
+    //Add rating, update rating button, and dropdown to change list in form
+    row.appendChild(mediaOptions);
     container.appendChild(mediaItem);
   }
 
