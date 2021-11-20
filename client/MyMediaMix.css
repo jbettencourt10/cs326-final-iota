@@ -167,14 +167,22 @@ body {
 .mediaItemList{
   height: 200px;
   min-width: 1500px;
+  background-color: white;
 }
 
 .mediaItem{
   min-width: 100px;
+  background-color: darkgray;
+  margin: 5px;
 }
 
 .arrowContainer{
-  width: 60px;
+  width: 50px;
+  background-color: gainsboro;
+}
+
+.arrowContainer:hover{
+  background-color: gray;
 }
 
 .arrow{
