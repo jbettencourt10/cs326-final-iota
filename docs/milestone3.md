@@ -36,3 +36,9 @@ The second table is titled MediaEntries, which will store all list items for all
 | ImageLink  | VARCHAR(100)                                        | Link to a raw image representing media entry          |
 | UserRating | REAL                                                | Rating that user has given entry when adding to list  |
 | IMDBRating | REAL                                                | Rating from scraped API (IMDB, Last.fm, etc)          |
+
+## Division of Labor
+
+Jarred:
+Bill:
+Thao:
