@@ -1,5 +1,3 @@
-// import faker from 'faker';
-
 window.addEventListener('load', showMediaList());
 
 function showMediaList() {

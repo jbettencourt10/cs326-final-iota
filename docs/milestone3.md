@@ -40,5 +40,7 @@ The second table is titled MediaEntries, which will store all list items for all
 ## Division of Labor
 
 Jarred:
+
 Bill:
+
 Thao:
