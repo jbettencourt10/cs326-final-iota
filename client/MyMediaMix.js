@@ -1,4 +1,3 @@
-
 window.addEventListener('load', loadInProgressList);
 
 function loadMovieList() {
@@ -11,13 +10,11 @@ function loadTVShowList() {
   document.getElementById('inProgress').innerHTML = tvList;
 }
 
-
-
 function loadInProgressList() {
-  console.log(window.location.pathname);
-  if (window.location.pathname !== '/login') {
-    return;
-  }
+  // console.log(window.location.pathname);
+  // if (window.location.pathname !== '/login') {
+  //   return;
+  // }
   const container = document.getElementById('inProgress');
   const leftArrowContainer = document.createElement('div');
   leftArrowContainer.classList.add('col-1', 'arrowContainer', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable');

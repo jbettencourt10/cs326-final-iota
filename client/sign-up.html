@@ -28,8 +28,7 @@
       </div>
     </div>
     <div class="container">
-      <!-- TODO: Make registering work -->
-      <form action="/login">
+      <form method="post" action="/register">
         <br /><br /><br /><br />
         <div class="row align-items-center">
           <div class="col-sm-4 mx-auto border backgroundColor">
@@ -41,6 +40,7 @@
                 class="form-control"
                 id="name-input"
                 placeholder="Tim Apple"
+                name = "fullName"
               />
             </div>
             <div class="form-group">
@@ -50,6 +50,7 @@
                 class="form-control"
                 id="username-input"
                 placeholder="A unique username"
+                name="username"
               />
             </div>
             <div class="form-group">
@@ -59,6 +60,7 @@
                 class="form-control"
                 id="password-input"
                 placeholder="Password"
+                name="password"
               />
             </div>
             <div class="form-group">
@@ -69,12 +71,12 @@
                 placeholder="Verify Password"
               />
             </div>
-            <button
+            <input
               type="submit"
               class="btn btn-outline-primary mx-auto d-block"
             >
               Start Tracking!
-            </button>
+            </input>
             <br />
           </div>
         </div>

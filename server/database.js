@@ -38,5 +38,3 @@ export async function initializeTables(database) {
         console.log(error);
     }
 }
-
-

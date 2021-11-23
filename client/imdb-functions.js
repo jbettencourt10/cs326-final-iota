@@ -11,6 +11,7 @@ export async function getTopIMDB(media) {
   return top100;
 }
 
+
 export async function imdbSearch(query) {
     const response = await fetch(`https://imdb-api.com/en/API/Search${query.medium}/${imdbKey}/${query.title}`);
     const searchResults = await response.json();
