@@ -80,6 +80,11 @@ app.post('/register',
     }
   });
 
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 app.get('/personal',
   checkLoggedIn, // If we are logged in (notice the comma!)...
   (req, res) => { // Go to the user's page.
