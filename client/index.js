@@ -30,14 +30,13 @@ function landingTVShows() {
 
 function landingMusic() {
   document.getElementById('trendingText').innerHTML = 'Trending Music';
-  document.getElementById('mediaList').innerHTML = '';
+  loadLandingMediaList('Music');
 }
 
 // TODO: make this look better
 async function loadLandingMediaList(media) {
   document.getElementById('mediaList').innerHTML = '';
-  const top100Object = await getTopIMDB(media);
-  const top100Media = top100Object.items.slice(0, 5);
+  const top100Media = await getTopIMDB(media);
   const mediaList = document.getElementById('mediaList');
   for (let i = 0; i < 5; ++i) {
     const row = document.createElement('div');

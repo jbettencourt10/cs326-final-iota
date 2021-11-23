@@ -53,11 +53,11 @@ function checkLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect('/');
+    res.redirect('/index');
   }
 }
 
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
   res.sendFile('client/index.html', { root: '.' });
   // TODO: RESPONSE
 });
@@ -82,7 +82,7 @@ app.post('/register',
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('/index');
 });
 
 app.get('/personal',
@@ -94,27 +94,27 @@ app.get('/personal',
 app.get('/:username',
   checkLoggedIn, // We also protect this route: authenticated...
   (req, res) => {
-  // Verify this is the right user.
+    // Verify this is the right user.
     if (req.params.username === req.user) {
       res.sendFile('client/list.html', { root: '.' });
     } else {
-      res.redirect('/');
+      res.redirect('/index');
     }
   });
 
 app.post('/login',
   passport.authenticate('local', { // use username/password authentication
     successRedirect: '/personal', // when we login, go to /private
-    failureRedirect: '/', // otherwise, back to login
+    failureRedirect: '/index', // otherwise, back to login
   }));
 
-// app.get('/account', (req, res) => {
+// app.post('/account', (req, res) => {
 //   res.sendFile('client/account.html', { root: '.' });
 // });
 
-// app.get('/search', async (req, res) => {
-//   res.sendFile('client/search.html', { root: '.' });
-// });
+app.post('/search', (req, res) => {
+  res.sendFile('client/search.html', { root: '.' });
+});
 
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
@@ -128,9 +128,9 @@ app.post('/login',
 //   res.sendFile('client/list.html', { root: '.' });
 // });
 
-app.get('*', (req, res) => {
-  res.send('Error 404: Page not found');
-});
+// app.get('*', (req, res) => {
+//   res.redirect('/index');
+// });
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);
