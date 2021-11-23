@@ -1,36 +1,46 @@
-// async function loadSearchList(media) {
-//   document.getElementById('mediaList').innerHTML = '';
-//   const top100Object = await getTopIMDB(media);
-//   const top100Media = top100Object.items.slice(0, 5);
-//   const mediaList = document.getElementById('mediaList');
-//   for (let i = 0; i < 5; ++i) {
-//     const row = document.createElement('div');
-//     row.classList.add('row');
-//     const image = document.createElement('div');
-//     image.classList.add('col');
+//Should change this to bootstrap row col later
 
-//     const figure = document.createElement('figure');
-//     figure.classList.add('figure');
+function loadSearchList(media) {
+  const searchList = document.getElementById('searchList');
+  searchList.innerHTML = '';
+  for (let i = 0; i < 5; ++i) {
+    const row = document.createElement('div');
+    row.classList.add('row');
+    const image = document.createElement('div');
+    image.classList.add('col');
 
-//     const img = document.createElement('img');
-//     img.width = 100;
-//     img.src = top100Media[i].image;
-//     img.classList.add('figure-img', 'img-fluid', 'rounded');
-//     img.alt = 'Image Placeholder';
+    const figure = document.createElement('figure');
+    figure.classList.add('figure');
 
-//     figure.appendChild(img);
-//     image.appendChild(figure);
-//     row.appendChild(image);
+    const img = document.createElement('img');
+    img.width = 100;
+    img.classList.add('figure-img', 'img-fluid', 'rounded');
+    img.alt = 'Image Placeholder';
 
-//     const title = document.createElement('div');
-//     title.classList.add('col');
-//     title.innerHTML = top100Media[i].title;
-//     row.appendChild(title);
+    figure.appendChild(img);
+    image.appendChild(figure);
+    row.appendChild(image);
 
-//     const rating = document.createElement('div');
-//     rating.classList.add('col');
-//     rating.innerHTML = top100Media[i].imDbRating;
-//     row.appendChild(rating);
-//     mediaList.appendChild(row);
-//   }
-// }
+    const title = document.createElement('div');
+    title.classList.add('col');
+    title.innerHTML = "Title Placeholder";
+    row.appendChild(title);
+
+    const rating = document.createElement('div');
+    rating.classList.add('col');
+    rating.innerHTML = "Rating Placeholder";
+    row.appendChild(rating);
+
+    //add action
+    const form = document.createElement('form');
+    form.method = 'get';
+    const addButton = document.createElement('input');
+    addButton.type = 'submit';
+    addButton.classList.add('btn', "btn-success", "largeFont");
+    addButton.role = "button";
+    addButton.value = "+";
+    form.appendChild(addButton);
+    row.appendChild(form)
+    searchList.appendChild(row);
+  }
+}
