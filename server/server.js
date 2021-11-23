@@ -114,7 +114,8 @@ app.get('/list/:username/',
 // });
 
 app.get('/search', (req, res) => {
-  res.sendFile('client/search.html', { root: '.' });
+  res.sendFile('client/search.html',
+   { root: '.' });
 });
 
 // app.get('/create', (req, res) => {
