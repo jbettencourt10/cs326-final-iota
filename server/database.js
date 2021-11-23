@@ -54,12 +54,12 @@ export async function updateUserRating(database, queryObject) {
 }
 
 // TODO: MOVE ITEM FROM ONE LIST TO ANOTHER
-// export async function updateUserRating(database, queryObject) {
-//     try {
-//         await database.none({ text: 'UPDATE MediaEntries SET UserRating=$1 where username=$2 and title=$3', values: [queryObject.newRating, queryObject.username, queryObject.title] });
-//         return true;
-//     } catch (error) {
-//         console.log(error);
-//         return false;
-//     }
-// }
+export async function changeItemList(database, queryObject) {
+    try {
+        await database.none({ text: 'UPDATE MediaEntries SET list=$1 where username=$2 and title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
