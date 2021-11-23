@@ -20,44 +20,34 @@
   </head>
 
   <body>
-    <div class="toprow grid-container" style="height: 100px;">
+    <div class="toprow grid-container" style="height: 100px">
       <div class="card homeButton">
         <p class="homeButtonInner">MyMediaMix</p>
         <div class="card-body">
-          <a href="/login" class="btn btn-primary-outline stretched-link"></a>
+          <a href="/" class="btn btn-primary-outline stretched-link"></a>
         </div>
       </div>
 
-      <form method="get" class="d-flex align-items-center">
+      <form action="/search" class="d-flex align-items-center">
         <span>
           <input
             id="searchbar"
             placeholder="Title"
             class="searchbar"
-            style="margin-bottom: 20px;"
+            style="margin-bottom: 20px"
+            type="text"
+            name="title"
           />
         </span>
-        <select style="margin-left: 10px; margin-right: 10px;">
+        <select style="margin-left: 10px; margin-right: 10px" name='medium'>
           <option value="empty">Search Within...</option>
           <option value="books">Books</option>
-          <option value="movies">Movies</option>
-          <option value="tv shows">TV Shows</option>
+          <option value="Movie">Movies</option>
+          <option value="Series">TV Shows</option>
           <option value="music">Music</option>
         </select>
-        <!-- <span class="dropdown" style="margin-left: 10px; margin-right: 10px;">
-          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" >
-            Search Within
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" onclick="">Books</a></li>
-            <li><a class="dropdown-item">Movies</a></li>
-            <li><a class="dropdown-item">TV Shows</a></li>
-            <li><a class="dropdown-item">Music</a></li>
-          </ul>
-        </span> -->
-        <input class="btn btn-primary" type="submit" value="Search">
+        <input class="btn btn-primary" type="submit" value="Search" />
       </form>
-      
 
       <div class="d-flex justify-content-end align-items-start">
         <a href="/account" class="btn btn-primary" role="button">Account</a>
@@ -79,8 +69,7 @@
     <br />
     <h5>In progress</h5>
     <div class="row mediaItemList d-flex justify-content-center">
-      <div class ="row" id="inProgress">
-      </div>
+      <div class="row" id="inProgress"></div>
     </div>
 
     <div class="grid-container">

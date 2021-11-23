@@ -154,7 +154,7 @@ body {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: #2196f3;
   padding: 10px;
 }
 .grid-container-list > div {
@@ -164,27 +164,31 @@ body {
   font-size: 30px;
 }
 
-.mediaItemList{
+.mediaItemList {
   height: 200px;
   min-width: 1500px;
   background-color: white;
 }
 
-.mediaItem{
+.mediaItem {
   min-width: 100px;
   background-color: darkgray;
   margin: 5px;
 }
 
-.arrowContainer{
+.arrowContainer {
   width: 50px;
   background-color: gainsboro;
 }
 
-.arrowContainer:hover{
+.arrowContainer:hover {
   background-color: gray;
 }
 
-.arrow{
+.arrow {
   font-size: xx-large;
+}
+
+.index-button {
+  font-size: 40px;
 }

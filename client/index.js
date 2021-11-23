@@ -1,6 +1,6 @@
 import { getTopIMDB } from './imdb-functions.js';
 
-// Note:These event listeners need to check for what page actually needs to be loaded
+
 window.addEventListener('load', landingMovies);
 
 const booksButton = document.getElementById('books-index');
@@ -12,7 +12,6 @@ booksButton.addEventListener('click', landingBooks);
 showButton.addEventListener('click', landingTVShows);
 movieButton.addEventListener('click', landingMovies);
 musicButton.addEventListener('click', landingMusic);
-
 
 function landingBooks() {
   document.getElementById('trendingText').innerHTML = 'Trending Books';
@@ -33,7 +32,6 @@ function landingMusic() {
   document.getElementById('trendingText').innerHTML = 'Trending Music';
   document.getElementById('mediaList').innerHTML = '';
 }
-
 
 // TODO: make this look better
 async function loadLandingMediaList(media) {

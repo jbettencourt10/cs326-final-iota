@@ -39,12 +39,4 @@ export async function initializeTables(database) {
     }
 }
 
-export async function findUser(database, username) {
-    try {
-        const result = database.any({ text: 'Select * from Users where Username=$1', values: [username] });
-        return result;
-    } catch (error) {
-        console.log(error);
-        return [];
-    }
-}
+
