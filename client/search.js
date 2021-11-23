@@ -1,3 +1,5 @@
+//Should change this to bootstrap row col later
+
 function loadSearchList(media) {
   const searchList = document.getElementById('searchList');
   searchList.innerHTML = '';
@@ -28,6 +30,17 @@ function loadSearchList(media) {
     rating.classList.add('col');
     rating.innerHTML = "Rating Placeholder";
     row.appendChild(rating);
+
+    //add action
+    const form = document.createElement('form');
+    form.method = 'get';
+    const addButton = document.createElement('input');
+    addButton.type = 'submit';
+    addButton.classList.add('btn', "btn-success", "largeFont");
+    addButton.role = "button";
+    addButton.value = "+";
+    form.appendChild(addButton);
+    row.appendChild(form)
     searchList.appendChild(row);
   }
 }
