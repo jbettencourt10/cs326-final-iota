@@ -53,20 +53,15 @@ function checkLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect('/index');
+    res.redirect('/');
   }
 }
 
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile('client/index.html', { root: '.' });
   // TODO: RESPONSE
 });
 
-app.get('/register', (req, res) => {
-  res.sendFile('client/sign-up.html', { root: '.' });
-});
-
-// TODO:
 app.post('/register',
   async (req, res) => {
     // Succesfully registered
@@ -80,39 +75,45 @@ app.post('/register',
     }
   });
 
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/index');
+app.get('/register', (req, res) => {
+  res.sendFile('client/sign-up.html', { root: '.' });
 });
 
-app.get('/personal',
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
+app.post('/login',
+  passport.authenticate('local', { // use username/password authentication
+    successRedirect: '/list', // when we login, go to /private
+    failureRedirect: '/', // otherwise, back to login
+  }));
+
+app.get('/list',
   checkLoggedIn, // If we are logged in (notice the comma!)...
   (req, res) => { // Go to the user's page.
-    res.redirect(`/${req.user}`);
+    res.redirect(`/list/${req.user}`);
   });
 
-app.get('/:username',
+app.get('/list/:username/',
   checkLoggedIn, // We also protect this route: authenticated...
   (req, res) => {
     // Verify this is the right user.
     if (req.params.username === req.user) {
       res.sendFile('client/list.html', { root: '.' });
     } else {
-      res.redirect('/index');
+      res.redirect('/');
     }
   });
 
-app.post('/login',
-  passport.authenticate('local', { // use username/password authentication
-    successRedirect: '/personal', // when we login, go to /private
-    failureRedirect: '/index', // otherwise, back to login
-  }));
 
 // app.post('/account', (req, res) => {
 //   res.sendFile('client/account.html', { root: '.' });
 // });
 
-app.post('/search', (req, res) => {
+app.get('/search', (req, res) => {
   res.sendFile('client/search.html', { root: '.' });
 });
 
