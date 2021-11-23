@@ -79,7 +79,6 @@ app.get('/register', (req, res) => {
   res.sendFile('client/sign-up.html', { root: '.' });
 });
 
-
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
@@ -108,14 +107,17 @@ app.get('/list/:username/',
     }
   });
 
+app.get('/account', (req, res) => {
+  res.redirect(`/account/${req.user}`);
+});
 
-// app.post('/account', (req, res) => {
-//   res.sendFile('client/account.html', { root: '.' });
-// });
+app.get('/account/:username', (req, res) => {
+  res.sendFile('client/account.html', {root: '.'});
+});
 
 app.get('/search', (req, res) => {
   res.sendFile('client/search.html',
-   { root: '.' });
+    { root: '.' });
 });
 
 // app.get('/create', (req, res) => {
