@@ -5,6 +5,8 @@ import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables } from './database.js';
 import { findUser, validateUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
+import { MiniCrypt} from './miniCrypt.js';
+
 
 const app = express();
 
@@ -31,6 +33,8 @@ const strategy = new LocalStrategy(
     return done(null, username);
   },
 );
+
+const secureAuth = new MiniCrypt;
 
 app.use(expressSession(session));
 passport.use(strategy);
