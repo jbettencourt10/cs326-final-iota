@@ -1,4 +1,5 @@
 //Should change this to bootstrap row col later
+//limit search length or have a go to top button
 import { imdbSearch } from "./imdb-functions.js";
 
 const searchMedium = new URLSearchParams(window.location.search).get('medium');
@@ -27,7 +28,7 @@ async function loadSearchList(medium, title) {
   else{
     for (let i = 0; i < results.length; ++i) {
       const row = document.createElement('div');
-      row.classList.add('row');
+      row.classList.add('row', 'align-items-center');
       const image = document.createElement('div');
       image.classList.add('col');
   
@@ -57,7 +58,7 @@ async function loadSearchList(medium, title) {
 
        //add action
        const add = document.createElement('div');
-       add.classList.add('col', 'add-button-search');
+       add.classList.add('col', 'justify-content-end');
        const form = document.createElement('form');
        form.method = 'get';
        const addButton = document.createElement('input');
