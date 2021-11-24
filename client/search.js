@@ -63,11 +63,6 @@ async function loadSearchList(medium, title) {
       form.method = 'get';
       form.action = '/add';
 
-      const inputUsername = document.createElement('input');
-      inputUsername.type = 'hidden';
-      inputUsername.name = 'Username';
-      // inputUsername.value = 
-
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
@@ -92,7 +87,6 @@ async function loadSearchList(medium, title) {
       addButton.classList.add('btn', "btn-success", "largeFont");
       addButton.role = "button";
       addButton.value = "+";
-      
       form.appendChild(addButton);
       add.appendChild(form);
       row.appendChild(add)

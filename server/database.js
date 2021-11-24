@@ -25,8 +25,8 @@ export async function initializeTables(database) {
 
 export async function addUserEntry(database, queryObject) {
     try {
-        if(!(await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]}))){
-            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5', values: [queryObject.username, queryObject.title, queryObject.medium, 'wishlist', queryObject.imageLink]});
+        if(!(await database.any({text: 'SELECT * FROM mediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]}))){
+            await database.none({text: 'INSERT INTO mediaentries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'wishlist', queryObject.imageLink]});
         }
     } catch (error) {
         console.log(error);

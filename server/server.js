@@ -2,7 +2,7 @@ import express from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry } from './database.js';
 import { findUser, getSaltHash, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
