@@ -27,7 +27,7 @@ export async function addUserEntry(database, queryObject) {
     try {
         if((await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]})).length === 0){
             console.log(queryObject);
-            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'wishlist', queryObject.imageLink]});
+            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'planned', queryObject.imageLink]});
             return true;
         }
         else {
