@@ -17,11 +17,9 @@ async function loadSearchList(medium, title) {
     medium: medium,
     title: title,
   };
-  console.log("about to query");
 
   const searchResults = await imdbSearch(query);
   const results = searchResults.results;
-  console.log(results);
   
   if (results.length === 0){
     searchList.innerText = 'No result';
