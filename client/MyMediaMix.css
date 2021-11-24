@@ -164,10 +164,20 @@ body {
   font-size: 30px;
 }
 
-.mediaItemList {
+.inProgressItemList {
   height: 200px;
   min-width: 1500px;
-  background-color: white;
+  background-color: lightgreen;
+}
+.plannedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: lightyellow;
+}
+.completedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: dimgray;
 }
 
 .mediaItem {
