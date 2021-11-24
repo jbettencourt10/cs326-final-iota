@@ -6,9 +6,9 @@ async function loadLists(){
     listName = lists[listName];
     const mediaList = document.getElementById(listName);
     mediaList.innerHTML = '';
-    const list = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0`);
+    const list = await (await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0`)).text();
     console.log(list);
-    const listLength = Math.max(5, list.length);
+    const listLength = Math.min(5, list.length);
 
     const leftArrowContainer = document.createElement('div');
     leftArrowContainer.classList.add('col-1', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
@@ -75,7 +75,7 @@ async function loadLists(){
         form.appendChild(updateButton);
         mediaOptions.appendChild(form);
         row.appendChild(mediaOptions);
-        container.appendChild(mediaItem);
+        mediaList.appendChild(mediaItem);
       }
     }
     const rightArrowContainer = document.createElement('div');
