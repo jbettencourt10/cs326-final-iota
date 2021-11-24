@@ -71,7 +71,7 @@ app.post('/register',
   async (req, res) => {
     const userAuth = secureAuth.hash(req.body.password);
     // Succesfully registered
-    if (await addUser(db, {'username' : req.body.username, 'salt': userAuth[0], 'hash': userAuth[1], 'fullName': req.body.fullName})) {
+    if (await addUser(db, { 'username': req.body.username, 'salt': userAuth[0], 'hash': userAuth[1], 'fullName': req.body.fullName })) {
       // route them to their list page
       res.redirect('/list');
     }
@@ -127,9 +127,8 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/add', (req, res) => {
-  //move to wishlist
-  changeItemList(db)
-})
+  addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
+});
 
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
