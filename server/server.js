@@ -2,7 +2,7 @@ import express from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries } from './database.js';
 import { findUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -131,6 +131,10 @@ app.get('/add', async(req, res) => {
   res.redirect('/list');
 });
 
+app.get('/getList', async(req, res) => {
+  res.send(await getUserEntries(db, {username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset}))
+});
+
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
@@ -143,9 +147,9 @@ app.get('/add', async(req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
 
-// app.get('*', (req, res) => {
-//   res.redirect('/index');
-// });
+app.get('*', (req, res) => {
+  res.redirect('/logout');
+});
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);

@@ -1,7 +1,8 @@
 // import fetch from 'node-fetch';
 //k_w81k3buu
 //k_12ynl9dx
-const imdbKey = 'k_t249l7q8';
+//k_t249l7q8
+const imdbKey = 'k_12ynl9dx';
 
 // 'Movies' or 'TVs'
 export async function getTopIMDB(media) {

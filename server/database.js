@@ -41,7 +41,7 @@ export async function addUserEntry(database, queryObject) {
 
 export async function getUserEntries(database, queryObject) {
     try {
-        const results = await database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND medium=$2 AND list=$3', values: [queryObject.username, queryObject.medium, queryObject.list] });
+        const results = await database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 LIMIT $3 OFFSET $4', values: [queryObject.username, queryObject.list, queryObject.limit, queryObject.offest] });
         return results;
     } catch (error) {
         console.log(error);
