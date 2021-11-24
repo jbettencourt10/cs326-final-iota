@@ -16,8 +16,8 @@ export async function connectDB() {
 
 export async function initializeTables(database) {
     try {
-        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), Email VARCHAR(100), CreationTime TIMESTAMP, LoginCount INT, WatchTime REAL, PagesRead INT, ListenTime REAL)');
-        await database.none('CREATE TABLE IF NOT EXISTS MediaEntries(Username VARCHAR(30) REFERENCES Users (Username), Title VARCHAR(50), Medium VARCHAR(10), List VARCHAR(10), TimeAdded TIMESTAMP, Pages int, WatchTime REAL, ListenTime REAL, ImageLink VARCHAR(100), UserRating REAL, ImdbRating REAL)');
+        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), CreationTime TIMESTAMP, LoginCount INT, WatchTime REAL, PagesRead INT, ListenTime REAL)');
+        await database.none('CREATE TABLE IF NOT EXISTS MediaEntries(Username VARCHAR(30) REFERENCES Users (Username), Title VARCHAR(150), Medium VARCHAR(10), List VARCHAR(10), TimeAdded TIMESTAMP, Pages int, WatchTime REAL, ListenTime REAL, ImageLink VARCHAR(300), UserRating REAL, ImdbRating REAL)');
     } catch (error) {
         console.log(error);
     }
@@ -25,8 +25,13 @@ export async function initializeTables(database) {
 
 export async function addUserEntry(database, queryObject) {
     try {
-        if(!(await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]}))){
-            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5', values: [queryObject.username, queryObject.title, queryObject.medium, 'wishlist', queryObject.imageLink]});
+        if((await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]})).length === 0){
+            console.log(queryObject);
+            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'wishlist', queryObject.imageLink]});
+            return true;
+        }
+        else {
+            return false;
         }
     } catch (error) {
         console.log(error);

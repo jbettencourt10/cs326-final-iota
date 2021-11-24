@@ -2,8 +2,8 @@ import express from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList } from './database.js';
-import { findUser, getSaltHash, addUser } from './auth.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry } from './database.js';
+import { findUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -126,8 +126,9 @@ app.get('/search', (req, res) => {
     { root: '.' });
 });
 
-app.get('/add', (req, res) => {
-  addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
+app.get('/add', async(req, res) => {
+  await addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
+  res.redirect('/list');
 });
 
 // app.get('/create', (req, res) => {

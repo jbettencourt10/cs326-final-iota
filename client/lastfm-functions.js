@@ -1,5 +1,4 @@
 
-import fetch from 'node-fetch';
 const LASTFM_API_KEY = '01e78b004a5c9c29701cc616093352ea';
 
 
@@ -16,5 +15,5 @@ export async function searchAlbums(query){
     return result;
 }
 
-console.log(await getTopTracks());
+console.log((await getTopTracks())[0].image);
 // searchAlbums('Red');
