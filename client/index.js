@@ -37,7 +37,6 @@ function landingMusic() {
 async function loadLandingMediaList(media) {
   document.getElementById('mediaList').innerHTML = '';
   const top100Media = await getTopIMDB(media);
-  console.log(top100Media);
   const mediaList = document.getElementById('mediaList');
   for (let i = 0; i < 5; ++i) {
     const row = document.createElement('div');

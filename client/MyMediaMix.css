@@ -196,3 +196,13 @@ body {
 .largeFont {
   font-size: xx-large;
 }
+
+.search-title{
+  font-size: 17px;
+}
+
+
+.add-button-search{
+  display: flex;
+  justify-content: flex-end;
+}

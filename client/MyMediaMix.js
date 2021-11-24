@@ -1,4 +1,4 @@
-window.addEventListener('load', loadInProgressList);
+//window.addEventListener('load', loadInProgressList);
 
 function loadMovieList() {
   const movieList = '';
@@ -16,6 +16,7 @@ function loadInProgressList() {
   //   return;
   // }
   const container = document.getElementById('inProgress');
+  container.innerHTML = '';
   const leftArrowContainer = document.createElement('div');
   leftArrowContainer.classList.add('col-1', 'arrowContainer', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable');
   const leftArrow = document.createElement('p');

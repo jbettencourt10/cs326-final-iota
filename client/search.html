@@ -16,7 +16,7 @@
       <title>MyMediaMix</title>
       <meta name="homepage" content="An all-in-one media tracking system" />
       <link rel="stylesheet" href="MyMediaMix.css" />
-      <script src="MyMediaMix.js" type="module"></script>
+      <script src="search.js" type="module"></script>
   </head>
   <body>
     <div class="toprow grid-container" style="height: 100px">
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <form method="get" action="/search" class="d-flex align-items-center">
+      <form method="get" action="/search.html" class="d-flex align-items-center">
         <span>
           <input
             id="searchbar"
@@ -38,14 +38,14 @@
             name="title"
           />
         </span>
-        <select style="margin-left: 10px; margin-right: 10px" name="medium">
+        <select style="margin-left: 10px; margin-right: 10px" name="medium" id='searchMedium'>
           <option value="empty">Search Within...</option>
           <option value="books">Books</option>
           <option value="Movie">Movies</option>
           <option value="Series">TV Shows</option>
           <option value="music">Music</option>
         </select>
-        <input class="btn btn-primary" type="submit" value="Search" />
+        <input class="btn btn-primary" type="submit" value="Search" id="searchButton"/>
       </form>
 
       <div class="d-flex justify-content-end">
@@ -69,6 +69,6 @@
       </div>
     </div>
     <h2 class="d-flex justify-content-center">Search Results</h2>
-    <div class="d-flex container bg-light justify-content-center" id="searchList" style="font-size: xx-large;">No Results</div>
+    <div class="container bg-light justify-content-center" id="searchList" style="font-size: xx-large;"></div>
   </body>
   </html>

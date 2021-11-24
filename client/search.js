@@ -1,46 +1,76 @@
 //Should change this to bootstrap row col later
+import { imdbSearch } from "./imdb-functions.js";
 
-function loadSearchList(media) {
+const searchMedium = new URLSearchParams(window.location.search).get('medium');
+const searchTitle = new URLSearchParams(window.location.search).get('title');
+
+if (searchTitle !== '' && searchMedium !== 'empty'){
+  loadSearchList(searchMedium, searchTitle);
+}
+else{
+  alert('Please provide both Title and Medium for searching.')
+}
+
+async function loadSearchList(medium, title) {
   const searchList = document.getElementById('searchList');
-  searchList.innerHTML = '';
-  for (let i = 0; i < 5; ++i) {
-    const row = document.createElement('div');
-    row.classList.add('row');
-    const image = document.createElement('div');
-    image.classList.add('col');
+  const query = {
+    medium: medium,
+    title: title,
+  };
+  console.log("about to query");
 
-    const figure = document.createElement('figure');
-    figure.classList.add('figure');
+  const searchResults = await imdbSearch(query);
+  const results = searchResults.results;
+  console.log(results);
+  
+  if (results.length === 0){
+    searchList.innerText = 'No result';
+  }
+  else{
+    for (let i = 0; i < results.length; ++i) {
+      const row = document.createElement('div');
+      row.classList.add('row');
+      const image = document.createElement('div');
+      image.classList.add('col');
+  
+      const figure = document.createElement('figure');
+      figure.classList.add('figure');
+  
+      const img = document.createElement('img');
+      img.width = 100;
+      img.src = results[i].image;
+      img.classList.add('figure-img', 'img-fluid', 'rounded');
+      img.alt = 'Image Placeholder';
+  
+      figure.appendChild(img);
+      image.appendChild(figure);
+      row.appendChild(image);
+  
+      const text = document.createElement('div');
+      text.classList.add('col');
+      const title = document.createElement('h4');
+      title.innerHTML = results[i].title;
+      const description = document.createElement('p');
+      description.innerHTML = results[i].description;
+      text.appendChild(title);
+      text.appendChild(description);
+      row.appendChild(text);
+  
 
-    const img = document.createElement('img');
-    img.width = 100;
-    img.classList.add('figure-img', 'img-fluid', 'rounded');
-    img.alt = 'Image Placeholder';
-
-    figure.appendChild(img);
-    image.appendChild(figure);
-    row.appendChild(image);
-
-    const title = document.createElement('div');
-    title.classList.add('col');
-    title.innerHTML = "Title Placeholder";
-    row.appendChild(title);
-
-    const rating = document.createElement('div');
-    rating.classList.add('col');
-    rating.innerHTML = "Rating Placeholder";
-    row.appendChild(rating);
-
-    //add action
-    const form = document.createElement('form');
-    form.method = 'get';
-    const addButton = document.createElement('input');
-    addButton.type = 'submit';
-    addButton.classList.add('btn', "btn-success", "largeFont");
-    addButton.role = "button";
-    addButton.value = "+";
-    form.appendChild(addButton);
-    row.appendChild(form)
-    searchList.appendChild(row);
+       //add action
+       const add = document.createElement('div');
+       add.classList.add('col', 'add-button-search');
+       const form = document.createElement('form');
+       form.method = 'get';
+       const addButton = document.createElement('input');
+       addButton.type = 'submit';
+       addButton.classList.add('btn', "btn-success", "largeFont");
+       addButton.role = "button";
+       addButton.value = "+";
+       form.appendChild(addButton);
+       add.appendChild(form);
+       row.appendChild(add)
+       searchList.appendChild(row);
+     }
   }
 }
