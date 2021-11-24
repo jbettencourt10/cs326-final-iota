@@ -5,7 +5,7 @@ import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables } from './database.js';
 import { findUser, validateUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
-import { MiniCrypt} from './miniCrypt.js';
+import { MiniCrypt } from './miniCrypt.js';
 
 
 const app = express();
@@ -71,7 +71,7 @@ app.post('/register',
     // Succesfully registered
     if (await addUser(db, req.body)) {
       // route them to their list page
-      res.redirect('/personal');
+      res.redirect('/list');
     }
     // Error or account already existed
     else {
@@ -116,7 +116,7 @@ app.get('/account', (req, res) => {
 });
 
 app.get('/account/:username', (req, res) => {
-  res.sendFile('client/account.html', {root: '.'});
+  res.sendFile('client/account.html', { root: '.' });
 });
 
 app.get('/search', (req, res) => {
