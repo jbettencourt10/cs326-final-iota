@@ -2,7 +2,7 @@ import express from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables } from './database.js';
+import { connectDB, initializeTables, changeItemList } from './database.js';
 import { findUser, validateUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -123,6 +123,11 @@ app.get('/search', (req, res) => {
   res.sendFile('client/search.html',
     { root: '.' });
 });
+
+app.get('/add', (req, res) => {
+  //move to wishlist
+  changeItemList(db)
+})
 
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });

@@ -56,20 +56,47 @@ async function loadSearchList(medium, title) {
       row.appendChild(text);
   
 
-       //add action
-       const add = document.createElement('div');
-       add.classList.add('col', 'justify-content-end');
-       const form = document.createElement('form');
-       form.method = 'get';
-       const addButton = document.createElement('input');
-       addButton.type = 'submit';
-       addButton.classList.add('btn', "btn-success", "largeFont");
-       addButton.role = "button";
-       addButton.value = "+";
-       form.appendChild(addButton);
-       add.appendChild(form);
-       row.appendChild(add)
-       searchList.appendChild(row);
+      //add action
+      const add = document.createElement('div');
+      add.classList.add('col', 'justify-content-end');
+      const form = document.createElement('form');
+      form.method = 'get';
+      form.action = '/add';
+
+      const inputUsername = document.createElement('input');
+      inputUsername.type = 'hidden';
+      inputUsername.name = 'Username';
+      // inputUsername.value = 
+
+      const inputTitle = document.createElement('input');
+      inputTitle.type = 'hidden';
+      inputTitle.name = 'Title';
+      inputTitle.value = results[i].title;
+
+      const inputImage = document.createElement('input');
+      inputImage.type = 'hidden';
+      inputImage.name = 'ImageLink';
+      inputImage.value = results[i].image;
+
+      const inputMedium = document.createElement('input');
+      inputMedium.type = 'hidden';
+      inputMedium.name = 'Medium';
+      inputMedium.value = medium;
+
+      form.appendChild(inputTitle);
+      form.appendChild(inputImage);
+      form.appendChild(inputMedium);
+
+      const addButton = document.createElement('input');
+      addButton.type = 'submit';
+      addButton.classList.add('btn', "btn-success", "largeFont");
+      addButton.role = "button";
+      addButton.value = "+";
+      
+      form.appendChild(addButton);
+      add.appendChild(form);
+      row.appendChild(add)
+      searchList.appendChild(row);
      }
   }
 }
