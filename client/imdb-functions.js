@@ -1,8 +1,7 @@
-
 // import fetch from 'node-fetch';
 //k_w81k3buu
 //k_12ynl9dx
-const imdbKey = 'k_12ynl9dx';
+const imdbKey = 'k_t249l7q8';
 
 // 'Movies' or 'TVs'
 export async function getTopIMDB(media) {
@@ -12,9 +11,8 @@ export async function getTopIMDB(media) {
   return top100.items.slice(0, 5);
 }
 
-
 export async function imdbSearch(query) {
-    const response = await fetch(`https://imdb-api.com/en/API/Search${query.medium}/${imdbKey}/${query.title}`);
-    const searchResults = await response.json();
-    return searchResults;
+  const response = await fetch(`https://imdb-api.com/en/API/Search${query.medium}/${imdbKey}/${query.title}`);
+  const searchResults = await response.json();
+  return searchResults;
 }

@@ -1,4 +1,4 @@
-//window.addEventListener('load', loadInProgressList);
+window.addEventListener('load', loadInProgressList);
 
 function loadMovieList() {
   const movieList = '';

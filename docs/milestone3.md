@@ -10,12 +10,13 @@ The first table is titled Users, which will store data about users. This include
 | Column       | Data Type               | Description                                                      |
 |--------------|-------------------------|------------------------------------------------------------------|
 | Username     | VARCHAR(50) Primary Key | Username identifier for individual users                         |
-| Password     | VARCHAR(128)            | Password for individual user authentication                      |
+| Salt         | VARCHAR(64)             | Salt for secure authentication with miniCrypt                    |
+| Hash         | VARCHAR(256)            | Hashed password for secure authentication with miniCrypt         |
 | FullName     | VARCHAR(50)             | Full name to personalize greeting                                |
 | CreationTime | TIMESTAMP               | Timestamp representing when account was registered               |
 | LoginCount   | INT                     | Number of times a user has logged in                             |
 | WatchTime    | REAL                    | Total time spent watching tv or movies                           |
-| PagesRead    | REAL                    | Total amount of pages read from books                            |
+| PagesRead    | INT                     | Total amount of pages read from books                            |
 | ListenTime   | REAL                    | Total time spent listening to music                              |
 
 
@@ -23,8 +24,8 @@ The first table is titled Users, which will store data about users. This include
 
 The second table is titled MediaEntries, which will store all list items for all users on the site. This includes the username of the user who put the entry into their list, the title of a media item, the medium (book, tv, movie, song), and data about the media item which is scraped from web APIs. For example, movies will include a runtime, while books will include a page count. Finally, a column exists to determine which list a media entry is on (in progress, watched, plan to watch/listen/read).
 
-| Column     | Data Type                                           | Description                                             |
-|------------|-----------------------------------------------------|---------------------------------------------------------|
+| Column     | Data Type                                           | Description                                           |
+|------------|-----------------------------------------------------|-------------------------------------------------------|
 | Username   | VARCHAR(30) FOREIGN KEY REFERENCES Users(Username)  | Username of user that media entry pertains to         |
 | Title      | VARCHAR(50)                                         | Title of media entry                                  |
 | Medium     | VARCHAR(10)                                         | Medium of media entry (TV, Movie, Book, Song)         |
@@ -32,7 +33,7 @@ The second table is titled MediaEntries, which will store all list items for all
 | TimeAdded  | TIMESTAMP                                           | Timestamp of when user added media entry              |
 | Pages      | INT                                                 | Total number of pages in book if entry is a book      |
 | WatchTime  | REAL                                                | Total runtime of show or movie if entry is show/movie |
-| SongTime   | REAL                                                | Total song time                                       |
+| ListenTime | REAL                                                | Total time spent listening to songs                   |
 | ImageLink  | VARCHAR(100)                                        | Link to a raw image representing media entry          |
 | UserRating | REAL                                                | Rating that user has given entry when adding to list  |
 | IMDBRating | REAL                                                | Rating from scraped API (IMDB, Last.fm, etc)          |
