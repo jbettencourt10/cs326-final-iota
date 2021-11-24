@@ -3,7 +3,7 @@ import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables, changeItemList } from './database.js';
-import { findUser, validateUser, addUser } from './auth.js';
+import { findUser, getSaltHash, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -20,13 +20,15 @@ const session = {
 
 const db = await connectDB();
 await initializeTables(db);
+const secureAuth = new MiniCrypt;
 
 const strategy = new LocalStrategy(
   async (username, password, done) => {
-    if ((await findUser(db, username)).length === 0) {
+    const userResult = await findUser(db, username);
+    if (userResult.length === 0) {
       return done(null, false, { message: 'Wrong username' });
     }
-    if ((await validateUser(db, { username, password })).length === 0) {
+    if (!secureAuth.check(password, userResult[0].salt, userResult[0].hash)) {
       await new Promise((r) => setTimeout(r, 1000));
       return done(null, false, { message: 'Wrong password' });
     }
@@ -34,7 +36,6 @@ const strategy = new LocalStrategy(
   },
 );
 
-const secureAuth = new MiniCrypt;
 
 app.use(expressSession(session));
 passport.use(strategy);
@@ -68,8 +69,9 @@ app.get('/', (req, res) => {
 
 app.post('/register',
   async (req, res) => {
+    const userAuth = secureAuth.hash(req.body.password);
     // Succesfully registered
-    if (await addUser(db, req.body)) {
+    if (await addUser(db, {'username' : req.body.username, 'salt': userAuth[0], 'hash': userAuth[1], 'fullName': req.body.fullName})) {
       // route them to their list page
       res.redirect('/list');
     }

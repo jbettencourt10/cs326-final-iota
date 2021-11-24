@@ -16,7 +16,7 @@ export async function connectDB() {
 
 export async function initializeTables(database) {
     try {
-        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Password VARCHAR(128), FullName VARCHAR(50), Email VARCHAR(100), CreationTime TIMESTAMP, LoginCount INT, WatchTime REAL, PagesRead INT, ListenTime REAL)');
+        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), Email VARCHAR(100), CreationTime TIMESTAMP, LoginCount INT, WatchTime REAL, PagesRead INT, ListenTime REAL)');
         await database.none('CREATE TABLE IF NOT EXISTS MediaEntries(Username VARCHAR(30) REFERENCES Users (Username), Title VARCHAR(50), Medium VARCHAR(10), List VARCHAR(10), TimeAdded TIMESTAMP, Pages int, WatchTime REAL, ListenTime REAL, ImageLink VARCHAR(100), UserRating REAL, ImdbRating REAL)');
     } catch (error) {
         console.log(error);
