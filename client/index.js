@@ -49,7 +49,6 @@ async function loadLandingMediaList(media) {
   else {
     top100Media = await getTopTracks();
   }
-  console.log(top100Media);
   const mediaList = document.getElementById('mediaList');
   for (let i = 0; i < 5; ++i) {
     const row = document.createElement('div');
