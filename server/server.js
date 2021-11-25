@@ -90,6 +90,21 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+app.post('/changeName', async (req, res) => {
+  await changeName(db, {name: req.body.name, username: req.user});
+  res.redirect('/list');
+});
+
+app.post('/changePassword', async (req, res) => {
+  await changePassword(db, { password: req.body.password, username: req.user });
+  res.redirect('/list');
+});
+
+app.post('/changeUsername', async (req,res) => {
+  await changeUsername(db, {newUsername: req.body.username, currentUsername: req.user});
+  res.redirect('/logout');
+})
+
 app.post('/login',
   passport.authenticate('local', { // use username/password authentication
     successRedirect: '/list', // when we login, go to /private
@@ -113,11 +128,11 @@ app.get('/list/:username/',
     }
   });
 
-app.get('/account', (req, res) => {
+app.get('/account', checkLoggedIn, (req, res) => {
   res.redirect(`/account/${req.user}`);
 });
 
-app.get('/account/:username', (req, res) => {
+app.get('/account/:username', checkLoggedIn, (req, res) => {
   res.sendFile('client/account.html', { root: '.' });
 });
 
