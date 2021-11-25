@@ -41,7 +41,14 @@ async function loadLists(){
         const form = document.createElement('form');
         form.method = 'get';
         form.action = '/moveItem';
+        const inputTitle = document.createElement('input');
+        inputTitle.type = 'hidden';
+        inputTitle.name = 'title';
+        inputTitle.value = list[i].title;
+        form.appendChild(inputTitle);
+
         const rating = document.createElement('input');
+        rating.name = 'rating';
         // use pattern to enforce this
         rating.type = 'number';
         rating.name = 'Rating';
@@ -51,6 +58,7 @@ async function loadLists(){
         rating.placeholder = 'Rating';
     
         const moveSelection = document.createElement('select');
+        moveSelection.name = 'list';
         const empty = document.createElement('option');
         empty.value = 'empty';
         empty.innerHTML = 'Move to...';

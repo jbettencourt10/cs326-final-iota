@@ -137,7 +137,8 @@ app.get('/getList', async(req, res) => {
 });
 
 app.get('/moveItem', async(req, res) => {
-  await changeItemList(db, {username: req.user, newList: req.query.newList, title: req.query.title});
+  await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+  res.redirect('/list');
 })
 
 // app.get('/create', (req, res) => {
