@@ -17,12 +17,22 @@ async function loadLists(){
     leftArrow.innerHTML = '<';
     leftArrowContainer.appendChild(leftArrow);
     mediaList.appendChild(leftArrowContainer);
+
+
+
     for (let i = 0; i < 5; ++i) {
       const mediaItem = document.createElement('div');
       mediaItem.classList.add('col', 'align-items-center', 'justify-content-center', 'mediaItem');
       const row = document.createElement('div');
       row.classList.add('row');
       mediaItem.appendChild(row);
+
+      
+
+
+
+
+
       if(i < listLength){
         const mediaImageContainer = document.createElement('div');
         mediaImageContainer.classList.add('col');
@@ -100,10 +110,8 @@ async function loadLists(){
         form.appendChild(updateButton);
         mediaOptions.appendChild(form);
         row.appendChild(mediaOptions);
-        mediaList.appendChild(mediaItem);
-      }else{
-
       }
+      mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
     rightArrowContainer.classList.add('col-1', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
