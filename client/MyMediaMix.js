@@ -1,4 +1,5 @@
 window.addEventListener('load', loadLists);
+window.addEventListener('load', greetUser);
 
 async function loadLists(){
   const lists = ['inProgress', 'planned', 'completed'];
@@ -27,7 +28,7 @@ async function loadLists(){
       row.classList.add('row');
       mediaItem.appendChild(row);
 
-      
+
 
 
 
@@ -62,7 +63,7 @@ async function loadLists(){
         form.appendChild(inputTitle);
 
         const rating = document.createElement('input');
-        
+
         // use pattern to enforce this
         rating.name = 'rating';
         rating.type = 'number';
@@ -70,7 +71,7 @@ async function loadLists(){
         rating.max = '10.0';
         rating.step = '0.1';
         rating.placeholder = 'Rating';
-    
+
         const moveSelection = document.createElement('select');
         moveSelection.name = 'list';
         const empty = document.createElement('option');
@@ -98,14 +99,14 @@ async function loadLists(){
         const remove = document.createElement('option');
         remove.value = 'remove';
         remove.innerHTML = 'Remove';
-        
+
         moveSelection.appendChild(remove);
-    
+
         const updateButton = document.createElement('input');
         updateButton.classList.add('btn', 'btn-primary');
         updateButton.type = 'submit';
         updateButton.value = 'Update';
-    
+
         form.appendChild(rating);
         form.appendChild(moveSelection);
         form.appendChild(updateButton);
@@ -125,8 +126,11 @@ async function loadLists(){
 }
 
 
-
-
+function greetUser(){
+  const url = window.location.pathname;
+  const userGreeting = document.getElementById('greet-user');
+  userGreeting.innerHTML = url.split('/').at(-1);
+}
 
 
 

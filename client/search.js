@@ -32,10 +32,11 @@ async function loadSearchList(medium, title) {
   }
   else{
     results = await searchAlbums(query);
+    console.log(results)
   }
-  
-  
-  
+
+
+
   if (results.length === 0){
     searchList.innerText = 'No result';
   }
@@ -45,10 +46,10 @@ async function loadSearchList(medium, title) {
       row.classList.add('row', 'align-items-center');
       const image = document.createElement('div');
       image.classList.add('col');
-  
+
       const figure = document.createElement('figure');
       figure.classList.add('figure');
-  
+
       const img = document.createElement('img');
       img.width = 100;
       if (medium === 'movies' || medium === 'tvs'){
@@ -70,14 +71,14 @@ async function loadSearchList(medium, title) {
           img.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
-      
+
       img.classList.add('figure-img', 'img-fluid', 'rounded');
       img.alt = 'Image Placeholder';
-  
+
       figure.appendChild(img);
       image.appendChild(figure);
       row.appendChild(image);
-  
+
       const text = document.createElement('div');
       text.classList.add('col');
       const title = document.createElement('h4');
@@ -101,11 +102,11 @@ async function loadSearchList(medium, title) {
         description.innerHTML = '';
       }
 
-      
+
       text.appendChild(title);
       text.appendChild(description);
       row.appendChild(text);
-  
+
 
       //add action
       const add = document.createElement('div');

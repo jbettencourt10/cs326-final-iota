@@ -3,7 +3,7 @@ import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating } from './database.js';
-import { findUser, addUser } from './auth.js';
+import { findUser, addUser, changePassword, changeName } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -64,7 +64,6 @@ function checkLoggedIn(req, res, next) {
 
 app.get('/', (req, res) => {
   res.sendFile('client/index.html', { root: '.' });
-  // TODO: RESPONSE
 });
 
 app.post('/register',
@@ -99,11 +98,6 @@ app.post('/changePassword', async (req, res) => {
   await changePassword(db, { password: req.body.password, username: req.user });
   res.redirect('/list');
 });
-
-app.post('/changeUsername', async (req,res) => {
-  await changeUsername(db, {newUsername: req.body.username, currentUsername: req.user});
-  res.redirect('/logout');
-})
 
 app.post('/login',
   passport.authenticate('local', { // use username/password authentication
@@ -180,5 +174,5 @@ app.get('/updateItem', async(req, res) => {
 // });
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);
+  console.log(`MyMediaMix listening at http://localhost:${process.env.PORT || 8080}`);
 });
