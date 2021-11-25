@@ -1,6 +1,8 @@
 //Should change this to bootstrap row col later
 //limit search length or have a go to top button
+import { searchBook } from "./book-functions.js";
 import { imdbSearch } from "./imdb-functions.js";
+import { searchAlbums } from "./lastfm-functions.js";
 
 const searchMedium = new URLSearchParams(window.location.search).get('medium');
 const searchTitle = new URLSearchParams(window.location.search).get('title');
@@ -18,9 +20,22 @@ async function loadSearchList(medium, title) {
     medium: medium,
     title: title,
   };
-
-  const searchResults = await imdbSearch(query);
-  const results = searchResults.results;
+  let searchResults;
+  let results;
+  if (medium === 'movies' || medium === 'tvs'){
+    searchResults = await imdbSearch(query);
+    results = searchResults.results;
+  }
+  else if (medium === 'books'){
+    searchResults = await searchBook(query);
+    results = searchResults.items
+  }
+  else{
+    results = await searchAlbums(query);
+    console.log(results)
+  }
+  
+  
   
   if (results.length === 0){
     searchList.innerText = 'No result';
@@ -37,7 +52,21 @@ async function loadSearchList(medium, title) {
   
       const img = document.createElement('img');
       img.width = 100;
-      img.src = results[i].image;
+      if (medium === 'movies' || medium === 'tvs'){
+        img.src = results[i].image;
+      }
+      else if (medium === 'books'){
+        if (results[i].volumeInfo.imageLinks){
+          img.src = results[i].volumeInfo.imageLinks.smallThumbnail;
+        }
+        else{
+          img.src = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
+        }
+      }
+      else{
+        img.src = results[i].image[2]['#text'];
+      }
+      
       img.classList.add('figure-img', 'img-fluid', 'rounded');
       img.alt = 'Image Placeholder';
   
@@ -48,9 +77,27 @@ async function loadSearchList(medium, title) {
       const text = document.createElement('div');
       text.classList.add('col');
       const title = document.createElement('h4');
-      title.innerHTML = results[i].title;
       const description = document.createElement('p');
-      description.innerHTML = results[i].description;
+      if (medium === 'movies' || medium === 'tvs'){
+        title.innerHTML = results[i].title;
+        description.innerHTML = results[i].description;
+      }
+      else if (medium === 'books'){
+        if (results[i].volumeInfo.authors){
+          title.innerHTML = `${results[i].volumeInfo.title} by ${results[i].volumeInfo.authors[0]}`;
+          description.innerHTML = '';
+        }
+        else{
+          title.innerHTML = `${results[i].volumeInfo.title}`;
+          description.innerHTML = '';
+        }
+      }
+      else{
+        title.innerHTML = `${results[i].name} by ${results[i].artist}`;
+        description.innerHTML = '';
+      }
+
+      
       text.appendChild(title);
       text.appendChild(description);
       row.appendChild(text);
