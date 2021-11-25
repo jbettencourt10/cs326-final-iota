@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry } from './database.js';
 import { findUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -136,6 +136,15 @@ app.get('/getList', async(req, res) => {
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
+app.get('/moveItem', async(req, res) => {
+  if(req.query.list === 'remove'){
+    await removeUserEntry(db, {username: req.user, title:req.query.title});
+  }else{
+    await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+  }
+  res.redirect('/list');
+})
+
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
@@ -148,9 +157,9 @@ app.get('/getList', async(req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
 
-app.get('*', (req, res) => {
-  res.redirect('/logout');
-});
+// app.get('*', (req, res) => {
+//   res.redirect('/logout');
+// });
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);

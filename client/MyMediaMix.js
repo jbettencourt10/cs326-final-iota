@@ -40,7 +40,15 @@ async function loadLists(){
         // Add rating, update rating button, and dropdown to change list in form
         const form = document.createElement('form');
         form.method = 'get';
+        form.action = '/moveItem';
+        const inputTitle = document.createElement('input');
+        inputTitle.type = 'hidden';
+        inputTitle.name = 'title';
+        inputTitle.value = list[i].title;
+        form.appendChild(inputTitle);
+
         const rating = document.createElement('input');
+        rating.name = 'rating';
         // use pattern to enforce this
         rating.type = 'number';
         rating.name = 'Rating';
@@ -50,21 +58,33 @@ async function loadLists(){
         rating.placeholder = 'Rating';
     
         const moveSelection = document.createElement('select');
+        moveSelection.name = 'list';
         const empty = document.createElement('option');
         empty.value = 'empty';
         empty.innerHTML = 'Move to...';
-        const completed = document.createElement('option');
-        completed.value = 'completed';
-        completed.innerHTML = 'Completed';
-        const planned = document.createElement('option');
-        planned.value = 'planned';
-        planned.innerHTML = 'Planned';
+        moveSelection.appendChild(empty);
+        if(listName !== 'inProgress'){
+          const inProgress = document.createElement('option');
+          inProgress.value = 'inProgress';
+          inProgress.innerHTML = 'In Progress';
+          moveSelection.appendChild(inProgress);
+        }
+        if(listName !== 'completed'){
+          const completed = document.createElement('option');
+          completed.value = 'completed';
+          completed.innerHTML = 'Completed';
+          moveSelection.appendChild(completed);
+        }
+        if(listName !== 'planned'){
+          const planned = document.createElement('option');
+          planned.value = 'planned';
+          planned.innerHTML = 'Planned';
+          moveSelection.appendChild(planned);
+        }
         const remove = document.createElement('option');
         remove.value = 'remove';
         remove.innerHTML = 'Remove';
-        moveSelection.appendChild(empty);
-        moveSelection.appendChild(completed);
-        moveSelection.appendChild(planned);
+        
         moveSelection.appendChild(remove);
     
         const updateButton = document.createElement('input');
@@ -78,6 +98,8 @@ async function loadLists(){
         mediaOptions.appendChild(form);
         row.appendChild(mediaOptions);
         mediaList.appendChild(mediaItem);
+      }else{
+
       }
     }
     const rightArrowContainer = document.createElement('div');
