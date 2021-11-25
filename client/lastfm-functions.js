@@ -10,7 +10,7 @@ export async function getTopTracks(){
 }
 
 export async function searchAlbums(query){
-    const searchJSON = await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.search&album=${query}&api_key=${LASTFM_API_KEY}&format=json`);
+    const searchJSON = await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.search&album=${query.title}&api_key=${LASTFM_API_KEY}&format=json`);
     const result = (await searchJSON.json()).results.albummatches.album;
     return result;
 }

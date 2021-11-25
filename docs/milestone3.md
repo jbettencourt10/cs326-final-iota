@@ -44,4 +44,4 @@ Jarred: Fixing server routing, Implementation of many database functions, and co
 
 Bill: Created search page to display results upon querying. Also fixed server routing especially for search functionality. Configured database operations for adding to database after search query.
 
-Thao:
+Thao: Configured New York Times and Google Books APIs for books. Implemented search function for all mediums. Also, made landing page frontend able to show top best seller books.
