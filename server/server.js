@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry } from './database.js';
 import { findUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -137,7 +137,11 @@ app.get('/getList', async(req, res) => {
 });
 
 app.get('/moveItem', async(req, res) => {
-  await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+  if(req.query.list === 'remove'){
+    await removeUserEntry(db, {username: req.user, title:req.query.title});
+  }else{
+    await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+  }
   res.redirect('/list');
 })
 
