@@ -32,7 +32,6 @@ async function loadSearchList(medium, title) {
   }
   else{
     results = await searchAlbums(query);
-    console.log(results)
   }
   
   
