@@ -136,6 +136,10 @@ app.get('/getList', async(req, res) => {
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
+app.get('/moveItem', async(req, res) => {
+  await changeItemList(db, {username: req.user, newList: req.query.newList, title: req.query.title});
+})
+
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
@@ -148,9 +152,9 @@ app.get('/getList', async(req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
 
-app.get('*', (req, res) => {
-  res.redirect('/logout');
-});
+// app.get('*', (req, res) => {
+//   res.redirect('/logout');
+// });
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);
