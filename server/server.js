@@ -2,8 +2,8 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry } from './database.js';
-import { findUser, addUser, changeName, changePassword, changeUsername } from './auth.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating } from './database.js';
+import { findUser, addUser } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -151,11 +151,14 @@ app.get('/getList', async(req, res) => {
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
-app.get('/moveItem', async(req, res) => {
+app.get('/updateItem', async(req, res) => {
   if(req.query.list === 'remove'){
     await removeUserEntry(db, {username: req.user, title:req.query.title});
   }else{
-    await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+    if(req.query.list !== 'empty'){
+      await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+    }
+    await updateUserRating(db, {username: req.user, title: req.query.title, newRating: req.query.rating});
   }
   res.redirect('/list');
 })

@@ -8,7 +8,6 @@ async function loadLists(){
     mediaList.innerHTML = '';
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0`);
     const list = await response.json();
-    console.log(list);
     const listLength = Math.min(5, list.length);
 
     const leftArrowContainer = document.createElement('div');
@@ -36,11 +35,16 @@ async function loadLists(){
         row.appendChild(mediaImageContainer);
         const mediaOptions = document.createElement('div');
         mediaOptions.classList.add('col');
-        mediaOptions.innerHTML = list[i].title;
+        console.log(list[i]);
+        if(list[i].userrating){
+          mediaOptions.innerHTML = list[i].title + " Rating: " + list[i].userrating;
+        }else{
+          mediaOptions.innerHTML = list[i].title;
+        }
         // Add rating, update rating button, and dropdown to change list in form
         const form = document.createElement('form');
         form.method = 'get';
-        form.action = '/moveItem';
+        form.action = '/updateItem';
         const inputTitle = document.createElement('input');
         inputTitle.type = 'hidden';
         inputTitle.name = 'title';
@@ -48,10 +52,9 @@ async function loadLists(){
         form.appendChild(inputTitle);
 
         const rating = document.createElement('input');
-        rating.name = 'rating';
+        
         // use pattern to enforce this
         rating.type = 'number';
-        rating.name = 'Rating';
         rating.min = '0.0';
         rating.max = '10.0';
         rating.step = '0.1';
