@@ -29,13 +29,14 @@ async function loadLists(){
         mediaImageContainer.classList.add('col');
         const mediaImage = document.createElement('img');
         mediaImage.width = 100;
+        mediaImage.src = list[i].imagelink;
         mediaImage.classList.add('figure-img', 'img-fluid', 'rounded');
         mediaImage.alt = 'Image Placeholder';
         mediaImageContainer.appendChild(mediaImage);
         row.appendChild(mediaImageContainer);
         const mediaOptions = document.createElement('div');
         mediaOptions.classList.add('col');
-        mediaOptions.innerHTML = 'Title Goes Here';
+        mediaOptions.innerHTML = list[i].title;
         // Add rating, update rating button, and dropdown to change list in form
         const form = document.createElement('form');
         form.method = 'get';
