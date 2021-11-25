@@ -41,21 +41,11 @@
       <h3>Change Name</h3>
       <div class="row">
         <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <label for="name-input">Current Name: </label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="name-input"
-              placeholder="Tim Apple"
-            />
-          </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group">
             <br />
+            <form method="post" action='/changeName'>
             <label for="newname-input">New Name: </label>
             <br />
             <input
@@ -63,6 +53,7 @@
               class="form-control"
               id="newname-input"
               placeholder="Tim Google"
+              name="name"
             />
           </div>
         </div>
@@ -72,43 +63,7 @@
           <button type="submit" class="btn btn-outline-primary mx-auto d-block">
             Change Name
           </button>
-        </div>
-      </div>
-      <hr />
-      <h3>Change Username</h3>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <label for="username-input">Current Username: </label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="username-input"
-              placeholder="tim_apple_01"
-            />
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <label for="newusername-input">New Username: </label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="newusername-input"
-              placeholder="tim_google_01"
-            />
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <br />
-          <br />
-          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Change Username
-          </button>
+        </form>
         </div>
       </div>
       <hr />
@@ -117,44 +72,39 @@
         <div class="col-sm-4">
           <div class="form-group">
             <br />
-            <label for="password-input">Current Password:</label>
-            <br />
-            <input
-              type="password"
-              class="form-control"
-              id="password-input"
-              placeholder="******"
-            />
+            <form method="post" action='/changePassword'>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <label for="newpassword-input">New Password: </label>
-            <br />
-            <input
+          <div class="col-sm-4">
+            <div class="form-group">
+              <br />
+              <label for="newpassword-input">New Password: </label>
+              <br />
+              <input
               type="password"
               class="form-control"
               id="newpassword-input"
               placeholder="*******"
-            />
-            <br />
-            <label for="verifynewpassword-input">Verify Password: </label>
-            <br />
-            <input
+              name='password'
+              />
+              <br />
+              <label for="verifynewpassword-input">Verify Password: </label>
+              <br />
+              <input
               type="password"
               class="form-control"
               id="verifynewpassword-input"
               placeholder="*******"
-            />
+              />
+            </div>
           </div>
-        </div>
-        <div class="col-sm-4">
-          <br />
-          <br />
-          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Change Password
-          </button>
+          <div class="col-sm-4">
+            <br />
+            <br />
+            <button type="submit" class="btn btn-outline-primary mx-auto d-block">
+              Change Password
+            </button>
+          </form>
         </div>
       </div>
       <hr />
