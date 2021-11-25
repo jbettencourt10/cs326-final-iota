@@ -6,7 +6,8 @@ async function loadLists(){
     listName = lists[listName];
     const mediaList = document.getElementById(listName);
     mediaList.innerHTML = '';
-    const list = await (await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0`)).text();
+    const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0`);
+    const list = await response.json();
     console.log(list);
     const listLength = Math.min(5, list.length);
 

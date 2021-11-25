@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
@@ -132,7 +132,8 @@ app.get('/add', async(req, res) => {
 });
 
 app.get('/getList', async(req, res) => {
-  res.send(await getUserEntries(db, {username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset}))
+  const result = await getUserEntries(db, {username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset});
+  res.send(JSON.parse(JSON.stringify(result)));
 });
 
 // app.get('/create', (req, res) => {
