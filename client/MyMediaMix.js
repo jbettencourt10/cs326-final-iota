@@ -11,7 +11,7 @@ async function loadLists(){
     const listLength = Math.min(5, list.length);
 
     const leftArrowContainer = document.createElement('div');
-    leftArrowContainer.classList.add('col-1', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
+    leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
     const leftArrow = document.createElement('p');
     leftArrow.classList.add('arrow');
     leftArrow.innerHTML = '<';
@@ -22,16 +22,10 @@ async function loadLists(){
 
     for (let i = 0; i < 5; ++i) {
       const mediaItem = document.createElement('div');
-      mediaItem.classList.add('col', 'align-items-center', 'justify-content-center', 'mediaItem');
+      mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
       const row = document.createElement('div');
       row.classList.add('row');
       mediaItem.appendChild(row);
-
-      
-
-
-
-
 
       if(i < listLength){
         const mediaImageContainer = document.createElement('div');
@@ -115,7 +109,7 @@ async function loadLists(){
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
-    rightArrowContainer.classList.add('col-1', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
+    rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
     const rightArrow = document.createElement('p');
     rightArrow.classList.add('arrow');
     rightArrow.innerHTML = '>';
