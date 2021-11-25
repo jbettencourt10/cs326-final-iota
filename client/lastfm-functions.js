@@ -15,5 +15,4 @@ export async function searchAlbums(query){
     return result;
 }
 
-console.log((await getTopTracks())[0].image);
 // searchAlbums('Red');
