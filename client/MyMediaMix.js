@@ -64,6 +64,7 @@ async function loadLists(){
         const rating = document.createElement('input');
         
         // use pattern to enforce this
+        rating.name = 'rating';
         rating.type = 'number';
         rating.min = '0.0';
         rating.max = '10.0';
