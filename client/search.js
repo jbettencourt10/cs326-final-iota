@@ -64,7 +64,12 @@ async function loadSearchList(medium, title) {
         }
       }
       else{
-        img.src = results[i].image[2]['#text'];
+        if (results[i].image[2]['#text']){
+          img.src = results[i].image[2]['#text'];
+        }
+        else{
+          img.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
+        }
       }
       
       img.classList.add('figure-img', 'img-fluid', 'rounded');
