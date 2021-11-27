@@ -50,17 +50,18 @@ async function loadLandingMediaList(media) {
     top100Media = await getTopTracks();
   }
   const mediaList = document.getElementById('mediaList');
-  for (let i = 0; i < 5; ++i) {
+  for (let i = 0; i < top100Media.length; ++i) {
     const row = document.createElement('div');
-    row.classList.add('row');
+    row.classList.add('grid-item');
     const image = document.createElement('div');
     image.classList.add('col');
+    image.classList.add('image-col');
 
     const figure = document.createElement('figure');
     figure.classList.add('figure');
 
     const img = document.createElement('img');
-    img.width = 100;
+    img.width = 150;
     if (media === 'Movies' || media === 'TVs'){
       img.src = top100Media[i].image;
     }
@@ -80,11 +81,12 @@ async function loadLandingMediaList(media) {
 
     const title = document.createElement('div');
     title.classList.add('col');
+    title.classList.add('title-col');
     if (media === 'Movies' || media === 'TVs'){
       title.innerHTML = top100Media[i].title;
     }
     else if (media === 'Books'){
-      title.innerHTML = `${top100Media[i].title} by ${top100Media[i].author}`;
+      title.innerHTML = `${top100Media[i].title} - ${top100Media[i].author}`;
     }
     else {
       title.innerHTML = top100Media[i].name;
