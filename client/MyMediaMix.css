@@ -361,7 +361,23 @@ body {
   text-decoration: none;
 }
 
+/*customList.html*/
+.custom-list-title {
+  margin: 20px;
+  float: left;
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
 
+.add-list-btn {
+  float: right;
+  margin: 20px;
+}
+
+
+/*Miscellaneous*/
 .centered {
   text-align: center;
 }
@@ -398,32 +414,10 @@ body {
   margin: 20px 0px;
 }
 
-.yourLists {
-  margin: 20px;
-  float: left;
-}
 
-.addList {
-  float: right;
-  margin: 20px;
-}
 
 .clickable {
   cursor: pointer;
-}
-.menubar {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: #f1f1f1;
-  float: left;
-}
-
-.menubar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
 }
 
 .grid-container-list {
