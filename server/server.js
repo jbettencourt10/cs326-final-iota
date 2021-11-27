@@ -86,7 +86,7 @@ app.get('/register', (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('/index.html');
 });
 
 app.post('/changeName', async (req, res) => {

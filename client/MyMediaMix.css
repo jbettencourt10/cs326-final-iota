@@ -171,6 +171,7 @@ body {
   font-weight: bolder;
   color: black;
   font-family: Georgia, serif;
+  margin-top: 30px;
 }
 
 #searchList{
@@ -263,7 +264,7 @@ body {
   font-family: Georgia, serif;
   font-size: 32px;
   margin: 20px 0px;
-  color: #866ec7;
+  color: black;
 }
 
 .account-nav a.nav-link{
@@ -305,6 +306,62 @@ body {
   margin-top: 138px;
 }
 
+/*list.html*/
+.list-content{
+  margin: 20px;
+}
+
+.list-text{
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+
+.inProgressItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: lightgreen;
+  margin-bottom: 20px;
+}
+.plannedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: lightyellow;
+  margin-bottom: 20px;
+}
+.topItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: lightpink;
+  margin-bottom: 20px;
+}
+.completedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: dimgray;
+  margin-bottom: 20px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  margin-left: 0px;
+  background-color: #866ec7;;
+  height: 50px;
+  padding: 10px 20px;
+}
+
+.menu-item {
+  float: left;
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin-right: 25px;
+  text-decoration: none;
+}
+
+
 .centered {
   text-align: center;
 }
@@ -328,16 +385,7 @@ body {
   margin-left: 9px;
 }
 
-.menubar {
-  display: grid;
-  grid-template-columns: repeat(7, 150px);
-  margin-left: 20px;
-}
 
-.menuitem {
-  float: left;
-  margin: 20px 0px;
-}
 
 .show {
   margin: 20px;
@@ -400,21 +448,6 @@ body {
   font-size: 40px;
 }
 
-.inProgressItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: lightgreen;
-}
-.plannedItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: lightyellow;
-}
-.completedItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: dimgray;
-}
 
 .mediaItem {
   min-width: 100px;
