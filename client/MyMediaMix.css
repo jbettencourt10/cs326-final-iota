@@ -9,6 +9,7 @@ body {
   background-color: white;
 }
 
+/*index.html*/
 /* Sidebar */
 .sidebar {
   margin: 0;
@@ -95,12 +96,35 @@ body {
 .btn-primary{
   background-color: #866ec7 !important;
   border: none;
+  font-weight: bold;
 }
 
 .btn:focus {
   outline: none;
   box-shadow: none;
 }
+
+.btn-primary:hover{
+  border-color: #866ec7 !important;
+  background-color: white !important;
+  color: #866ec7 !important;
+  font-weight: bold;
+}
+
+.btn-outline-primary{
+  border-color: #866ec7 !important;
+  color: #866ec7 !important;
+  font-weight: bold;
+  background-color: white !important;
+}
+
+.btn-outline-primary:hover{
+  border-color: #866ec7 !important;
+  background-color: #866ec7 !important;
+  color: white!important;
+  font-weight: bold;
+}
+
 
 /*Search.html*/
 .homeButton{
@@ -185,23 +209,62 @@ body {
   font-weight: bold;
 }
 
+.toprow {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+/*Sign-up.html*/
+.sign-up-form{
+  width: 500px;
+  border-radius: 10px;
+  height: auto;
+  background-color: #f1f1f1;
+}
+
+.sign-up-container{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  float: center;
+  display: grid;
+}
+
+.sign-up-title{
+  text-align: center;
+  font-weight: bolder;
+  color: #866ec7;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.form-group label{
+  color: #866ec7;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin: 10px 0px;
+}
+
+#password-verify{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+
 .centered {
   text-align: center;
 }
 
-.backgroundColor {
-  background-color: #f1f1f1;
-}
+
 
 
 .autoHeight {
   height: auto;
 }
 
-.toprow {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-}
+
 
 .sitename {
   float: left;
