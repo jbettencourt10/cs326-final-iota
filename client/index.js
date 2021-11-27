@@ -5,6 +5,10 @@ import {getTopTracks} from './lastfm-functions.js';
 
 window.addEventListener('load', loadLandingMediaList('Movies'));
 
+const signUpButton = document.getElementById('sign-up-button');
+signUpButton.addEventListener('click', () => {
+  location.href = "/register";
+})
 const booksButton = document.getElementById('books-index');
 const showButton = document.getElementById('tv-shows-index');
 const movieButton = document.getElementById('movie-index');
