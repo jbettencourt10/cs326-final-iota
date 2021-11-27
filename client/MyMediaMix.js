@@ -1,6 +1,9 @@
 window.addEventListener('load', loadLists);
 window.addEventListener('load', greetUser);
 
+async function loadTrendingList(){
+  
+}
 async function loadLists(){
   const lists = ['inProgress', 'planned', 'completed'];
   for(let listName in lists){
