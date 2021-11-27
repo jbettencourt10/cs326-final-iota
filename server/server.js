@@ -151,12 +151,20 @@ app.get('/music', (req, res) => {
   //TODO
 });
 
-app.get('/customList', (req, res) => {
+app.get('/customList', checkLoggedIn, (req, res) => {
+  res.redirect(`/customList/${req.user}`);
+});
+
+app.get('/customList/:username', checkLoggedIn, (req, res) => {
   res.sendFile('client/customList.html',
     { root: '.' });
 });
 
-app.get('/analytics', (req, res) => {
+app.get('/analytics', checkLoggedIn, (req, res) => {
+  res.redirect(`/analytics/${req.user}`);
+});
+
+app.get('/analytics/:username', checkLoggedIn, (req, res) => {
   res.sendFile('client/analytics.html',
     { root: '.' });
 });
