@@ -321,25 +321,25 @@ body {
 .inProgressItemList {
   height: 200px;
   min-width: 1500px;
-  background-color: lightgreen;
+  background-color: #f1f1f1;
   margin-bottom: 20px;
 }
 .plannedItemList {
   height: 200px;
   min-width: 1500px;
-  background-color: lightyellow;
+  background-color: #f1f1f1;
   margin-bottom: 20px;
 }
 .topItemList {
   height: 200px;
   min-width: 1500px;
-  background-color: lightpink;
+  background-color: #f1f1f1;
   margin-bottom: 20px;
 }
 .completedItemList {
   height: 200px;
   min-width: 1500px;
-  background-color: dimgray;
+  background-color: #f1f1f1;
   margin-bottom: 20px;
 }
 

@@ -135,6 +135,32 @@ app.get('/search', (req, res) => {
     { root: '.' });
 });
 
+app.get('/books', (req, res) => {
+  //TODO
+});
+
+app.get('/movies', (req, res) => {
+  //TODO
+});
+
+app.get('/tvs', (req, res) => {
+  //TODO
+});
+
+app.get('/music', (req, res) => {
+  //TODO
+});
+
+app.get('/customList', (req, res) => {
+  res.sendFile('client/customList.html',
+    { root: '.' });
+});
+
+app.get('/analytics', (req, res) => {
+  res.sendFile('client/analytics.html',
+    { root: '.' });
+});
+
 app.get('/add', async(req, res) => {
   await addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
   res.redirect('/list');
