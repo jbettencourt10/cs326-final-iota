@@ -90,7 +90,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.post('/changeName', async (req, res) => {
-  await changeName(db, {name: req.body.name, username: req.user});
+  await changeName(db, { name: req.body.name, username: req.user });
   res.redirect('/list');
 });
 
@@ -108,6 +108,7 @@ app.post('/login',
 app.get('/list',
   checkLoggedIn, // If we are logged in (notice the comma!)...
   (req, res) => { // Go to the user's page.
+    console.log(1);
     res.redirect(`/list/${req.user}`);
   });
 
@@ -169,27 +170,27 @@ app.get('/analytics/:username', checkLoggedIn, (req, res) => {
     { root: '.' });
 });
 
-app.get('/add', async(req, res) => {
+app.get('/add', async (req, res) => {
   await addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
   res.redirect('/list');
 });
 
-app.get('/getList', async(req, res) => {
-  const result = await getUserEntries(db, {username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset});
+app.get('/getList', async (req, res) => {
+  const result = await getUserEntries(db, { username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset });
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
-app.get('/updateItem', async(req, res) => {
-  if(req.query.list === 'remove'){
-    await removeUserEntry(db, {username: req.user, title:req.query.title});
-  }else{
-    if(req.query.list !== 'empty'){
-      await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+app.get('/updateItem', async (req, res) => {
+  if (req.query.list === 'remove') {
+    await removeUserEntry(db, { username: req.user, title: req.query.title });
+  } else {
+    if (req.query.list !== 'empty') {
+      await changeItemList(db, { username: req.user, newList: req.query.list, title: req.query.title });
     }
-    await updateUserRating(db, {username: req.user, title: req.query.title, newRating: req.query.rating});
+    await updateUserRating(db, { username: req.user, title: req.query.title, newRating: req.query.rating });
   }
   res.redirect('/list');
-})
+});
 
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
