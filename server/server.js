@@ -108,7 +108,6 @@ app.post('/login',
 app.get('/list',
   checkLoggedIn, // If we are logged in (notice the comma!)...
   (req, res) => { // Go to the user's page.
-    console.log(1);
     res.redirect(`/list/${req.user}`);
   });
 
@@ -187,7 +186,9 @@ app.get('/updateItem', async (req, res) => {
     if (req.query.list !== 'empty') {
       await changeItemList(db, { username: req.user, newList: req.query.list, title: req.query.title });
     }
-    await updateUserRating(db, { username: req.user, title: req.query.title, newRating: req.query.rating });
+    if (req.query.rating !== "") {
+      await updateUserRating(db, { username: req.user, title: req.query.title, newRating: req.query.rating });
+    }
   }
   res.redirect('/list');
 });
