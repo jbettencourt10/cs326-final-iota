@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <title>MyMediaMix</title>
+    <meta name="homepage" content="An all-in-one media tracking system" />
+    <link rel="stylesheet" href="/MyMediaMix.css" />
+    <link rel="icon" href="https://i1.wp.com/melissacheah.com.au/wp-content/uploads/2018/04/M-favicon-01.png?fit=1200%2C1200&ssl=1&w=640">
+    <script src="/list.js" , type="module"></script>
+
+  </head>
+  <body>
+    <div class="toprow grid-container">
+      <div class="homeButton">
+        <a class="active" href="/list">MyMediaMix</a>
+      </div>
+
+      <form method="get" action="/search.html" class="d-flex align-items-center">
+        <span>
+          <input
+            id="searchbar"
+            placeholder="Title"
+            class="searchbar"
+            type="text"
+            name="title"
+          />
+        </span>
+        <select name="medium">
+          <option value="empty">Search Within...</option>
+          <option value="books">Books</option>
+          <option value="Movie">Movies</option>
+          <option value="Series">TV Shows</option>
+          <option value="music">Music</option>
+        </select>
+        <input class="btn btn-primary search-button" type="submit" value="Search"/>
+      </form>
+
+      <div class="d-flex justify-content-end account-logout-btn">
+        <form method="get" action="/account">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            role="button"
+            value="Account"
+          />
+        </form>
+        <!-- This should be changed to process a logout -->
+        <form method="get" action="/logout">
+          <input
+            type="submit"
+            class="btn btn-outline-primary"
+            role="button"
+            value="Log Out"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="categories">
+        <a class="menu-item" href="/books">Books</a>
+        <a class="menu-item" href="/movies">Movies</a>
+        <a class="menu-item" href="/tvs">TV shows</a>
+        <a class="menu-item" href="/music">Music</a>
+        <a class="menu-item" href="/customList">Custom Lists</a>
+        <a class="menu-item" href="/analytics">Analytics</a>
+    </div>
+</body>
+</html>

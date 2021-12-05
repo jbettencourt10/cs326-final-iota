@@ -3,7 +3,7 @@ import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating } from './database.js';
-import { findUser, addUser } from './auth.js';
+import { findUser, addUser, changePassword, changeName } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -64,7 +64,6 @@ function checkLoggedIn(req, res, next) {
 
 app.get('/', (req, res) => {
   res.sendFile('client/index.html', { root: '.' });
-  // TODO: RESPONSE
 });
 
 app.post('/register',
@@ -87,11 +86,11 @@ app.get('/register', (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('/index.html');
 });
 
 app.post('/changeName', async (req, res) => {
-  await changeName(db, {name: req.body.name, username: req.user});
+  await changeName(db, { name: req.body.name, username: req.user });
   res.redirect('/list');
 });
 
@@ -99,11 +98,6 @@ app.post('/changePassword', async (req, res) => {
   await changePassword(db, { password: req.body.password, username: req.user });
   res.redirect('/list');
 });
-
-app.post('/changeUsername', async (req,res) => {
-  await changeUsername(db, {newUsername: req.body.username, currentUsername: req.user});
-  res.redirect('/logout');
-})
 
 app.post('/login',
   passport.authenticate('local', { // use username/password authentication
@@ -114,6 +108,7 @@ app.post('/login',
 app.get('/list',
   checkLoggedIn, // If we are logged in (notice the comma!)...
   (req, res) => { // Go to the user's page.
+    console.log(1);
     res.redirect(`/list/${req.user}`);
   });
 
@@ -141,27 +136,61 @@ app.get('/search', (req, res) => {
     { root: '.' });
 });
 
-app.get('/add', async(req, res) => {
+app.get('/books', (req, res) => {
+  //TODO
+});
+
+app.get('/movies', (req, res) => {
+  //TODO
+});
+
+app.get('/tvs', (req, res) => {
+  //TODO
+});
+
+app.get('/music', (req, res) => {
+  //TODO
+});
+
+app.get('/customList', checkLoggedIn, (req, res) => {
+  res.redirect(`/customList/${req.user}`);
+});
+
+app.get('/customList/:username', checkLoggedIn, (req, res) => {
+  res.sendFile('client/customList.html',
+    { root: '.' });
+});
+
+app.get('/analytics', checkLoggedIn, (req, res) => {
+  res.redirect(`/analytics/${req.user}`);
+});
+
+app.get('/analytics/:username', checkLoggedIn, (req, res) => {
+  res.sendFile('client/analytics.html',
+    { root: '.' });
+});
+
+app.get('/add', async (req, res) => {
   await addUserEntry(db, { username: req.user, title: req.query.Title, imageLink: req.query.ImageLink, medium: req.query.Medium });
   res.redirect('/list');
 });
 
-app.get('/getList', async(req, res) => {
-  const result = await getUserEntries(db, {username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset});
+app.get('/getList', async (req, res) => {
+  const result = await getUserEntries(db, { username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset });
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
-app.get('/updateItem', async(req, res) => {
-  if(req.query.list === 'remove'){
-    await removeUserEntry(db, {username: req.user, title:req.query.title});
-  }else{
-    if(req.query.list !== 'empty'){
-      await changeItemList(db, {username: req.user, newList: req.query.list, title: req.query.title});
+app.get('/updateItem', async (req, res) => {
+  if (req.query.list === 'remove') {
+    await removeUserEntry(db, { username: req.user, title: req.query.title });
+  } else {
+    if (req.query.list !== 'empty') {
+      await changeItemList(db, { username: req.user, newList: req.query.list, title: req.query.title });
     }
-    await updateUserRating(db, {username: req.user, title: req.query.title, newRating: req.query.rating});
+    await updateUserRating(db, { username: req.user, title: req.query.title, newRating: req.query.rating });
   }
   res.redirect('/list');
-})
+});
 
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
@@ -180,5 +209,5 @@ app.get('/updateItem', async(req, res) => {
 // });
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log(`Example app listening at http://localhost:${process.env.PORT || 8080}`);
+  console.log(`MyMediaMix listening at http://localhost:${process.env.PORT || 8080}`);
 });

@@ -5,35 +5,44 @@ body,
   height: 100%;
 }
 body {
-  background-color: rgb(225, 247, 243);
-  margin: 10px;
+  /*background-color: rgb(225, 247, 243);*/
+  background-color: white;
 }
 
+/*index.html*/
+/* Sidebar */
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 250px;
   height: 100vh;
-  background-color: #f1f1f1;
+  background-color: #866ec7;
+  color: #fff;
   float: left;
-  height: 100%;
+  height: 120%;
 }
 
 .sidebar a {
   display: block;
-  color: black;
+  color: white;
   padding: 16px;
   text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 25pt;
 }
 
 .sidebar a.active {
-  background-color: #047baa;
   color: white;
-  font-size: larger;
+  font-size: 24pt;
+  text-align: center;
+  border-radius: 10px;
+  font-family: Georgia, serif;
+  font-weight: bolder;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: rgb(145, 145, 145);
+  /*background-color: rgb(145, 145, 145);*/
+  text-decoration: underline;
   color: white;
 }
 .sidebar b {
@@ -42,10 +51,52 @@ body {
   padding: 30px;
 }
 
+/*index.html*/
+.login{
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.content{
+  position: absolute;
+  display: grid;
+  width: 1200px;
+  height: auto;
+  margin-left: 270px;
+  margin-top: 40px;
+  font-family: Georgia, serif;
+}
+
 .trendingText {
   padding-top: 50px;
-  margin-right: 200px;
   text-align: center;
+  margin-bottom: 20px;
+  font-weight: bolder;
+  color: black;
+}
+
+.list-container{
+  padding: 20px;
+  position: absolute;
+  height: auto;
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  text-align: center;
+}
+
+.image-col{
+  margin-top: 20px;
+}
+.title-col{
+  font-weight: bolder;
+  font-size: 18px;
+  color: #866ec7;
+}
+.btn-primary{
+  background-color: #866ec7 !important;
+  border: none;
+  font-weight: bold;
 }
 
 .btn:focus {
@@ -53,30 +104,110 @@ body {
   box-shadow: none;
 }
 
-.centered {
+.btn-primary:hover{
+  border: 1px solid #866ec7 !important;
+  background-color: white !important;
+  color: #866ec7 !important;
+  font-weight: bold;
+}
+
+.btn-outline-primary{
+  border-color: #866ec7 !important;
+  color: #866ec7 !important;
+  font-weight: bold;
+  background-color: white !important;
+}
+
+.btn-outline-primary:hover{
+  border-color: white !important;
+  background-color: #866ec7 !important;
+  color: white!important;
+  font-weight: bold;
+}
+
+
+/*Search.html*/
+.homeButton{
+  margin: 20px;
+}
+
+.homeButton a.active {
+  background-color: white;
+  color: #866ec7;
+  font-size: 25pt;
   text-align: center;
+  font-family: Georgia, serif;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
-.backgroundColor {
-  background-color: #f1f1f1;
+.searchbar {
+  width: 400px;
+  height: 50px;
+  margin: 20px;
+  border-radius: 8px;
+  border: 1.5px solid lightgrey;
+  padding-left: 10px;
 }
 
-.homeButton {
-  background-color: #047baa;
-  width: 200px;
-  height: 60px;
-  border-radius: 0 !important;
+.select-medium{
+  margin: 20px;
 }
 
-.homeButtonInner {
-  color: white;
-  font-size: larger;
-  padding-left: 15px;
-  padding-top: 15px;
+.search-button {
+  margin-left: 20px;
 }
 
-.autoHeight {
+.account-logout-btn{
+  margin: 30px 20px;
+}
+
+.account-logout-btn form{
+  margin: 5px;
+}
+
+.search-result{
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  margin-top: 30px;
+}
+
+#searchList{
+  margin-top: 20px;
+  padding: 20px;
   height: auto;
+  width: 1500px;
+}
+
+.search-container{
+  display: grid;
+  grid-template-columns: 200px 500px 500px;
+}
+
+.search-content{
+  display: grid;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+}
+
+.search-title{
+  font-weight: bolder;
+  color: #866ec7;
+  font-size: 20px !important;
+}
+
+.search-description{
+  font-size: 18px !important;
+}
+
+.add-button{
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .toprow {
@@ -84,32 +215,193 @@ body {
   grid-template-columns: repeat(3, auto);
 }
 
+/*Sign-up.html*/
+.sign-up-form{
+  width: 500px;
+  border-radius: 10px;
+  height: auto;
+  background-color: #f1f1f1;
+}
+
+.sign-up-container{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  float: center;
+  display: grid;
+}
+
+.sign-up-title{
+  text-align: center;
+  font-weight: bolder;
+  color: #866ec7;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.form-group label{
+  color: #866ec7;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin: 10px 0px;
+}
+
+#password-verify{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+/*account.html*/
+.autoHeight {
+  height: auto;
+}
+
+.account-title{
+  text-align: center;
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  margin: 20px 0px;
+  color: black;
+}
+
+.account-nav a.nav-link{
+  font-size: 18px;
+  color: #866ec7;
+  font-family: Georgia, serif;
+}
+
+.account-container{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  float: center;
+  display: grid;
+}
+
+.account-nav-container{
+  width: 1000px;
+}
+
+.account-info-container{
+  width: 1000px;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.change-title{
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+
+.change-name{
+  margin-top: 50px;
+}
+
+.change-password{
+  margin-top: 138px;
+}
+
+/*list.html*/
+.list-content{
+  margin: 20px;
+}
+
+.list-text{
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+
+.inProgressItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+.plannedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+.topItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+.completedItemList {
+  height: 200px;
+  min-width: 1500px;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  margin-left: 0px;
+  background-color: #866ec7;;
+  height: 50px;
+  padding: 10px 20px;
+}
+
+.menu-item {
+  float: left;
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin-right: 25px;
+  text-decoration: none;
+}
+
+/*customList.html*/
+.custom-list-title {
+  margin: 20px;
+  float: left;
+  font-weight: bolder;
+  color: black;
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+
+.add-list-btn {
+  float: right;
+  margin: 20px;
+}
+
+
+/*Miscellaneous*/
+.centered {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
 .sitename {
   float: left;
   margin: 20px;
 }
 
-.searchbar {
-  width: 350px;
-  height: 50px;
-  margin-top: 20px;
-}
+
 
 .userName {
   /* float: right; */
   margin-left: 9px;
 }
 
-.menubar {
-  display: grid;
-  grid-template-columns: repeat(7, 150px);
-  margin-left: 20px;
-}
 
-.menuitem {
-  float: left;
-  margin: 20px 0px;
-}
 
 .show {
   margin: 20px;
@@ -122,32 +414,10 @@ body {
   margin: 20px 0px;
 }
 
-.yourLists {
-  margin: 20px;
-  float: left;
-}
 
-.addList {
-  float: right;
-  margin: 20px;
-}
 
 .clickable {
   cursor: pointer;
-}
-.menubar {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: #f1f1f1;
-  float: left;
-}
-
-.menubar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
 }
 
 .grid-container-list {
@@ -164,21 +434,14 @@ body {
   font-size: 30px;
 }
 
-.inProgressItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: lightgreen;
+.greeting{
+  font-size: 40px;
 }
-.plannedItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: lightyellow;
+
+#greet-user {
+  font-size: 40px;
 }
-.completedItemList {
-  height: 200px;
-  min-width: 1500px;
-  background-color: dimgray;
-}
+
 
 .mediaItem {
   min-width: 100px;
@@ -203,16 +466,3 @@ body {
   font-size: 40px;
 }
 
-.largeFont {
-  font-size: xx-large;
-}
-
-.search-title{
-  font-size: 17px;
-}
-
-
-.add-button-search{
-  display: flex;
-  justify-content: flex-end;
-}

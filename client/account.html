@@ -14,101 +14,141 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/MyMediaMix.css" />
+    <link rel="icon" href="https://i1.wp.com/melissacheah.com.au/wp-content/uploads/2018/04/M-favicon-01.png?fit=1200%2C1200&ssl=1&w=640">
     <title>MyMediaMix</title>
   </head>
   <body>
-    <div class="card homeButton">
-      <p class="homeButtonInner">MyMediaMix</p>
-      <div class="card-body">
-        <a
-          class="btn btn-primary-outline stretched-link clickable"
-          href="/list"
-        ></a>
+    <div class="toprow grid-container">
+      <div class="homeButton">
+        <a class="active" href="/list">MyMediaMix</a>
       </div>
-    </div>
-    <div class="container autoHeight">
-      <h2 class="text-center">Account</h2>
-      <ul class="nav nav-tabs nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Account Information</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Account Settings</a>
-        </li>
-      </ul>
-    </div>
-    <div class="container autoHeight backgroundColor">
-      <h3>Change Name</h3>
-      <div class="row">
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <form method="post" action='/changeName'>
-            <label for="newname-input">New Name: </label>
-            <br />
-            <input
-              type="text"
-              class="form-control"
-              id="newname-input"
-              placeholder="Tim Google"
-              name="name"
-            />
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <br />
-          <br />
-          <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-            Change Name
-          </button>
+
+      <form method="get" action="/search.html" class="d-flex align-items-center">
+        <span>
+          <input
+            id="searchbar"
+            placeholder="Title"
+            class="searchbar"
+            type="text"
+            name="title"
+          />
+        </span>
+        <select name="medium">
+          <option value="empty">Search Within...</option>
+          <option value="books">Books</option>
+          <option value="Movie">Movies</option>
+          <option value="Series">TV Shows</option>
+          <option value="music">Music</option>
+        </select>
+        <input class="btn btn-primary search-button" type="submit" value="Search"/>
+      </form>
+
+      <div class="d-flex justify-content-end account-logout-btn">
+        <form method="get" action="/account">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            role="button"
+            value="Account"
+          />
         </form>
-        </div>
+        <!-- This should be changed to process a logout -->
+        <form method="get" action="/logout">
+          <input
+            type="submit"
+            class="btn btn-outline-primary"
+            role="button"
+            value="Log Out"
+          />
+        </form>
       </div>
-      <hr />
-      <h3>Change Password</h3>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-group">
-            <br />
-            <form method="post" action='/changePassword'>
-            </div>
+    </div>
+    <div class="categories">
+      <a class="menu-item" href="/books">Books</a>
+      <a class="menu-item" href="/movies">Movies</a>
+      <a class="menu-item" href="/tvs">TV shows</a>
+      <a class="menu-item" href="/music">Music</a>
+      <a class="menu-item" href="/customList">Custom Lists</a>
+      <a class="menu-item" href="/analytics">Analytics</a>
+    </div>
+    <div class="account-container">
+      <div class="account-nav-container ">
+        <p class="account-title">Account</p>
+        <ul class="nav nav-tabs nav-fill account-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Account Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account Settings</a>
+          </li>
+        </ul>
+      </div>
+      <div class="account-info-container">
+        <p class="change-title">Change Name</p>
+        <div class="row">
+          <div class="col-sm-4">
           </div>
           <div class="col-sm-4">
             <div class="form-group">
-              <br />
-              <label for="newpassword-input">New Password: </label>
-              <br />
+              <form method="post" action='/changeName'>
+              <label for="newname-input">New Name: </label>
               <input
-              type="password"
-              class="form-control"
-              id="newpassword-input"
-              placeholder="*******"
-              name='password'
-              />
-              <br />
-              <label for="verifynewpassword-input">Verify Password: </label>
-              <br />
-              <input
-              type="password"
-              class="form-control"
-              id="verifynewpassword-input"
-              placeholder="*******"
+                type="text"
+                class="form-control"
+                id="newname-input"
+                placeholder="Example: Tim Google"
+                name="name"
               />
             </div>
           </div>
           <div class="col-sm-4">
-            <br />
-            <br />
-            <button type="submit" class="btn btn-outline-primary mx-auto d-block">
-              Change Password
+            <button type="submit" class="btn btn-outline-primary mx-auto d-block change-name">
+              Change Name
             </button>
           </form>
+          </div>
         </div>
+        <hr />
+        <p class="change-title">Change Password</p>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <form method="post" action='/changePassword'>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="newpassword-input">New Password: </label>
+                <input
+                type="password"
+                class="form-control"
+                id="newpassword-input"
+                placeholder="*******"
+                name='password'
+                />
+                <label for="verifynewpassword-input">Verify Password: </label>
+                <input
+                type="password"
+                class="form-control"
+                id="verifynewpassword-input"
+                placeholder="*******"
+                />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-outline-primary mx-auto d-block change-password">
+                Change Password
+              </button>
+            </form>
+          </div>
+        </div>
+        <hr />
       </div>
-      <hr />
-    </div>
+      </div>
+
+
+
+
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"

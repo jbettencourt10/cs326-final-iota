@@ -22,7 +22,7 @@ async function loadSearchList(medium, title) {
   };
   let searchResults;
   let results;
-  if (medium === 'movies' || medium === 'tvs'){
+  if (medium === 'Movie' || medium === 'Series'){
     searchResults = await imdbSearch(query);
     results = searchResults.results;
   }
@@ -33,25 +33,22 @@ async function loadSearchList(medium, title) {
   else{
     results = await searchAlbums(query);
   }
-  
-  
-  
+
   if (results.length === 0){
     searchList.innerText = 'No result';
   }
   else{
     for (let i = 0; i < results.length; ++i) {
-      const row = document.createElement('div');
-      row.classList.add('row', 'align-items-center');
       const image = document.createElement('div');
       image.classList.add('col');
-  
+      image.classList.add('grid-item');
+
       const figure = document.createElement('figure');
       figure.classList.add('figure');
-  
+
       const img = document.createElement('img');
       img.width = 100;
-      if (medium === 'movies' || medium === 'tvs'){
+      if (medium === 'Movie' || medium === 'Series'){
         img.src = results[i].image;
       }
       else if (medium === 'books'){
@@ -70,26 +67,28 @@ async function loadSearchList(medium, title) {
           img.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
-      
+
       img.classList.add('figure-img', 'img-fluid', 'rounded');
       img.alt = 'Image Placeholder';
-  
+
       figure.appendChild(img);
       image.appendChild(figure);
-      row.appendChild(image);
-  
+
       const text = document.createElement('div');
       text.classList.add('col');
-      const title = document.createElement('h4');
+      text.classList.add('grid-item');
+      const title = document.createElement('p');
+      title.classList.add('search-title');
       const description = document.createElement('p');
-      if (medium === 'movies' || medium === 'tvs'){
+      description.classList.add('search-description');
+      if (medium === 'Movie' || medium === 'Series'){
         title.innerHTML = results[i].title;
         description.innerHTML = results[i].description;
       }
       else if (medium === 'books'){
         if (results[i].volumeInfo.authors){
-          title.innerHTML = `${results[i].volumeInfo.title} by ${results[i].volumeInfo.authors[0]}`;
-          description.innerHTML = '';
+          title.innerHTML = `${results[i].volumeInfo.title}`;
+          description.innerHTML = `by ${results[i].volumeInfo.authors[0]}`;
         }
         else{
           title.innerHTML = `${results[i].volumeInfo.title}`;
@@ -97,19 +96,17 @@ async function loadSearchList(medium, title) {
         }
       }
       else{
-        title.innerHTML = `${results[i].name} by ${results[i].artist}`;
-        description.innerHTML = '';
+        title.innerHTML = `${results[i].name}`;
+        description.innerHTML = `by ${results[i].artist}`;
       }
-
-      
       text.appendChild(title);
       text.appendChild(description);
-      row.appendChild(text);
-  
+
 
       //add action
       const add = document.createElement('div');
       add.classList.add('col', 'justify-content-end');
+      add.classList.add('grid-item');
       const form = document.createElement('form');
       form.method = 'get';
       form.action = '/add';
@@ -135,13 +132,16 @@ async function loadSearchList(medium, title) {
 
       const addButton = document.createElement('input');
       addButton.type = 'submit';
-      addButton.classList.add('btn', "btn-success", "largeFont");
+      addButton.classList.add('btn', "btn-success", "btn-primary", "add-button");
       addButton.role = "button";
-      addButton.value = "+";
+      addButton.value = "Add to Wishlist";
       form.appendChild(addButton);
       add.appendChild(form);
-      row.appendChild(add)
-      searchList.appendChild(row);
+      searchList.appendChild(image);
+      searchList.appendChild(text);
+      searchList.appendChild(add);
+
+      //add "Add to Custom List" button
      }
   }
 }

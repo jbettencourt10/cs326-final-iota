@@ -15,7 +15,9 @@
     <meta charset="UTF-8" />
     <title>MyMediaMix</title>
     <meta name="description" content="An all-in-one media tracking system" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="MyMediaMix.css" />
+    <link rel="icon" href="https://i1.wp.com/melissacheah.com.au/wp-content/uploads/2018/04/M-favicon-01.png?fit=1200%2C1200&ssl=1&w=640">
     <script src="index.js" type="module"></script>
   </head>
   <body>
@@ -27,7 +29,8 @@
       <a href="#tv_shows" class='index-button' id='tv-shows-index'>TV Shows</a>
       <a href="#music" class='index-button' id='music-index'>Music</a>
     </div>
-    <div class="row g-3 float-end">
+    <!-- remove g-3 -->
+    <div class="row login float-end">
       <div class="col-auto">
         <form method='post' action='/login'>
         <input
@@ -57,17 +60,19 @@
         </form>
       </div>
       <div class="col-auto">
-        <a
-          class="btn btn-secondary active"
+        <input type="submit"
+          class="btn btn-outline-primary active"
           role="button"
           aria-pressed="true"
-          href="/register"
-          >Sign Up</a
-        >
+          value="Sign up"
+          id="sign-up-button"
+        />
         <!-- <button type="submit" class="btn btn-primary mb-2" ">Sign Up</button> -->
       </div>
     </div>
-    <h2 class="trendingText" id="trendingText">Trending Movies</h2>
-    <div class="container bg-light" id="mediaList"></div>
+    <div class="content">
+      <h2 class="trendingText" id="trendingText">Trending Movies</h2>
+      <div class="grid-container bg-light list-container" id="mediaList"></div>
+    </div>
   </body>
 </html>
