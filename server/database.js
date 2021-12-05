@@ -26,7 +26,6 @@ export async function initializeTables(database) {
 export async function addUserEntry(database, queryObject) {
     try {
         if((await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]})).length === 0){
-            console.log(queryObject);
             await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'planned', queryObject.imageLink]});
             return true;
         }
@@ -41,7 +40,7 @@ export async function addUserEntry(database, queryObject) {
 
 export async function getUserEntries(database, queryObject) {
     try {
-        const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 LIMIT $3 OFFSET $4', values: [queryObject.username, queryObject.list, queryObject.limit, queryObject.offest] });
+        const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 LIMIT $3 OFFSET $4', values: [queryObject.username, queryObject.list, queryObject.limit, queryObject.offset] });
         return results;
     } catch (error) {
         console.log(error);

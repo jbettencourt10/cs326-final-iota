@@ -9,18 +9,21 @@ let listIndex = 0;
  * @param {int} direction 
  */
 async function shiftList(listName, direction){
+  if(direction === -1 && listIndex === 0){
+    return null;
+  }
   const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=${listIndex+direction}`);
   const list = await response.json();
   const listLength = list.length;
-  if(listLength === 5){
+  if(direction === -1 || direction === 1 && listLength === 5){
+    listIndex += direction;
     const mediaList = document.getElementById(listName);
     const rightArrow = mediaList.childNodes[6];
-    for(let i = 1; i <= 5; ++i){
+    for(let i = 0; i < 5; ++i){
       mediaList.removeChild(mediaList.childNodes[1])
     }
-    for(let i = 1; i <=5; ++i){
-      const newMediaItem = document.createElement('div')
-      const mediaItem = document.createElement('div');
+    for(let i = 0; i < 5; ++i){
+      const mediaItem = document.createElement('div')
       mediaItem.classList.add('col', 'align-items-center', 'justify-content-center', 'mediaItem');
       const row = document.createElement('div');
       row.classList.add('row');
@@ -37,7 +40,6 @@ async function shiftList(listName, direction){
         row.appendChild(mediaImageContainer);
         const mediaOptions = document.createElement('div');
         mediaOptions.classList.add('col');
-        console.log(list[i]);
         if(list[i].userrating){
           mediaOptions.innerHTML = list[i].title + " Rating: " + list[i].userrating;
         }else{
@@ -104,7 +106,8 @@ async function shiftList(listName, direction){
         mediaOptions.appendChild(form);
         row.appendChild(mediaOptions);
       }
-      mediaList.insertBefore(rightArrow, newMediaItem)
+      
+      mediaList.insertBefore(mediaItem, rightArrow)
     }
   }
 }
@@ -124,6 +127,7 @@ async function loadLists(){
     const listLength = Math.min(5, list.length);
 
     const leftArrowContainer = document.createElement('div');
+    leftArrowContainer.onclick = () => shiftList(listName, -1);
     leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
     const leftArrow = document.createElement('p');
     leftArrow.classList.add('arrow');
@@ -151,7 +155,6 @@ async function loadLists(){
         row.appendChild(mediaImageContainer);
         const mediaOptions = document.createElement('div');
         mediaOptions.classList.add('col');
-        console.log(list[i]);
         if(list[i].userrating){
           mediaOptions.innerHTML = list[i].title + " Rating: " + list[i].userrating;
         }else{
@@ -221,6 +224,7 @@ async function loadLists(){
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
+    rightArrowContainer.onclick = () => shiftList(listName, 1);
     rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
     const rightArrow = document.createElement('p');
     rightArrow.classList.add('arrow');
