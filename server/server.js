@@ -175,7 +175,7 @@ app.get('/add', async (req, res) => {
 });
 
 app.get('/getList', async (req, res) => {
-  const result = await getUserEntries(db, { username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset });
+  const result = await getUserEntries(db, { username: req.user, list: req.query.list, limit: req.query.limit, offset: req.query.offset, mediaType: req.query.mediaType });
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
