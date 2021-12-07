@@ -118,7 +118,7 @@ async function loadTrendingList(){
 }
 
 async function loadLists(mediaType){
-  console.log(mediaType)
+  listIndex = 0;
   const lists = ['inProgress', 'planned', 'completed'];
   for(let listName in lists){
     listName = lists[listName];
