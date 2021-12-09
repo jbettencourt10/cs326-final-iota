@@ -199,33 +199,33 @@ async function loadTrendingList(mediaType){
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
-      if (medium === 'Movies' || medium === 'Series'){
-        inputTitle.value = results[i].title;
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+        inputTitle.value = list[i].title;
       }
-      else if (medium === 'books'){
-        inputTitle.value = results[i].volumeInfo.title;
+      else if (mediaType === 'books'){
+        inputTitle.value = list[i].volumeInfo.title;
       }
       else{
-        inputTitle.value = results[i].name;
+        inputTitle.value = list[i].name;
       }
 
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      if (medium === 'Movies' || medium === 'Series'){
-        inputImage.value = results[i].image;
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+        inputImage.value = list[i].image;
       }
-      else if (medium === 'books'){
-        if (results[i].volumeInfo.imageLinks){
-          inputImage.value = results[i].volumeInfo.imageLinks.smallThumbnail;
+      else if (mediaType === 'books'){
+        if (list[i].volumeInfo.imageLinks){
+          inputImage.value = list[i].volumeInfo.imageLinks.smallThumbnail;
         }
         else{
           inputImage.value = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
         }
       }
       else{
-        if (results[i].image[2]['#text']){
-          inputImage.value = results[i].image[2]['#text'];
+        if (list[i].image[2]['#text']){
+          inputImage.value = list[i].image[2]['#text'];
         }
         else{
           inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
@@ -234,7 +234,7 @@ async function loadTrendingList(mediaType){
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';
-      inputMedium.value = medium;
+      inputMedium.value = mediaType;
 
       form.appendChild(inputTitle);
       form.appendChild(inputImage);
