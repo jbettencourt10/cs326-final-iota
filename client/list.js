@@ -16,8 +16,25 @@ async function shiftList(listName, direction, mediaType){
   if(direction === -1 && listIndex === 0){
     return null;
   }
-  const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=${listIndex+direction}&mediaType=${mediaType}`);
-  const list = await response.json();
+  let list;
+  if (listName === 'top'){
+    if (mediaType === "all" || mediaType === "Movies"){
+      list = await getTopIMDB('Movies');
+    }
+    else if (mediaType === "Series"){
+      list = await getTopIMDB("TVs");
+    }
+    else if (mediaType === "books"){
+      list = await getTopBooks();
+    }
+    else{
+      list = await getTopTracks();
+    }
+  }
+  else{
+    const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=${listIndex+direction}&mediaType=${mediaType}`);
+    list = await response.json();
+  }
   const listLength = list.length;
   if(direction === -1 || direction === 1 && listLength === 5){
     listIndex += direction;
@@ -135,7 +152,6 @@ async function loadTrendingList(mediaType){
     list = await getTopTracks();
   }
   const listLength = Math.min(5, list.length);
-  console.log(list);
   const leftArrowContainer = document.createElement('div');
   leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
   leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
@@ -252,17 +268,17 @@ async function loadTrendingList(mediaType){
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
-    rightArrowContainer.onclick = () => shiftList(listName, 1, mediaType);
+    rightArrowContainer.onclick = () => shiftList('top', 1, mediaType);
     rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
     const rightArrow = document.createElement('p');
     rightArrow.classList.add('arrow');
     rightArrow.innerHTML = '>';
     rightArrowContainer.appendChild(rightArrow);
     mediaList.appendChild(rightArrowContainer);
-  }
+}
 
 
-async function loadLists(mediaType){
+export async function loadLists(mediaType){
   listIndex = 0;
   const lists = ['inProgress', 'planned', 'completed'];
   for(let listName in lists){
@@ -272,7 +288,6 @@ async function loadLists(mediaType){
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0&mediaType=${mediaType}`);
     const list = await response.json();
     const listLength = Math.min(5, list.length);
-    console.log(list);
     const leftArrowContainer = document.createElement('div');
     leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
     leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
