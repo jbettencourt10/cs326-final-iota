@@ -1,6 +1,10 @@
+import { getTopBooks } from "./book-functions";
+import { getTopIMDB } from "./imdb-functions";
+import { getTopTracks } from "./lastfm-functions";
+
 window.addEventListener('load', () => loadLists("all"));
 window.addEventListener('load', greetUser);
-
+window.addEventListener('load', () => loadTrendingList("all"));
 let listIndex = 0;
 
 /**
@@ -113,9 +117,150 @@ async function shiftList(listName, direction, mediaType){
 }
 
 
-async function loadTrendingList(){
-  
-}
+async function loadTrendingList(mediaType){
+  listIndex = 0;
+  const mediaList = document.getElementById('top');
+  mediaList.innerHTML = '';
+  let list;
+  if (mediaType === "all" || mediaType === "Movies"){
+    list = await getTopIMDB('Movies');
+  }
+  else if (mediaType === "Series"){
+    list = await getTopIMDB("TVs");
+  }
+  else if (mediaType === "books"){
+    list = await getTopBooks();
+  }
+  else{
+    list = await getTopTracks();
+  }
+  const listLength = Math.min(5, list.length);
+  console.log(list);
+  const leftArrowContainer = document.createElement('div');
+  leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
+  leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
+  const leftArrow = document.createElement('p');
+  leftArrow.classList.add('arrow');
+  leftArrow.innerHTML = '<';
+  leftArrowContainer.appendChild(leftArrow);
+  mediaList.appendChild(leftArrowContainer);
+
+  for (let i = 0; i < 5; ++i) {
+    const mediaItem = document.createElement('div');
+    mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
+    const row = document.createElement('div');
+    row.classList.add('row');
+    mediaItem.appendChild(row);
+    if(i < listLength){
+      const mediaImageContainer = document.createElement('div');
+      mediaImageContainer.classList.add('col');
+      const mediaImage = document.createElement('img');
+      mediaImage.width = 100;
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+        mediaImage.src = list[i].image;
+      }
+      else if (medium === 'books'){
+        if (results[i].volumeInfo.imageLinks){
+          mediaImage.src = list[i].volumeInfo.imageLinks.smallThumbnail;
+        }
+        else{
+          mediaImage.src = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
+        }
+      }
+      else{
+        if (results[i].image[2]['#text']){
+          mediaImage.src = list[i].image[2]['#text'];
+        }
+        else{
+          mediaImage.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
+        }
+      }
+      mediaImage.classList.add('figure-img', 'img-fluid', 'rounded');
+      mediaImage.alt = 'Image Placeholder';
+      mediaImageContainer.appendChild(mediaImage);
+      row.appendChild(mediaImageContainer);
+
+      const mediaOptions = document.createElement('div');
+      mediaOptions.classList.add('col');
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+        mediaOptions.innerHTML = list[i].title;
+      }
+      else if (medium === 'books'){
+        mediaOptions.innerHTML = list[i].volumeInfo.title;
+      }
+      else{
+        mediaOptions.innerHTML = list[i].name;
+      }
+      
+      // Add rating, update rating button, and dropdown to change list in form
+      const form = document.createElement('form');
+      form.method = 'get';
+      form.action = '/add';
+      const inputTitle = document.createElement('input');
+      inputTitle.type = 'hidden';
+      inputTitle.name = 'Title';
+      if (medium === 'Movies' || medium === 'Series'){
+        inputTitle.value = results[i].title;
+      }
+      else if (medium === 'books'){
+        inputTitle.value = results[i].volumeInfo.title;
+      }
+      else{
+        inputTitle.value = results[i].name;
+      }
+
+      const inputImage = document.createElement('input');
+      inputImage.type = 'hidden';
+      inputImage.name = 'ImageLink';
+      if (medium === 'Movies' || medium === 'Series'){
+        inputImage.value = results[i].image;
+      }
+      else if (medium === 'books'){
+        if (results[i].volumeInfo.imageLinks){
+          inputImage.value = results[i].volumeInfo.imageLinks.smallThumbnail;
+        }
+        else{
+          inputImage.value = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
+        }
+      }
+      else{
+        if (results[i].image[2]['#text']){
+          inputImage.value = results[i].image[2]['#text'];
+        }
+        else{
+          inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
+        }
+      }
+      const inputMedium = document.createElement('input');
+      inputMedium.type = 'hidden';
+      inputMedium.name = 'Medium';
+      inputMedium.value = medium;
+
+      form.appendChild(inputTitle);
+      form.appendChild(inputImage);
+      form.appendChild(inputMedium);
+
+      const addButton = document.createElement('input');
+      addButton.classList.add('btn', 'btn-primary');
+      addButton.type = 'submit';
+      addButton.value = 'Add';
+
+      form.appendChild(addButton);
+      mediaOptions.appendChild(form);
+      row.appendChild(mediaOptions);
+      }
+      mediaList.appendChild(mediaItem);
+    }
+    const rightArrowContainer = document.createElement('div');
+    rightArrowContainer.onclick = () => shiftList(listName, 1, mediaType);
+    rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
+    const rightArrow = document.createElement('p');
+    rightArrow.classList.add('arrow');
+    rightArrow.innerHTML = '>';
+    rightArrowContainer.appendChild(rightArrow);
+    mediaList.appendChild(rightArrowContainer);
+  }
+
 
 async function loadLists(mediaType){
   listIndex = 0;
