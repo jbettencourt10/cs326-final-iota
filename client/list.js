@@ -1,6 +1,6 @@
-import { getTopBooks } from "./book-functions";
-import { getTopIMDB } from "./imdb-functions";
-import { getTopTracks } from "./lastfm-functions";
+import { getTopBooks } from "./book-functions.js";
+import { getTopIMDB } from "./imdb-functions.js";
+import { getTopTracks } from "./lastfm-functions.js";
 
 window.addEventListener('load', () => loadLists("all"));
 window.addEventListener('load', greetUser);
