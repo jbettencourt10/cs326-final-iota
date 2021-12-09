@@ -16,25 +16,8 @@ async function shiftList(listName, direction, mediaType){
   if(direction === -1 && listIndex === 0){
     return null;
   }
-  let list;
-  if (listName === 'top'){
-    if (mediaType === "all" || mediaType === "Movies"){
-      list = await getTopIMDB('Movies');
-    }
-    else if (mediaType === "Series"){
-      list = await getTopIMDB("TVs");
-    }
-    else if (mediaType === "books"){
-      list = await getTopBooks();
-    }
-    else{
-      list = await getTopTracks();
-    }
-  }
-  else{
-    const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=${listIndex+direction}&mediaType=${mediaType}`);
-    list = await response.json();
-  }
+  const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=${listIndex+direction}&mediaType=${mediaType}`);
+  const list = await response.json();
   const listLength = list.length;
   if(direction === -1 || direction === 1 && listLength === 5){
     listIndex += direction;
@@ -152,6 +135,7 @@ async function loadTrendingList(mediaType){
     list = await getTopTracks();
   }
   const listLength = Math.min(5, list.length);
+
   const leftArrowContainer = document.createElement('div');
   leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
   leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
@@ -268,7 +252,7 @@ async function loadTrendingList(mediaType){
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
-    rightArrowContainer.onclick = () => shiftList('top', 1, mediaType);
+    rightArrowContainer.onclick = () => shiftList(listName, 1, mediaType);
     rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
     const rightArrow = document.createElement('p');
     rightArrow.classList.add('arrow');
