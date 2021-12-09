@@ -127,7 +127,7 @@ async function loadLists(mediaType){
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0&mediaType=${mediaType}`);
     const list = await response.json();
     const listLength = Math.min(5, list.length);
-
+    console.log(list);
     const leftArrowContainer = document.createElement('div');
     leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
     leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
