@@ -41,10 +41,10 @@ export async function addUserEntry(database, queryObject) {
 export async function getUserEntries(database, queryObject) {
     try {
         if(queryObject.mediaType === "all"){
-            const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 LIMIT $3 OFFSET $4', values: [queryObject.username, queryObject.list, queryObject.limit, queryObject.offset] });
+            const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 OFFSET $3', values: [queryObject.username, queryObject.list, queryObject.offset] });
             return results;
         }
-        const results = database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND medium=$2 AND list=$3 LIMIT $4 OFFSET $5', values: [queryObject.username, queryObject.mediaType, queryObject.list, queryObject.limit, queryObject.offset]});
+        const results = database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND medium=$2 AND list=$3 OFFSET $4', values: [queryObject.username, queryObject.mediaType, queryObject.list, queryObject.offset]});
         return results;
     } catch (error) {
         console.log(error);
