@@ -83,6 +83,7 @@ Authentication occurs with a username/password paradigm that would be found in a
 **Thao**
   - Created HTML pages for main listing page, custom list page, and search page.
   - Implemented API calls to generate top trending media on landing page and main listing page and configured API calls for search.
+  - Fixed the main listing page with left and right arrows and querying from the database.
   - Responsible for API calls, retrieved information, and display results for books and music especially. 
   - Completed the search function on search page to display the results and linked all search bar on all pages. 
   - Helped with the "add" button to add media to the wishlist.
