@@ -20,7 +20,7 @@ export async function addUser(database, registerObject) {
             // Username already exists
             return false;
         }
-        await database.none({ text: 'INSERT INTO Users(Username, Salt, Hash, CreationTime, FullName) VALUES ($1, $2, $3, current_timestamp, $4)', values: [registerObject.username, registerObject.salt, registerObject.hash, registerObject.fullName] });
+        await database.none({ text: 'INSERT INTO Users(Username, Salt, Hash, CreationTime, FullName) VALUES ($1, $2, $3, current_date, $4)', values: [registerObject.username, registerObject.salt, registerObject.hash, registerObject.fullName] });
         return true;
     } catch (error) {
         console.log(error);

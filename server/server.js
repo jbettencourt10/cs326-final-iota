@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, userItemCount } from './database.js';
 import { findUser, addUser, changePassword, changeName } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -151,15 +151,6 @@ app.get('/music', (req, res) => {
   res.redirect(`/list/${req.user}?mediaType=music`);
 });
 
-app.get('/customList', checkLoggedIn, (req, res) => {
-  res.redirect(`/customList/${req.user}`);
-});
-
-app.get('/customList/:username', checkLoggedIn, (req, res) => {
-  res.sendFile('client/customList.html',
-    { root: '.' });
-});
-
 app.get('/analytics', checkLoggedIn, (req, res) => {
   res.redirect(`/analytics/${req.user}`);
 });
@@ -191,6 +182,11 @@ app.get('/updateItem', async (req, res) => {
     }
   }
   res.redirect('/list');
+});
+
+app.get('/userItemCount', async (req, res) => {
+  const result = await userItemCount(db, {username:req.user, medium:req.mediaType});
+  res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
 // app.get('/create', (req, res) => {

@@ -16,8 +16,8 @@ export async function connectDB() {
 
 export async function initializeTables(database) {
     try {
-        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), CreationTime TIMESTAMP)');
-        await database.none('CREATE TABLE IF NOT EXISTS MediaEntries(Username VARCHAR(30) REFERENCES Users (Username), Title VARCHAR(150), Medium VARCHAR(10), List VARCHAR(10), TimeStarted TIMESTAMP, TimeCompleted TIMESTAMP, ImageLink VARCHAR(300), UserRating REAL, ImdbRating REAL)');
+        await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), CreationTime DATE)');
+        await database.none('CREATE TABLE IF NOT EXISTS MediaEntries(Username VARCHAR(30) REFERENCES Users (Username), Title VARCHAR(150), Medium VARCHAR(10), List VARCHAR(10), TimeStarted DATE, TimeCompleted DATE, ImageLink VARCHAR(300), UserRating REAL, ImdbRating REAL)');
     } catch (error) {
         console.log(error);
     }
@@ -72,11 +72,28 @@ export async function updateUserRating(database, queryObject) {
     }
 }
 
-// TODO: MOVE ITEM FROM ONE LIST TO ANOTHER
+// Does not consider cases where an item from planned gets moved directly to completed
 export async function changeItemList(database, queryObject) {
     try {
-        await database.none({ text: 'UPDATE MediaEntries SET list=$1 WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
+        if(queryObject.newList === "inProgress"){
+            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
+        }else if(queryObject.newList === "completed"){
+            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timecompleted=current_date WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
+        }else{
+            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=$4, timecompleted=$4 WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title, undefined] });
+        }
         return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+
+export async function userItemCount(database, queryObject) {
+    try {
+        const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2', values: [queryObject.username, queryObject.medium] });
+        return response;
     } catch (error) {
         console.log(error);
         return false;
