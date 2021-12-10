@@ -59,49 +59,58 @@ async function shiftList(mediaType, list, listName, listIndex, direction){
   console.log(end);
   if (direction === 1){
     //move right
-    if (end + 5 <= listLength){
-      loadLists(mediaType, list, listName, listIndex+5);
-    }
-    else if (listLength - 5 >= 0){
-      loadLists(mediaType, list, listName, listLength-5);
+    if (listName !== "top"){
+      if (end + 5 <= listLength){
+        loadLists(mediaType, list, listName, listIndex+5);
+      }
+      else if (listLength - 5 >= 0){
+        loadLists(mediaType, list, listName, listLength-5);
+      }
+      else{
+        loadLists(mediaType, list, listName, 0);
+      }
     }
     else{
-      loadLists(mediaType, list, listName, 0);
+      if (end + 5 <= listLength){
+        loadTrendingList(mediaType, list, listIndex+5);
+      }
+      else if (listLength - 5 >= 0){
+        loadTrendingList(mediaType, list, listLength-5);
+      }
+      else{
+        loadTrendingList(mediaType, list, 0);
+      }
     }
   }
   else if (direction === -1){
     //move left
-    if (start - 5 >= 0){
-      loadLists(mediaType, list, listName, listIndex-5);
+    if (listName !== "top"){
+      if (start - 5 >= 0){
+        loadLists(mediaType, list, listName, listIndex-5);
+      }
+      else{
+        loadLists(mediaType, list, listName, 0);
+      }
     }
     else{
-      loadLists(mediaType, list, listName, 0);
+      if (start - 5 >= 0){
+        loadTrendingList(mediaType, list, listIndex-5);
+      }
+      else{
+        loadTrendingList(mediaType, list, 0);
+      }
     }
   }
 }
 
 
-async function loadTrendingList(mediaType){
-  listIndex = 0;
+async function loadTrendingList(mediaType, list, listIndex){
   const mediaList = document.getElementById('top');
   mediaList.innerHTML = '';
-  let list;
-  if (mediaType === "all" || mediaType === "Movies"){
-    list = await getTopIMDB('Movies');
-  }
-  else if (mediaType === "Series"){
-    list = await getTopIMDB("TVs");
-  }
-  else if (mediaType === "books"){
-    list = await getTopBooks();
-  }
-  else{
-    list = await getTopTracks();
-  }
   const listLength = Math.min(5, list.length);
 
   const leftArrowContainer = document.createElement('div');
-  leftArrowContainer.onclick = () => shiftList(listName, -1, mediaType);
+  leftArrowContainer.onclick = () => shiftList(mediaType, list, "top", listIndex, -1);
   leftArrowContainer.classList.add('col-1', 'd-flex', 'align-items-center', 'justify-content-end', 'clickable', 'arrowContainer');
   const leftArrow = document.createElement('p');
   leftArrow.classList.add('arrow');
@@ -109,7 +118,7 @@ async function loadTrendingList(mediaType){
   leftArrowContainer.appendChild(leftArrow);
   mediaList.appendChild(leftArrowContainer);
 
-  for (let i = 0; i < 5; ++i) {
+  for (let i = listIndex; i < listIndex+5; ++i) {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
     const row = document.createElement('div');
@@ -216,7 +225,7 @@ async function loadTrendingList(mediaType){
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
-    rightArrowContainer.onclick = () => shiftList(listName, 1, mediaType);
+    rightArrowContainer.onclick = () => shiftList(mediaType, list, "top", listIndex, 1);
     rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
     const rightArrow = document.createElement('p');
     rightArrow.classList.add('arrow');
