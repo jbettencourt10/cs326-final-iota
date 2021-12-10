@@ -136,12 +136,7 @@ async function loadTrendingList(mediaType, list, listIndex){
         mediaImage.src = list[i].image;
       }
       else if (mediaType === 'books'){
-        if (list[i].volumeInfo.imageLinks){
-          mediaImage.src = list[i].volumeInfo.imageLinks.smallThumbnail;
-        }
-        else{
-          mediaImage.src = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
-        }
+        mediaImage.src = list[i].book_image;
       }
       else{
         if (list[i].image[2]['#text']){
@@ -162,7 +157,7 @@ async function loadTrendingList(mediaType, list, listIndex){
         mediaOptions.innerHTML = list[i].title;
       }
       else if (mediaType === 'books'){
-        mediaOptions.innerHTML = list[i].volumeInfo.title;
+        mediaOptions.innerHTML = list[i].title;
       }
       else{
         mediaOptions.innerHTML = list[i].name;
@@ -179,7 +174,7 @@ async function loadTrendingList(mediaType, list, listIndex){
         inputTitle.value = list[i].title;
       }
       else if (mediaType === 'books'){
-        inputTitle.value = list[i].volumeInfo.title;
+        inputTitle.value = list[i].title;
       }
       else{
         inputTitle.value = list[i].name;
@@ -192,12 +187,7 @@ async function loadTrendingList(mediaType, list, listIndex){
         inputImage.value = list[i].image;
       }
       else if (mediaType === 'books'){
-        if (list[i].volumeInfo.imageLinks){
-          inputImage.value = list[i].volumeInfo.imageLinks.smallThumbnail;
-        }
-        else{
-          inputImage.value = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
-        }
+        inputImage.value = list[i].book_image;
       }
       else{
         if (list[i].image[2]['#text']){
