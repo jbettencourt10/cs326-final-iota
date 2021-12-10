@@ -136,20 +136,19 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/books', (req, res) => {
-  //TODO
-  res.redirect(`/list/${req.user}?mediaType=books`)
+  res.redirect(`/list/${req.user}?mediaType=books`);
 });
 
 app.get('/movies', (req, res) => {
-  //TODO
+  res.redirect(`/list/${req.user}?mediaType=Movies`);
 });
 
 app.get('/tvs', (req, res) => {
-  //TODO
+  res.redirect(`/list/${req.user}?mediaType=Series`);
 });
 
 app.get('/music', (req, res) => {
-  //TODO
+  res.redirect(`/list/${req.user}?mediaType=music`);
 });
 
 app.get('/customList', checkLoggedIn, (req, res) => {

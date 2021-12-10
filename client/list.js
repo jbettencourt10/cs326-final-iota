@@ -3,11 +3,8 @@ import { getTopIMDB } from "./imdb-functions.js";
 import { getTopTracks } from "./lastfm-functions.js";
 
 window.addEventListener('load', () => loadLists("all"));
-window.addEventListener('load', greetUser);
+//window.addEventListener('load', greetUser);
 window.addEventListener('load', () => loadTrendingList("all"));
-
-//document.getElementById('menu-all').addEventListener('click', () => generateList('all'));
-//document.getElementById('menu-books').addEventListener('click', () => generateList('books'));
 
 const mediaType = new URLSearchParams(window.location.search).get('mediaType');
 console.log(mediaType)
@@ -282,7 +279,7 @@ async function loadTrendingList(mediaType){
 }
 
 
-export async function loadLists(mediaType){
+async function loadLists(mediaType){
   listIndex = 0;
   const lists = ['inProgress', 'planned', 'completed'];
   for(let listName in lists){
