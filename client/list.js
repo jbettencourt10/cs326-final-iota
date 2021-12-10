@@ -18,7 +18,7 @@ async function generateList(mediaType){
   const lists = ['inProgress', 'planned', 'completed'];
   for(let listName in lists){
     listName = lists[listName];
-    const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0&mediaType=${mediaType}`);
+    const response = await fetch(`${document.location.origin}/getList?list=${listName}&offset=0&mediaType=${mediaType}`);
     const userList = await response.json();
     loadLists(mediaType, userList, listName, listIndex);
   }
@@ -119,9 +119,7 @@ async function loadTrendingList(mediaType, list, listIndex){
   leftArrowContainer.appendChild(leftArrow);
   mediaList.appendChild(leftArrowContainer);
 
-  console.log(listIndex);
   for (let i = listIndex; i < listIndex+5; ++i) {
-    console.log(list[i]);
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
     const row = document.createElement('div');
@@ -146,7 +144,6 @@ async function loadTrendingList(mediaType, list, listIndex){
           mediaImage.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
-      console.log(mediaImage);
       mediaImage.classList.add('figure-img', 'img-fluid', 'rounded');
       mediaImage.alt = 'Image Placeholder';
       mediaImageContainer.appendChild(mediaImage);
@@ -163,7 +160,6 @@ async function loadTrendingList(mediaType, list, listIndex){
       else{
         mediaOptions.innerHTML = list[i].name;
       }
-      console.log(mediaOptions);
       // Add rating, update rating button, and dropdown to change list in form
       const form = document.createElement('form');
       form.method = 'get';
@@ -216,7 +212,6 @@ async function loadTrendingList(mediaType, list, listIndex){
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
     }
-      console.log(mediaItem);
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
@@ -310,6 +305,7 @@ async function loadLists(mediaType, list, listName, listIndex){
         const planned = document.createElement('option');
         planned.value = 'planned';
         planned.innerHTML = 'Planned';
+        console.log(list)
         moveSelection.appendChild(planned);
       }
       const remove = document.createElement('option');
