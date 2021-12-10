@@ -72,6 +72,7 @@ async function shiftList(mediaType, list, listName, listIndex, direction){
     }
     else{
       if (end + 5 <= listLength){
+        console.log("in here");
         loadTrendingList(mediaType, list, listIndex+5);
       }
       else if (listLength - 5 >= 0){
@@ -118,6 +119,7 @@ async function loadTrendingList(mediaType, list, listIndex){
   leftArrowContainer.appendChild(leftArrow);
   mediaList.appendChild(leftArrowContainer);
 
+  console.log(listIndex);
   for (let i = listIndex; i < listIndex+5; ++i) {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
