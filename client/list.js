@@ -246,7 +246,7 @@ async function loadLists(mediaType, list, listName, listIndex){
     const row = document.createElement('div');
     row.classList.add('row');
     mediaItem.appendChild(row);
-    if(i < listLength){
+    if(list[i]){
       const mediaImageContainer = document.createElement('div');
       mediaImageContainer.classList.add('col');
       const mediaImage = document.createElement('img');
