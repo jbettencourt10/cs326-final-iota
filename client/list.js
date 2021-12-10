@@ -121,6 +121,7 @@ async function loadTrendingList(mediaType, list, listIndex){
 
   console.log(listIndex);
   for (let i = listIndex; i < listIndex+5; ++i) {
+    console.log(list[i]);
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
     const row = document.createElement('div');
@@ -219,7 +220,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       addButton.classList.add('btn', 'btn-primary');
       addButton.type = 'submit';
       addButton.value = 'Add';
-
+      addButton.onclick = generateList(mediaType);
       form.appendChild(addButton);
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
