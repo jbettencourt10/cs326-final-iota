@@ -7,7 +7,6 @@ import { getTopTracks } from "./lastfm-functions.js";
 //window.addEventListener('load', () => loadTrendingList("all"));
 
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
-console.log(mediaType);
 if (!mediaType){
   mediaType = 'all';
 }
@@ -191,7 +190,13 @@ async function loadTrendingList(mediaType, list, listIndex){
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';
-      inputMedium.value = mediaType;
+      if (mediaType === 'Movies' || mediaType === 'all'){
+        inputMedium.value = 'Movies';
+      }
+      else{
+        inputMedium.value = mediaType;
+      }
+      
 
       form.appendChild(inputTitle);
       form.appendChild(inputImage);
