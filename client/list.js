@@ -48,11 +48,15 @@ async function generateList(mediaType){
  */
 async function shiftList(mediaType, list, listName, listIndex, direction){
   if(direction === -1 && listIndex === 0){
-    return null;
+    console.log("Cannot shift left at the beginning of the list");
   }
+  console.log("In shift")
   const listLength = list.length;
+  console.log(listLength);
   const start = listIndex;
   const end = listIndex + 5;
+  console.log(start);
+  console.log(end);
   if (direction === 1){
     //move right
     if (end + 5 <= listLength){
@@ -221,6 +225,8 @@ async function loadTrendingList(mediaType){
 
 async function loadLists(mediaType, list, listName, listIndex){
   const mediaList = document.getElementById(listName);
+  console.log(listName);
+  console.log(mediaList);
   mediaList.innerHTML = '';
   const listLength = Math.min(5, list.length);
   const leftArrowContainer = document.createElement('div');
