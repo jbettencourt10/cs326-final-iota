@@ -114,13 +114,38 @@ async function loadSearchList(medium, title) {
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
-      inputTitle.value = results[i].title;
+      if (medium === 'Movies' || medium === 'Series'){
+        inputTitle.value = results[i].title;
+      }
+      else if (medium === 'books'){
+        inputTitle.value = results[i].volumeInfo.title;
+      }
+      else{
+        inputTitle.value = results[i].name;
+      }
 
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      inputImage.value = results[i].image;
-
+      if (medium === 'Movies' || medium === 'Series'){
+        inputImage.value = results[i].image;
+      }
+      else if (medium === 'books'){
+        if (results[i].volumeInfo.imageLinks){
+          inputImage.value = results[i].volumeInfo.imageLinks.smallThumbnail;
+        }
+        else{
+          inputImage.value = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
+        }
+      }
+      else{
+        if (results[i].image[2]['#text']){
+          inputImage.value = results[i].image[2]['#text'];
+        }
+        else{
+          inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
+        }
+      }
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';

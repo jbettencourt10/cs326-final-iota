@@ -81,7 +81,16 @@ Authentication occurs with a username/password paradigm that would be found in a
 **Bill**
 
 **Thao**
-
+  - Created HTML pages for main listing page, custom list page, and search page.
+  - Implemented API calls to generate top trending media on landing page and main listing page and configured API calls for search.
+  - Fixed the main listing page with left and right arrows and querying from the database.
+  - Responsible for API calls, retrieved information, and display results for books and music especially. 
+  - Completed the search function on search page to display the results and linked all search bar on all pages. 
+  - Helped with the "add" button to add media to the wishlist.
+  - Restyled all pages so that they are consistent in format and styling.
+  - Created menubar to navigate between pages. 
+  - Helped with cleaning up the code throughout the project.
+  - Constantly deployed the updated project to Heroku.
 
 ## Conclusion:
 
