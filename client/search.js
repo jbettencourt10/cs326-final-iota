@@ -114,6 +114,7 @@ async function loadSearchList(medium, title) {
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
+      console.log(medium)
       if (medium === 'Movies' || medium === 'Series'){
         inputTitle.value = results[i].title;
       }
@@ -123,7 +124,7 @@ async function loadSearchList(medium, title) {
       else{
         inputTitle.value = results[i].name;
       }
-
+      console.log(inputTitle.value);
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
