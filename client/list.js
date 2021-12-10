@@ -2,9 +2,9 @@ import { getTopBooks } from "./book-functions.js";
 import { getTopIMDB } from "./imdb-functions.js";
 import { getTopTracks } from "./lastfm-functions.js";
 
-window.addEventListener('load', () => loadLists("all"));
+//window.addEventListener('load', () => generateList);
 //window.addEventListener('load', greetUser);
-window.addEventListener('load', () => loadTrendingList("all"));
+//window.addEventListener('load', () => loadTrendingList("all"));
 
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
 if (!mediaType){
@@ -62,8 +62,11 @@ async function shiftList(mediaType, list, listName, listIndex, direction){
     if (end + 5 <= listLength){
       loadLists(mediaType, list, listName, listIndex+5);
     }
-    else{
+    else if (listLength - 5 >= 0){
       loadLists(mediaType, list, listName, listLength-5);
+    }
+    else{
+      loadLists(mediaType, list, listName, 0);
     }
   }
   else if (direction === -1){
