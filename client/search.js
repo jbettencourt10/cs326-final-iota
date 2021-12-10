@@ -115,7 +115,7 @@ async function loadSearchList(medium, title) {
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
       console.log(medium)
-      if (medium === 'Movies' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series'){
         inputTitle.value = results[i].title;
       }
       else if (medium === 'books'){
@@ -124,11 +124,11 @@ async function loadSearchList(medium, title) {
       else{
         inputTitle.value = results[i].name;
       }
-      console.log(inputTitle.value);
+      console.log(inputTitle);
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      if (medium === 'Movies' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series'){
         inputImage.value = results[i].image;
       }
       else if (medium === 'books'){
@@ -150,7 +150,13 @@ async function loadSearchList(medium, title) {
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';
-      inputMedium.value = medium;
+      if (medium === "Movie"){
+        inputMedium.value = "Movies";
+      }
+      else{
+        inputMedium.value = medium;
+      }
+      
 
       form.appendChild(inputTitle);
       form.appendChild(inputImage);
