@@ -127,7 +127,7 @@ async function loadTrendingList(mediaType, list, listIndex){
     const row = document.createElement('div');
     row.classList.add('row');
     mediaItem.appendChild(row);
-    if(i < listLength){
+    if(list[i]){
       const mediaImageContainer = document.createElement('div');
       mediaImageContainer.classList.add('col');
       const mediaImage = document.createElement('img');
@@ -146,6 +146,7 @@ async function loadTrendingList(mediaType, list, listIndex){
           mediaImage.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
+      console.log(mediaImage);
       mediaImage.classList.add('figure-img', 'img-fluid', 'rounded');
       mediaImage.alt = 'Image Placeholder';
       mediaImageContainer.appendChild(mediaImage);
@@ -162,7 +163,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       else{
         mediaOptions.innerHTML = list[i].name;
       }
-      
+      console.log(mediaOptions);
       // Add rating, update rating button, and dropdown to change list in form
       const form = document.createElement('form');
       form.method = 'get';
@@ -214,7 +215,8 @@ async function loadTrendingList(mediaType, list, listIndex){
       form.appendChild(addButton);
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
-      }
+    }
+      console.log(mediaItem);
       mediaList.appendChild(mediaItem);
     }
     const rightArrowContainer = document.createElement('div');
