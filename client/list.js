@@ -7,6 +7,7 @@ import { getTopTracks } from "./lastfm-functions.js";
 //window.addEventListener('load', () => loadTrendingList("all"));
 
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
+console.log(mediaType);
 if (!mediaType){
   mediaType = 'all';
 }
@@ -20,6 +21,7 @@ async function generateList(mediaType){
     listName = lists[listName];
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&offset=0&mediaType=${mediaType}`);
     const userList = await response.json();
+    console.log(userList);
     loadLists(mediaType, userList, listName, listIndex);
   }
   //generate trending list
@@ -295,7 +297,6 @@ async function loadLists(mediaType, list, listName, listIndex){
         const planned = document.createElement('option');
         planned.value = 'planned';
         planned.innerHTML = 'Planned';
-        console.log(list)
         moveSelection.appendChild(planned);
       }
       const remove = document.createElement('option');
