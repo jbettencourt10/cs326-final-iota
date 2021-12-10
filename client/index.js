@@ -53,7 +53,7 @@ async function loadLandingMediaList(media) {
     top100Media = await getTopBooks();
   }
   else {
-    top100Media = await getTopAlbums();
+    top100Media = await getTopTracks();
   }
   const mediaList = document.getElementById('mediaList');
   for (let i = 0; i < top100Media.length; ++i) {
