@@ -114,8 +114,7 @@ async function loadSearchList(medium, title) {
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
-      //inputTitle.value = results[i].title;
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movies' || medium === 'Series'){
         inputTitle.value = results[i].title;
       }
       else if (medium === 'books'){
@@ -124,12 +123,11 @@ async function loadSearchList(medium, title) {
       else{
         inputTitle.value = results[i].name;
       }
-      console.log(inputTitle.value);
 
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movies' || medium === 'Series'){
         inputImage.value = results[i].image;
       }
       else if (medium === 'books'){
@@ -148,8 +146,6 @@ async function loadSearchList(medium, title) {
           inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
-      //inputImage.value = results[i].image;
-      console.log(inputImage.value);
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';

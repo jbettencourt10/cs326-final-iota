@@ -137,6 +137,7 @@ app.get('/search', (req, res) => {
 
 app.get('/books', (req, res) => {
   //TODO
+  res.redirect(`/list/${req.user}?mediaType=books`)
 });
 
 app.get('/movies', (req, res) => {

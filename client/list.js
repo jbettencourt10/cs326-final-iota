@@ -5,8 +5,28 @@ import { getTopTracks } from "./lastfm-functions.js";
 window.addEventListener('load', () => loadLists("all"));
 window.addEventListener('load', greetUser);
 window.addEventListener('load', () => loadTrendingList("all"));
-let listIndex = 0;
 
+//document.getElementById('menu-all').addEventListener('click', () => generateList('all'));
+//document.getElementById('menu-books').addEventListener('click', () => generateList('books'));
+
+const mediaType = new URLSearchParams(window.location.search).get('mediaType');
+console.log(mediaType)
+loadLists(mediaType)
+
+async function generateList(mediaType){
+  //generate lists for inProgress, planned, and completed
+  const listIndex = 0;
+  const lists = ['inProgress', 'planned', 'completed'];
+  for(let listName in lists){
+    listName = lists[listName];
+    const mediaList = document.getElementById(listName);
+    mediaList.innerHTML = '';
+    const response = await fetch(`${document.location.origin}/getList?list=${listName}&limit=5&offset=0&mediaType=${mediaType}`);
+    const userList = await response.json();
+    loadLists(mediaType, userList, listIndex);
+  }
+  //generate trending list
+}
 /**
  * 
  * @param {string} listName 
