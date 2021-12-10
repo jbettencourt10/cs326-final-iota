@@ -220,7 +220,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       addButton.classList.add('btn', 'btn-primary');
       addButton.type = 'submit';
       addButton.value = 'Add';
-      addButton.onclick = generateList(mediaType);
+    
       form.appendChild(addButton);
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
