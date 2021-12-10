@@ -135,8 +135,8 @@ async function loadTrendingList(mediaType, list, listIndex){
       if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
         mediaImage.src = list[i].image;
       }
-      else if (medium === 'books'){
-        if (results[i].volumeInfo.imageLinks){
+      else if (mediaType === 'books'){
+        if (list[i].volumeInfo.imageLinks){
           mediaImage.src = list[i].volumeInfo.imageLinks.smallThumbnail;
         }
         else{
@@ -144,7 +144,7 @@ async function loadTrendingList(mediaType, list, listIndex){
         }
       }
       else{
-        if (results[i].image[2]['#text']){
+        if (list[i].image[2]['#text']){
           mediaImage.src = list[i].image[2]['#text'];
         }
         else{
@@ -161,7 +161,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
         mediaOptions.innerHTML = list[i].title;
       }
-      else if (medium === 'books'){
+      else if (mediaType === 'books'){
         mediaOptions.innerHTML = list[i].volumeInfo.title;
       }
       else{
