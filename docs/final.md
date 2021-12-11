@@ -47,8 +47,8 @@ The second table is titled MediaEntries, which will store all list items for all
 | Title          | VARCHAR(50)                                         | Title of media entry                                  |
 | Medium         | VARCHAR(10)                                         | Medium of media entry (TV, Movie, Book, Song)         |
 | List           | VARCHAR(10)                                         | Particular list that a user added an entry to         |
-| TimeStarted    | DATE                                                | Date of when user added media entry                   |
-| TimeCompleted  | DATE                                                | Date of when user added media entry                   |
+| TimeStarted    | DATE                                                | Date of when user started media entry                 |
+| TimeCompleted  | DATE                                                | Date of when user completed media entry               |
 | ImageLink      | VARCHAR(100)                                        | Link to a raw image representing media entry          |
 | UserRating     | REAL                                                | Rating that user has given entry when adding to list  |
 
