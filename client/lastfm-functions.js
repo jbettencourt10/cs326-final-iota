@@ -14,5 +14,3 @@ export async function searchAlbums(query){
     const result = (await searchJSON.json()).results.albummatches.album;
     return result;
 }
-
-// searchAlbums('Red');
