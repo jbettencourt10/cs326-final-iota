@@ -191,7 +191,6 @@ app.get('/accountAge', async (req, res) => {
 
 app.get('/itemCount', async (req, res) => {
   const result = await itemCount(db, {username:req.user, medium:req.query.mediaType, time:req.query.time});
-  console.log(result);
   res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
