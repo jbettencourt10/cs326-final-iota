@@ -6,8 +6,10 @@ window.addEventListener('load', loadAnalytics());
 // You currently have A items in progress
 // It takes you on average A days to finish reading a book
 // It takes you on average A days to finish watching a show
-// Your average rating of movies diverges from the site rating by A
-// Your average rating of tv shows diverges from the site rating by A
+// Your average rating of books is A
+// Your average rating of movies is A
+// Your average rating of shows is A
+// Your average rating of songs is A
 
 async function loadAnalytics(){
   const analyticsContainer = document.getElementById("analytics");
@@ -42,6 +44,14 @@ async function loadAnalytics(){
   analytics += "You currently have ";
   info = await (await fetch(`${document.location.origin}/itemsStarted`)).json();
   analytics += info + " items in progress" + "<br>";
+
+  analytics += "It takes you on average ";
+  info = await (await fetch(`${document.location.origin}/averageTime?mediaType=books`)).json();
+  analytics += info + " days to finish reading a book" + "<br>";
+
+  analytics += "It takes you on average ";
+  info = await (await fetch(`${document.location.origin}/averageTime?mediaType=Series`)).json();
+  analytics += info + " days to finish watching a show" + "<br>";
 
   analyticsContainer.innerHTML = analytics;
 }
