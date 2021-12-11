@@ -34,7 +34,7 @@ The first table is titled Users, which will store data about users. This include
 | Salt         | VARCHAR(64)             | Salt for secure authentication with miniCrypt                    |
 | Hash         | VARCHAR(256)            | Hashed password for secure authentication with miniCrypt         |
 | FullName     | VARCHAR(50)             | Full name to personalize greeting                                |
-| CreationTime | TIMESTAMP               | Timestamp representing when account was registered               |
+| CreationTime | DATE                    | Date representing when account was registered                    |
 
 
 ### Table 2: MediaEntries
@@ -47,8 +47,8 @@ The second table is titled MediaEntries, which will store all list items for all
 | Title          | VARCHAR(50)                                         | Title of media entry                                  |
 | Medium         | VARCHAR(10)                                         | Medium of media entry (TV, Movie, Book, Song)         |
 | List           | VARCHAR(10)                                         | Particular list that a user added an entry to         |
-| TimeStarted    | TIMESTAMP                                           | Timestamp of when user added media entry              |
-| TimeCompleted  | TIMESTAMP                                           | Timestamp of when user added media entry              |
+| TimeStarted    | DATE                                                | Date of when user added media entry                   |
+| TimeCompleted  | DATE                                                | Date of when user added media entry                   |
 | ImageLink      | VARCHAR(100)                                        | Link to a raw image representing media entry          |
 | UserRating     | REAL                                                | Rating that user has given entry when adding to list  |
 
@@ -81,6 +81,11 @@ Authentication occurs with a username/password paradigm that would be found in a
   - Configured IMDB API initially.
 
 **Bill**
+  - Inital design and implementation of the landing page.
+  - Inital design and implementation of the list page acting as the current foundation.
+  - Current design and implementation of the analytics page.
+  - Server routing and database operations for all above.
+  - General debugging of code and styling
 
 **Thao**
   - Created HTML pages for main listing page, custom list page, and search page.
