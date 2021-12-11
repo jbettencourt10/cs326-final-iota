@@ -186,11 +186,12 @@ app.get('/updateItem', async (req, res) => {
 
 app.get('/accountAge', async (req, res) => {
   const result = await accountAge(db, {username:req.user});
-  res.send(JSON.parse(JSON.stringify(String(result[0]['?column?']))));
+  res.send(JSON.parse(JSON.stringify({age:result[0]['?column?'], name:req.user})));
 });
 
-app.get('/userItemCount', async (req, res) => {
+app.get('/itemCount', async (req, res) => {
   const result = await itemCount(db, {username:req.user, medium:req.query.mediaType, time:req.query.time});
+  console.log(result);
   res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
@@ -213,7 +214,7 @@ app.get('/averageRating', async (req, res) => {
   if(result[0].avg === null){
     res.send(JSON.parse(JSON.stringify(String(0))));
   }else{
-    res.send(JSON.parse(JSON.stringify(result[0].avg)));
+    res.send(JSON.parse(JSON.stringify(String(result[0].avg))));
   }
 });
 // app.get('/create', (req, res) => {

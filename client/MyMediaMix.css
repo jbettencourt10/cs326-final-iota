@@ -466,3 +466,12 @@ body {
   font-size: 40px;
 }
 
+.analytics {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #a9a9a9;
+  font-size: 20px;
+  font-family: Georgia, serif;
+  color: black;
+}

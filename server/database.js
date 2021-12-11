@@ -107,7 +107,7 @@ export async function itemCount(database, queryObject) {
             const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timecompleted-timestarted < 7', values: [queryObject.username, queryObject.medium] });
             return response;
         }
-        const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2', values: [queryObject.username, queryObject.medium] });
+        const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timecompleted IS NOT NULL', values: [queryObject.username, queryObject.medium] });
         return response;
     } catch (error) {
         console.log(error);
