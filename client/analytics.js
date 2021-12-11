@@ -12,16 +12,29 @@ window.addEventListener('load', loadAnalytics());
 async function loadAnalytics(){
   const analyticsContainer = document.getElementById("analytics");
   let analytics = "";
-  const age = await fetch(`${document.location.origin}/accountAge`);
-  analytics += "Your account is " + age + " days old" + "<br>";
-  analytics += "In total, you have read ";
-  const totalBooks = await (await fetch(`${document.location.origin}/userItemCount?mediaType=books}`)).json();
-  analytics += totalBooks + " books, watched ";
-  const totalShows = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Series}`)).json();
-  analytics += totalShows + " shows, watched ";
-  const totalMovies = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Movies}`)).json();
-  analytics += totalMovies + " movies, and listened to ";
-  const totalMusic = await (await fetch(`${document.location.origin}/userItemCount?mediaType=music}`)).json();
-  analytics += totalMusic + " songs";
+  let info = await (await fetch(`${document.location.origin}/accountAge`)).json();
+  analytics += "Your account is " + info + " days old" + "<br>";
+
+  analytics += "In total you have read ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=books}`)).json();
+  analytics += info + " books, watched ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Movies}`)).json();
+  analytics += info + " movies, watched ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Series}`)).json();
+  analytics += info + " shows, and listened to ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=music}`)).json();
+  analytics += info + " songs" + "<br>";
+
+  analytics += "This week you have read ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=books&time=week}`)).json();
+  analytics += info + " books, watched ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Movies&time=week}`)).json();
+  analytics += info + " movies, watched ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Series&time=week}`)).json();
+  analytics += info + " shows, and listened to ";
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=music&time=week}`)).json();
+  analytics += info + " songs" + "<br>";
+
+
   analyticsContainer.innerHTML = analytics;
 }

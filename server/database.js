@@ -90,8 +90,24 @@ export async function changeItemList(database, queryObject) {
 }
 
 
+export async function accountAge(database, queryObject) {
+    try {
+        const response = await database.any({ text: 'SELECT current_date - creationtime FROM users WHERE username=$1', values: [queryObject.username] });
+        return response;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+
+
 export async function userItemCount(database, queryObject) {
     try {
+        if(queryObject.time === "week"){
+            const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timecompleted-timestarted < 7', values: [queryObject.username, queryObject.medium] });
+            return response;
+        }
         const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2', values: [queryObject.username, queryObject.medium] });
         return response;
     } catch (error) {
