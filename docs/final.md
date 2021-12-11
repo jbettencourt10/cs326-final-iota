@@ -41,17 +41,16 @@ The first table is titled Users, which will store data about users. This include
 
 The second table is titled MediaEntries, which will store all list items for all users on the site. This includes the username of the user who put the entry into their list, the title of a media item, the medium (book, tv, movie, song), and data about the media item which is scraped from web APIs. For example, movies will include a runtime, while books will include a page count. Finally, a column exists to determine which list a media entry is on (in progress, watched, plan to watch/listen/read).
 
-| Column     | Data Type                                           | Description                                           |
-|------------|-----------------------------------------------------|-------------------------------------------------------|
-| Username   | VARCHAR(30) FOREIGN KEY REFERENCES Users(Username)  | Username of user that media entry pertains to         |
-| Title      | VARCHAR(50)                                         | Title of media entry                                  |
-| Medium     | VARCHAR(10)                                         | Medium of media entry (TV, Movie, Book, Song)         |
-| List       | VARCHAR(10)                                         | Particular list that a user added an entry to         |
-| TimeStarted  | TIMESTAMP                                           | Timestamp of when user added media entry              |
-| TimeCompleted  | TIMESTAMP                                           | Timestamp of when user added media entry              |              |
-| ImageLink  | VARCHAR(100)                                        | Link to a raw image representing media entry          |
-| UserRating | REAL                                                | Rating that user has given entry when adding to list  |
-| IMDBRating | REAL                                                | Rating from scraped API (IMDB, Last.fm, etc)          |
+| Column         | Data Type                                           | Description                                           |
+|----------------|-----------------------------------------------------|-------------------------------------------------------|
+| Username       | VARCHAR(30) FOREIGN KEY REFERENCES Users(Username)  | Username of user that media entry pertains to         |
+| Title          | VARCHAR(50)                                         | Title of media entry                                  |
+| Medium         | VARCHAR(10)                                         | Medium of media entry (TV, Movie, Book, Song)         |
+| List           | VARCHAR(10)                                         | Particular list that a user added an entry to         |
+| TimeStarted    | TIMESTAMP                                           | Timestamp of when user added media entry              |
+| TimeCompleted  | TIMESTAMP                                           | Timestamp of when user added media entry              |
+| ImageLink      | VARCHAR(100)                                        | Link to a raw image representing media entry          |
+| UserRating     | REAL                                                | Rating that user has given entry when adding to list  |
 
 ## URL Routing:
 
@@ -77,9 +76,9 @@ Authentication occurs with a username/password paradigm that would be found in a
   - Created HTML, CSS, and JS for register page and account settings page.
   - Created some JS for landing page with trending media items.
   - Helped with routing and server creation with express js.
-  - Assisted in cleaning up code, linting, formatting, and commenting for final submission
-  - Edit together video for submission
-  - Configured IMDB API initially
+  - Assisted in cleaning up code, linting, formatting, and commenting for final submission.
+  - Edit together video for submission.
+  - Configured IMDB API initially.
 
 **Bill**
 
