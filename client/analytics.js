@@ -1,8 +1,8 @@
 window.addEventListener('load', loadAnalytics());
 // Your account is A days old
 // In total you have read A books, watched B shows, watched C movies, and listened to D songs
-// This week  you have read A books, watched B shows, watched C movies, and listened to D songs
-// This week you have added A items
+// This week you have read A books, watched B shows, watched C movies, and listened to D songs
+// This week you have started A items
 // You currently have A items in progress
 // It takes you on average A days to finish reading a book
 // It takes you on average A days to finish watching a show
@@ -26,15 +26,19 @@ async function loadAnalytics(){
   analytics += info + " songs" + "<br>";
 
   analytics += "This week you have read ";
-  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=books&time=week}`)).json();
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=books&time=week`)).json();
   analytics += info + " books, watched ";
-  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Movies&time=week}`)).json();
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Movies&time=week`)).json();
   analytics += info + " movies, watched ";
-  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Series&time=week}`)).json();
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=Series&time=week`)).json();
   analytics += info + " shows, and listened to ";
-  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=music&time=week}`)).json();
+  info = await (await fetch(`${document.location.origin}/userItemCount?mediaType=music&time=week`)).json();
   analytics += info + " songs" + "<br>";
 
+  analytics += "This week you have started ";
+  info = await (await fetch(`${document.location.origin}/itemsStarted?time=week`)).json();
+  analytics += info + " items" + "<br>";
+  
 
   analyticsContainer.innerHTML = analytics;
 }

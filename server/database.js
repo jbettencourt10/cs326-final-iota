@@ -76,8 +76,9 @@ export async function updateUserRating(database, queryObject) {
 export async function changeItemList(database, queryObject) {
     try {
         if(queryObject.newList === "inProgress"){
-            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
+            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date, timecompleted=$4 WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title, undefined] });
         }else if(queryObject.newList === "completed"){
+            await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date WHERE username=$2 AND title=$3 AND timestarted=$4', values: [queryObject.newList, queryObject.username, queryObject.title, undefined] });
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timecompleted=current_date WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
         }else{
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=$4, timecompleted=$4 WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title, undefined] });
@@ -100,9 +101,7 @@ export async function accountAge(database, queryObject) {
     }
 }
 
-
-
-export async function userItemCount(database, queryObject) {
+export async function itemCount(database, queryObject) {
     try {
         if(queryObject.time === "week"){
             const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timecompleted-timestarted < 7', values: [queryObject.username, queryObject.medium] });
@@ -110,6 +109,18 @@ export async function userItemCount(database, queryObject) {
         }
         const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2', values: [queryObject.username, queryObject.medium] });
         return response;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+export async function itemsStarted(database, queryObject) {
+    try {
+        if(queryObject.time === "week"){
+            const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND current_date-timestarted < 7 AND timecompleted=$2', values: [queryObject.username, undefined] });
+            return response;
+        }
     } catch (error) {
         console.log(error);
         return false;

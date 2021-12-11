@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, accountAge, userItemCount } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, accountAge, itemCount, itemsStarted } from './database.js';
 import { findUser, addUser, changePassword, changeName } from './auth.js';
 import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
@@ -190,10 +190,14 @@ app.get('/accountAge', async (req, res) => {
 });
 
 app.get('/userItemCount', async (req, res) => {
-  const result = await userItemCount(db, {username:req.user, medium:req.mediaType, time:req.time});
+  const result = await itemCount(db, {username:req.user, medium:req.query.mediaType, time:req.query.time});
   res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
+app.get('/itemsStarted', async (req, res) => {
+  const result = await itemsStarted(db, {username:req.user, time:req.query.time});
+  res.send(JSON.parse(JSON.stringify(result[0].count)));
+});
 // app.get('/create', (req, res) => {
 //   res.sendFile('client/list.html', { root: '.' });
 // });
