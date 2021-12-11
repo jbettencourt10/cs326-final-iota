@@ -139,3 +139,13 @@ export async function averageTime(database, queryObject) {
         return false;
     }
 }
+
+export async function averageRating(database, queryObject) {
+    try {
+        const response = await database.any({ text: 'SELECT AVG (userrating) FROM MediaEntries WHERE username=$1 AND medium=$2 AND userrating IS NOT NULL', values: [queryObject.username, queryObject.medium] });
+        return response;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}

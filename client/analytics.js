@@ -1,11 +1,15 @@
 window.addEventListener('load', loadAnalytics());
 // Your account is A days old
+
 // In total you have read A books, watched B shows, watched C movies, and listened to D songs
 // This week you have read A books, watched B shows, watched C movies, and listened to D songs
+
 // This week you have started A items
 // You currently have A items in progress
+
 // It takes you on average A days to finish reading a book
 // It takes you on average A days to finish watching a show
+
 // Your average rating of books is A
 // Your average rating of movies is A
 // Your average rating of shows is A
@@ -40,7 +44,6 @@ async function loadAnalytics(){
   analytics += "This week you have started ";
   info = await (await fetch(`${document.location.origin}/itemsStarted?time=week`)).json();
   analytics += info + " items" + "<br>";
-  
   analytics += "You currently have ";
   info = await (await fetch(`${document.location.origin}/itemsStarted`)).json();
   analytics += info + " items in progress" + "<br>";
@@ -48,10 +51,22 @@ async function loadAnalytics(){
   analytics += "It takes you on average ";
   info = await (await fetch(`${document.location.origin}/averageTime?mediaType=books`)).json();
   analytics += info + " days to finish reading a book" + "<br>";
-
   analytics += "It takes you on average ";
   info = await (await fetch(`${document.location.origin}/averageTime?mediaType=Series`)).json();
   analytics += info + " days to finish watching a show" + "<br>";
+
+  analytics += "Your average rating of books is ";
+  info = await (await fetch(`${document.location.origin}/averageRating?mediaType=books`)).json();
+  analytics += info + "<br>";
+  analytics += "Your average rating of movies is ";
+  info = await (await fetch(`${document.location.origin}/averageRating?mediaType=Movies`)).json();
+  analytics += info + "<br>";
+  analytics += "Your average rating of shows is ";
+  info = await (await fetch(`${document.location.origin}/averageRating?mediaType=Series`)).json();
+  analytics += info + "<br>";
+  analytics += "Your average rating of songs is ";
+  info = await (await fetch(`${document.location.origin}/averageRating?mediaType=music`)).json();
+  analytics += info;
 
   analyticsContainer.innerHTML = analytics;
 }
