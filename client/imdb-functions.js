@@ -4,7 +4,7 @@
 //k_t249l7q8
 //k_8cp79u43
 //k_bw06gz8t
-const imdbKey = 'k_bw06gz8t';
+const imdbKey = 'k_w81k3buu';
 
 // 'Movies' or 'TVs'
 export async function getTopIMDB(media) {

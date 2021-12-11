@@ -103,7 +103,11 @@ async function loadLandingMediaList(media) {
     const rating = document.createElement('div');
     rating.classList.add('col');
     if (media === 'Movies' || media === 'TVs'){
-      rating.innerHTML = `Rating = ${top100Media[i].imDbRating}`;
+      if(top100Media[i].imDbRating){
+        rating.innerHTML = `Rating: ${top100Media[i].imDbRating}`;
+      }else{
+        rating.innerHTML = "Coming Soon";
+      }
     }
     else if (media === 'Books'){
       rating.innerHTML = `New Yorks Times Best Seller #${top100Media[i].rank}`;
