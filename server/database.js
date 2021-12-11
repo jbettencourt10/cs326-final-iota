@@ -118,9 +118,11 @@ export async function itemCount(database, queryObject) {
 export async function itemsStarted(database, queryObject) {
     try {
         if(queryObject.time === "week"){
-            const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND current_date-timestarted < 7 AND timecompleted=$2', values: [queryObject.username, undefined] });
+            const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND timestarted != $2 AND timecompleted=$2 AND current_date-timestarted < 7', values: [queryObject.username, undefined] });
             return response;
         }
+        const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND timestarted != $2 AND timecompleted=$2', values: [queryObject.username, undefined] });
+        return response;
     } catch (error) {
         console.log(error);
         return false;

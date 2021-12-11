@@ -39,6 +39,9 @@ async function loadAnalytics(){
   info = await (await fetch(`${document.location.origin}/itemsStarted?time=week`)).json();
   analytics += info + " items" + "<br>";
   
+  analytics += "You currently have ";
+  info = await (await fetch(`${document.location.origin}/itemsStarted`)).json();
+  analytics += info + " items in progress" + "<br>";
 
   analyticsContainer.innerHTML = analytics;
 }
