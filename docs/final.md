@@ -88,7 +88,7 @@ Authentication occurs with a username/password paradigm that would be found in a
   - Completed the search function on search page to display the results and linked all search bar on all pages. 
   - Helped with the "add" button to add media to the wishlist.
   - Restyled all pages so that they are consistent in format and styling.
-  - Created menubar to navigate between pages. 
+  - Created menubar to navigate between pages and configured server for those links. 
   - Helped with cleaning up the code throughout the project.
   - Constantly deployed the updated project to Heroku.
 
