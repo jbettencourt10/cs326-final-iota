@@ -252,7 +252,7 @@ app.get('/averageRating', async (req, res) => {
   }
 });
 
-// Get average rating of entries for particular user
+// Get full name of particular user
 app.get('/fullName', async (req, res) => {
   const result = await fullName(db, {username:req.user});
   res.send(result[0].fullname);
