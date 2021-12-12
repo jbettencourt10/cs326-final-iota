@@ -166,7 +166,7 @@ async function loadSearchList(medium, title) {
       addButton.type = 'submit';
       addButton.classList.add('btn', "btn-success", "btn-primary", "add-button");
       addButton.role = "button";
-      addButton.value = "Add to Wishlist";
+      addButton.value = "Add to Planned";
       form.appendChild(addButton);
       add.appendChild(form);
       searchList.appendChild(image);
