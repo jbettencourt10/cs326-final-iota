@@ -21,20 +21,26 @@ With analytics, we also hope that a user can be more informed in making decision
   - Github: `tmtrinh`
 
 ## User Interface:
+- `index.html`: This page is the landing page for the website. This page allows logged out users to see trending items for all mediums, which include books, movies, music, and TV shows.
+- `list.html`: This is the primary page for logged in users. Here, a user can view, and update their list. It also includes a trending list of media similar to `index.html`.
+- `account.html`: This page is the account settings for a logged in user. It allows a user to change their password and full name.
+- `search.html`: This page is the page for search results and allows a user to add media entries to a user's list.
+- `sign-up.html`: This page allows users to input information to create a user account for MyMediaMix.
+- `analytics.html`: This page shows the analytics relevant to a user's media consumption.
 
 ## APIs:
--  **/register** (POST): Adds user to database with relevant information if no errors occur (account already exists, etc.).
+-  **/register (POST)**: Adds user to database with relevant information if no errors occur (account already exists, etc.).
 -  **/changeName**: Changes user full name in database from current full name to new user-input full name.
 -  **/changePassword**: Changes user salt and hash in database from current hash and salt to new hash and salt based on user-input password.
--  **/login** (POST): Attempts to authenticate a user based on user-input credentials and redirects them to `list.html` if successful.
--  **/add**: Adds a particular media entry to MediaEntries table 
--  **/getList**: Redirects a user to `search.html` with the information given by the user if they are logged in. Otherwise, redirects to `index.html`.
--  **/updateItem**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
--  **/accountAge**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
--  **/itemCount**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
--  **/itemsStarted**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
--  **/averageTime**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
--  **/averageRating**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/login (POST)**: Attempts to authenticate a user based on user-input credentials and redirects them to `list.html` if successful.
+-  **/add**: Adds a particular media entry to MediaEntries table associated with currently logged in user (used with + button).
+-  **/getList**: Gets all media entries from MediaEntries table associated with particular logged in user.
+-  **/updateItem**: Updates user rating in MediaEntries table associated with particular user and media title to user-input rating.
+-  **/accountAge**: Calculates account age of currently logged in user using CreationTime column in Users table.
+-  **/itemCount**: Calculates total number of entries on a user's list by running PSQL query on MediaEntries table.
+-  **/itemsStarted**: Calculates total number of entries on currently logged in user's InProgress list existent in MediaEntries table.
+-  **/averageTime**: Calculates average time for currently logged in user to move an item from their inProgress list to their Completed list.
+-  **/averageRating**: Calculates average rating of currently logged in user among all media entries on all of their lists.
 
 ## Database:
 
@@ -69,7 +75,7 @@ The second table is titled MediaEntries, which will store all list items for all
 ## URL Routing:
 -  **/list**: Redirects a user to `list.html` which is their personal list page. Requries a user to be logged in.
 -  **/**: Redirects a user to `index.html` if they are not logged in. Otherwise, redirects them to `list.html`.
--  **/register** (GET): Redirects a user to `sign-up.html` to input register information.
+-  **/register (GET)**: Redirects a user to `sign-up.html` to input register information.
 -  **/logout**: Redirects a user to `index.html` after destroying their user session with passport.
 -  **/account**: Redirects a user to `account.html` to edit their account information if they are logged in. Otherwise, redirects to `index.html`.
 -  **/search**: Redirects a user to `search.html` with the information given by the user if they are logged in. Otherwise, redirects to `index.html`.
@@ -121,7 +127,13 @@ Authentication occurs with a username/password paradigm that would be found in a
   - Constantly deployed the updated project to Heroku.
 
 ## Conclusion:
+We are overall very satisfied with the final product of MyMediaMix. We set out with the goal of making a product that would allow users to track their media consumption, and this was achieved rather well in our opinion.
 
+Our group worked really well together. While there was miscommunication at some points, it was quickly resolved and everything worked rather smoothly. Our group reflected and revealed that we never felt afraid to ask each other questions if we were having troubles. Additionally, code was well documented to ensure that there would be no ambiguity when another group member would work on that particular block.
+
+Two technical hurdles existed that were pervasive throughout entire project. This was the use of ExpressJS and our limited number of API calls. ExpressJS was just really difficult to use, and we attribute this to the fact that we learned ExpressJS in the lab the day before Milestone 2 was due. This made this part challenging, but nevertheless we independently learned and fixed every problem associated with it. Finally, the IMDB api we were using only allowed us to use 100 API calls per day, so we routinely had to create new api keys for testing. This became very tiresome, and in an industrial application we hope that we would have the finances to pay for an upgraded api key that allows for more than 100 api calls per day;.
+
+If we were to continue this project, it would be nice to include a recommendation system for users based on their current media list. This would require a large degree of refactoring and restructuring (along with a financial cost), but it would be useful for users to be given recommendations based on their currrent list. This would make MyMediaMix even more "all-in-one" by doubling as a tracking and recommendation service.
 
 
 ## Rubric
