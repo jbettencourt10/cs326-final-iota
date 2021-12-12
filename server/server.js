@@ -2,7 +2,7 @@ import express, { json } from 'express';
 import expressSession from 'express-session';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, accountAge, itemCount, itemsStarted, averageTime, averageRating } from './database.js';
+import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, accountAge, itemCount, itemsStarted, averageTime, averageRating, fullName } from './database.js';
 import { findUser, addUser, changePassword, changeName } from './auth.js';
 import { MiniCrypt } from './miniCrypt.js';
 
@@ -217,7 +217,7 @@ app.get('/updateItem', async (req, res) => {
 // Get account age of particular user
 app.get('/accountAge', async (req, res) => {
   const result = await accountAge(db, {username:req.user});
-  res.send(JSON.parse(JSON.stringify({age:result[0]['?column?'], name:req.user})));
+  res.send(JSON.parse(JSON.stringify(String(result[0]['?column?']))));
 });
 
 // Get media entry count of particular user
@@ -250,6 +250,12 @@ app.get('/averageRating', async (req, res) => {
   }else{
     res.send(JSON.parse(JSON.stringify(String(result[0].avg))));
   }
+});
+
+// Get average rating of entries for particular user
+app.get('/fullName', async (req, res) => {
+  const result = await fullName(db, {username:req.user});
+  res.send(result[0].fullname);
 });
 
 // Start server on either heroku or port 8080

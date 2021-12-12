@@ -164,3 +164,13 @@ export async function averageRating(database, queryObject) {
         return false;
     }
 }
+
+export async function fullName(database, queryObject) {
+    try {
+        const response = await database.any({ text: 'SELECT fullname FROM Users WHERE username=$1', values: [queryObject.username] });
+        return response;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}

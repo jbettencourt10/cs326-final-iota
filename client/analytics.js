@@ -18,9 +18,10 @@ window.addEventListener('load', loadAnalytics());
 async function loadAnalytics(){
   const analyticsContainer = document.getElementById("analytics");
   let analytics = "<br><br>";
-  let info = await (await fetch(`${document.location.origin}/accountAge`)).json();
-  analytics += "Hello " + info.name + "<br><br>"
-  analytics += "Your account is " + info.age + " days old" + "<br><br>";
+  let info = await (await fetch(`${document.location.origin}/fullName`)).text();
+  analytics += "Hello " + info + "<br><br>"
+  info = await (await fetch(`${document.location.origin}/accountAge`)).json();
+  analytics += "Your account is " + info + " days old" + "<br><br>";
 
   analytics += "In total you have read ";
   info = await (await fetch(`${document.location.origin}/itemCount?mediaType=books&time=all}`)).json();
