@@ -42,6 +42,7 @@ With analytics, we also hope that a user can be more informed in making decision
 -  **/itemsStarted**: Calculates total number of entries on currently logged in user's InProgress list existent in MediaEntries table.
 -  **/averageTime**: Calculates average time for currently logged in user to move an item from their inProgress list to their Completed list.
 -  **/averageRating**: Calculates average rating of currently logged in user among all media entries on all of their lists.
+-  **/fullName**: Gets name of currently logged in user.
 
 ## Database:
 
