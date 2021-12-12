@@ -6,7 +6,11 @@
 ---
 
 ## Overview:
-The general idea of MyMediaMix is to allow users to track all of their media consumption among all mediums which includes Movies, TV shows, Music, and Books.
+The general idea of MyMediaMix is to allow users to track all of their media consumption among all mediums which includes Movies, TV shows, Music, and Books. It is our goal that users will gain insight into their media habits and potentially make changes if they decide that they need to.
+
+ Three lists exist in our application for users to effectively track their media consumption, which are In Progress, Planned, and Completed. Users can use the search functionality to find the particular media item they are looking for, and then easily add it to their media list where it can be easily be rated or changed to another list.
+
+With analytics, we also hope that a user can be more informed in making decisions about their habits if their analytics show they consume too much (or too little!) media.
 
 ## Team Members:
 - Jarred Bettencourt
@@ -19,6 +23,18 @@ The general idea of MyMediaMix is to allow users to track all of their media con
 ## User Interface:
 
 ## APIs:
+-  **/register** (POST): Adds user to database with relevant information if no errors occur (account already exists, etc.).
+-  **/changeName**: Changes user full name in database from current full name to new user-input full name.
+-  **/changePassword**: Changes user salt and hash in database from current hash and salt to new hash and salt based on user-input password.
+-  **/login** (POST): Attempts to authenticate a user based on user-input credentials and redirects them to `list.html` if successful.
+-  **/add**: Adds a particular media entry to MediaEntries table 
+-  **/getList**: Redirects a user to `search.html` with the information given by the user if they are logged in. Otherwise, redirects to `index.html`.
+-  **/updateItem**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/accountAge**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/itemCount**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/itemsStarted**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/averageTime**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
+-  **/averageRating**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
 
 ## Database:
 
@@ -51,6 +67,13 @@ The second table is titled MediaEntries, which will store all list items for all
 | UserRating     | REAL                                                | Rating that user has given entry when adding to list  |
 
 ## URL Routing:
+-  **/list**: Redirects a user to `list.html` which is their personal list page. Requries a user to be logged in.
+-  **/**: Redirects a user to `index.html` if they are not logged in. Otherwise, redirects them to `list.html`.
+-  **/register** (GET): Redirects a user to `sign-up.html` to input register information.
+-  **/logout**: Redirects a user to `index.html` after destroying their user session with passport.
+-  **/account**: Redirects a user to `account.html` to edit their account information if they are logged in. Otherwise, redirects to `index.html`.
+-  **/search**: Redirects a user to `search.html` with the information given by the user if they are logged in. Otherwise, redirects to `index.html`.
+-  **/analytics**: Redirects a user to `analytics.html` with relevant analytics for a user session if they are logged in. Otherwise, they are redirected to `index.html`.
 
 ## Authentication:
 
@@ -145,3 +168,6 @@ Authentication occurs with a username/password paradigm that would be found in a
 
 ## Heroku Link
 https://mymediamix.herokuapp.com/
+
+## Video Link
+https://www.youtube.com/watch?v=HBZEy87PlOU

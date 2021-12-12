@@ -216,21 +216,6 @@ app.get('/averageRating', async (req, res) => {
     res.send(JSON.parse(JSON.stringify(String(result[0].avg))));
   }
 });
-// app.get('/create', (req, res) => {
-//   res.sendFile('client/list.html', { root: '.' });
-// });
-
-// app.get('/delete', (req, res) => {
-
-// });
-
-// app.get('/update', (req, res) => {
-//   res.sendFile('client/list.html', { root: '.' });
-// });
-
-// app.get('*', (req, res) => {
-//   res.redirect('/logout');
-// });
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`MyMediaMix listening at http://localhost:${process.env.PORT || 8080}`);
