@@ -6,10 +6,10 @@
 ---
 
 ## Overview:
-The general idea of MyMediaMix is to allow users to track all of their media consumption among all mediums which includes Movies, TV shows, Music, and Books. It is our goal that users will gain insight into their media habits and potentially make changes if they decide that they need to.
+The general idea of MyMediaMix is to allow users to track all of their media consumption across all mediums which includes movies, TV shows, music, and books. It is our goal that users will gain insight into their media habits and potentially make changes if they decide that they need to.
 
- Three lists exist in our application for users to effectively track their media consumption, which are In Progress, Planned, and Completed. Users can use the search functionality to find the particular media item they are looking for, and then easily add it to their media list where it can be easily be rated or changed to another list.
- User can also use the trending list displayed on the main listing page to find new popular media item and add it to their media list.
+ Three lists exist in our application for users to effectively track their media consumption, which are In Progress, Planned, and Completed. Users can use the search functionality to find the particular media item they are looking for, and then easily add it to their media list where it can be rated or changed to another list.
+ User can also use the trending list displayed on the main listing page to find new popular media items and add it to their media list.
 
 With analytics, we also hope that a user can be more informed in making decisions about their habits if their analytics show they consume too much (or too little!) media.
 
@@ -22,7 +22,7 @@ With analytics, we also hope that a user can be more informed in making decision
   - Github: `tmtrinh`
 
 ## User Interface:
-- `index.html`: This page is the landing page for the website. This page allows logged out users to see trending items for all mediums, which include books, movies, music, and TV shows.
+- `index.html`: This page is the landing page for the website. This page allows all site visitors to see trending items for all mediums, which include books, movies, music, and TV shows.
 - `list.html`: This is the primary page for logged in users. Here, a user can view, and update their list. It also includes a trending list of media similar to `index.html`.
 - `account.html`: This page is the account settings for a logged in user. It allows a user to change their password and full name.
 - `search.html`: This page is the page for search results and allows a user to add media entries to a user's list.
