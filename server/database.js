@@ -33,10 +33,10 @@ export async function initializeTables(database) {
 }
 
 /**
- *
+ * Add an entry to MediaEntries table with associated queryObject information
  * @param {DatabaseConnection} database
  * @param {<string, string, string>} queryObject
- * @returns
+ * @returns success (true) or failure (false)
  */
 export async function addUserEntry(database, queryObject) {
     try {
@@ -53,6 +53,12 @@ export async function addUserEntry(database, queryObject) {
     }
 }
 
+/**
+ * Gets a user's list entries
+ * @param {DatabaseConnection} database
+ * @param {<string, string, int>} queryObject
+ * @returns list of entries on a user's list
+ */
 export async function getUserEntries(database, queryObject) {
     try {
         if (queryObject.mediaType === "all") {
@@ -67,6 +73,12 @@ export async function getUserEntries(database, queryObject) {
     }
 }
 
+/**
+ * Removes an entry from a user's list
+ * @param {DatabaseConnection} database
+ * @param {<string, string>} queryObject
+ * @returns success (true) or failure (false)
+ */
 export async function removeUserEntry(database, queryObject) {
     try {
         await database.none({ text: 'DELETE FROM MediaEntries WHERE username=$1 AND title=$2', values: [queryObject.username, queryObject.title] });
@@ -77,6 +89,12 @@ export async function removeUserEntry(database, queryObject) {
     }
 }
 
+/**
+ * Updates a user's rating for an entry on their list
+ * @param {DatabaseConnection} database
+ * @param {<int, string, string>} queryObject
+ * @returns success (true) or failure (false)
+ */
 export async function updateUserRating(database, queryObject) {
     try {
         await database.none({ text: 'UPDATE MediaEntries SET UserRating=$1 WHERE username=$2 AND title=$3', values: [queryObject.newRating, queryObject.username, queryObject.title] });
@@ -87,7 +105,12 @@ export async function updateUserRating(database, queryObject) {
     }
 }
 
-// Does not consider cases where an item from planned gets moved directly to completed
+/**
+ * Change item to another list
+ * @param {DatabaseConnection} database
+ * @param {<int, string, string>} queryObject
+ * @returns success (true) or failure (false)
+ */
 export async function changeItemList(database, queryObject) {
     try {
         if (queryObject.newList === "inProgress") {
@@ -105,7 +128,12 @@ export async function changeItemList(database, queryObject) {
     }
 }
 
-
+/**
+ * Get account age
+ * @param {DatabaseConnection} database
+ * @param {<string>} queryObject
+ * @returns account age or failure (false)
+ */
 export async function accountAge(database, queryObject) {
     try {
         const response = await database.any({ text: 'SELECT current_date - creationtime FROM users WHERE username=$1', values: [queryObject.username] });
@@ -116,6 +144,12 @@ export async function accountAge(database, queryObject) {
     }
 }
 
+/**
+ * Get item count of particular user
+ * @param {DatabaseConnection} database
+ * @param {<string, string>} queryObject
+ * @returns item count or failure (false)
+ */
 export async function itemCount(database, queryObject) {
     try {
         if (queryObject.time === "week") {
@@ -130,6 +164,12 @@ export async function itemCount(database, queryObject) {
     }
 }
 
+/**
+ * Get items on In Progress list
+ * @param {DatabaseConnection} database
+ * @param {<string>} queryObject
+ * @returns items started or failure (false)
+ */
 export async function itemsStarted(database, queryObject) {
     try {
         if (queryObject.time === "week") {
@@ -144,7 +184,12 @@ export async function itemsStarted(database, queryObject) {
     }
 }
 
-
+/**
+ * Get average time of item on list
+ * @param {DatabaseConnection} database
+ * @param {<string, string>} queryObject
+ * @returns average time or failure (false)
+ */
 export async function averageTime(database, queryObject) {
     try {
         const response = await database.any({ text: 'SELECT AVG (timecompleted - timestarted) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timestarted IS NOT NULL AND timecompleted IS NOT NULL', values: [queryObject.username, queryObject.medium] });
@@ -155,6 +200,12 @@ export async function averageTime(database, queryObject) {
     }
 }
 
+/**
+ * Get average rating of items on user's list
+ * @param {DatabaseConnection} database
+ * @param {<string, string>} queryObject
+ * @returns account age or failure (false)
+ */
 export async function averageRating(database, queryObject) {
     try {
         const response = await database.any({ text: 'SELECT AVG (userrating) FROM MediaEntries WHERE username=$1 AND medium=$2 AND userrating IS NOT NULL', values: [queryObject.username, queryObject.medium] });
