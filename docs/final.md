@@ -22,8 +22,6 @@ The general idea of MyMediaMix is to allow users to track all of their media con
 
 ## Database:
 
-
-
 ### Table 1: Users
 
 The first table is titled Users, which will store data about users. This includes credentials, watch/read/listen time, and various metadata about their account creation. After learn authentication on 11/23, the password column in the Users table will be hashed with a salt to remain secure.
@@ -106,14 +104,10 @@ Authentication occurs with a username/password paradigm that would be found in a
 ## Rubric
 
 - Documentation (10)
-  - Linting (3)
+  - Linting (5)
     - Is JS, HTML, and CSS properly formatted, and linted for readability?
-  - Commenting (4)
+  - Commenting (5)
     - Is commenting done in a way that encourages readability and allows external users to understand what is occuring in code?
-  - Organized Code in folders (3)
-    - Does a JS Folder exist for storage of JS files?
-    - Does a CSS folder exist for storage of CSS files?
-    - Does an HTML folder exist for storage of HTML files?
 - Backend (30)
   - CRUD (16)
     - Create (4)
