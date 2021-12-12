@@ -47,7 +47,7 @@ With analytics, we also hope that a user can be more informed in making decision
 
 ### Table 1: Users
 
-The first table is titled Users, which will store data about users. This includes credentials, watch/read/listen time, and various metadata about their account creation. After learn authentication on 11/23, the password column in the Users table will be hashed with a salt to remain secure.
+The first table is titled Users, which will store data about users. This includes credentials, watch/read/listen time, and various metadata about their account creation.
 
 | Column       | Data Type               | Description                                                      |
 |--------------|-------------------------|------------------------------------------------------------------|
