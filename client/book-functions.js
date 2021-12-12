@@ -12,6 +12,5 @@ const GB_API_KEY = 'AIzaSyCOuh9emvOL3pwNRWh7rrKsH_LrB4nuXPM';
 export async function searchBook(query){
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${query.title}&key=${GB_API_KEY}`);
     const searchResults = await response.json();
-    console.log(searchResults);
     return searchResults;
 }

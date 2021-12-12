@@ -23,7 +23,6 @@ musicButton.addEventListener('click', landingMusic);
 
 function landingBooks() {
   document.getElementById('trendingText').innerHTML = 'Trending Books';
-  //document.getElementById('mediaList').innerHTML = '';
   loadLandingMediaList('Books');
 }
 
@@ -42,7 +41,6 @@ function landingMusic() {
   loadLandingMediaList('Music');
 }
 
-// TODO: make this look better
 async function loadLandingMediaList(media) {
   document.getElementById('mediaList').innerHTML = '';
   let top100Media;

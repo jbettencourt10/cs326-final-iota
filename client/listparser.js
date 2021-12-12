@@ -15,7 +15,6 @@ function showMediaList() {
         const img = document.createElement('img');
         img.height = 500;
         img.width = 250;
-        // img.src = top100Movies[i].image;
         img.classList.add('figure-img', 'img-fluid', 'rounded');
         img.alt = 'Image Placeholder';
 

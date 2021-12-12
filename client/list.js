@@ -16,7 +16,6 @@ async function generateList(mediaType){
     listName = lists[listName];
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&offset=0&mediaType=${mediaType}`);
     const userList = await response.json();
-    console.log(userList);
     loadLists(mediaType, userList, listName, listIndex);
   }
   //generate trending list
@@ -256,7 +255,6 @@ async function loadLists(mediaType, list, listName, listIndex){
       }else{
         mediaOptions.innerHTML = list[i].title;
       }
-      // Add rating, update rating button, and dropdown to change list in form
       const form = document.createElement('form');
       form.method = 'get';
       form.action = '/updateItem';
@@ -268,7 +266,6 @@ async function loadLists(mediaType, list, listName, listIndex){
 
       const rating = document.createElement('input');
 
-      // use pattern to enforce this
       rating.name = 'rating';
       rating.type = 'number';
       rating.min = '0.0';
