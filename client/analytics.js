@@ -1,3 +1,5 @@
+
+// On page load, load analytics
 window.addEventListener('load', loadAnalytics());
 // Your account is A days old
 
@@ -15,11 +17,14 @@ window.addEventListener('load', loadAnalytics());
 // Your average rating of shows is A
 // Your average rating of songs is A
 
-async function loadAnalytics(){
+/**
+ * Load analytics page based on database calls
+ */
+async function loadAnalytics() {
   const analyticsContainer = document.getElementById("analytics");
   let analytics = "<br><br>";
   let info = await (await fetch(`${document.location.origin}/fullName`)).text();
-  analytics += "Hello " + info + "<br><br>"
+  analytics += "Hello " + info + "<br><br>";
   info = await (await fetch(`${document.location.origin}/accountAge`)).json();
   analytics += "Your account is " + info + " days old" + "<br><br>";
 

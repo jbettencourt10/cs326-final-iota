@@ -1,16 +1,18 @@
+// Necessary imports
 import { getTopBooks } from './book-functions.js';
 import { getTopIMDB } from './imdb-functions.js';
 import { getTopTracks } from './lastfm-functions.js';
 
-
+// On page load, load landing list
 window.addEventListener('load', loadLandingMediaList('Movies'));
 
+// Get DOM object of sign up button
 const signUpButton = document.getElementById('sign-up-button');
 signUpButton.addEventListener('click', () => {
   location.href = "/register";
 });
 
-
+// Get DOM objects of buttons
 const booksButton = document.getElementById('books-index');
 const showButton = document.getElementById('tv-shows-index');
 const movieButton = document.getElementById('movie-index');
@@ -21,26 +23,42 @@ showButton.addEventListener('click', landingTVShows);
 movieButton.addEventListener('click', landingMovies);
 musicButton.addEventListener('click', landingMusic);
 
+/**
+ * Load landing list when books button is pressed
+ */
 function landingBooks() {
   document.getElementById('trendingText').innerHTML = 'Trending Books';
   loadLandingMediaList('Books');
 }
 
+/**
+ * Load landing list when movies button is pressed
+ */
 function landingMovies() {
   document.getElementById('trendingText').innerHTML = 'Trending Movies';
   loadLandingMediaList('Movies');
 }
 
+/**
+ * Load landing list when TV button is pressed
+ */
 function landingTVShows() {
   document.getElementById('trendingText').innerHTML = 'Trending TV Shows';
   loadLandingMediaList('TVs');
 }
 
+/**
+ * Load landing list when music button is pressed
+ */
 function landingMusic() {
   document.getElementById('trendingText').innerHTML = 'Trending Music';
   loadLandingMediaList('Music');
 }
 
+/**
+ * Based on button press (string), load correct media list.
+ * @param {string} media
+ */
 async function loadLandingMediaList(media) {
   document.getElementById('mediaList').innerHTML = '';
   let top100Media;

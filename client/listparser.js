@@ -1,5 +1,9 @@
+// On load of page, show media list
 window.addEventListener('load', showMediaList());
 
+/**
+ * Shows media list on list page
+ */
 function showMediaList() {
     document.getElementById('inProgress').innerHTML = '';
     const mediaList = document.getElementById('inProgress');

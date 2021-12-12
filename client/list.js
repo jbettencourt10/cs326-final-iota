@@ -1,13 +1,19 @@
+// Necessary imports
 import { getTopBooks } from "./book-functions.js";
 import { getTopIMDB } from "./imdb-functions.js";
 import { getTopTracks } from "./lastfm-functions.js";
 
+// Get URL parameters
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
 if (!mediaType) {
   mediaType = 'all';
 }
 generateList(mediaType);
 
+/**
+ * Generates list based on Series, books, movies, or music
+ * @param {string} mediaType
+ */
 async function generateList(mediaType) {
   //generate lists for inProgress, planned, and completed
   const listIndex = 0;

@@ -1,3 +1,4 @@
+// Necessary imports
 import { searchBook } from "./book-functions.js";
 import { imdbSearch } from "./imdb-functions.js";
 import { searchAlbums } from "./lastfm-functions.js";
@@ -5,6 +6,7 @@ import { searchAlbums } from "./lastfm-functions.js";
 const searchMedium = new URLSearchParams(window.location.search).get('medium');
 const searchTitle = new URLSearchParams(window.location.search).get('title');
 
+// If search title and search medium are not empty, then load search list, otherwise throw error
 if (searchTitle !== '' && searchMedium !== 'empty') {
   loadSearchList(searchMedium, searchTitle);
 }
@@ -12,6 +14,11 @@ else {
   alert('Please provide both Title and Medium for searching.');
 }
 
+/**
+ * Load search list based on medium and title
+ * @param {string} medium
+ * @param {string} title
+ */
 async function loadSearchList(medium, title) {
   const searchList = document.getElementById('searchList');
   const query = {
