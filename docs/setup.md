@@ -6,7 +6,7 @@ The project has already been deployed and are now presented at the URL: https://
 ```
     >> git add .
     >> git commit -m "message here"
-    >> git push origin main
+    >> git push origin main 
     >> git push heroku main
 ```
 - If the project works perfectly on the local machine, then it should be pushed to Heroku immediately without any error. 
@@ -16,10 +16,6 @@ The project has already been deployed and are now presented at the URL: https://
 - For the first time launching the project, you should install "express" on your machine to update package.json and then push the new change to the main branch before pushing the project to Heroku. 
 ```
     >> npm install express
-    >> git add .
-    >> git commit -m "installing express"
-    >> git push origin main
-    >> git push heroku main
 ```
 - Required files for Heroku to work: server.js, package.json, Procfile. 
 - Procfile should not be modified. 

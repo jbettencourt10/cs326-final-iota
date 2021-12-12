@@ -9,6 +9,7 @@
 The general idea of MyMediaMix is to allow users to track all of their media consumption among all mediums which includes Movies, TV shows, Music, and Books. It is our goal that users will gain insight into their media habits and potentially make changes if they decide that they need to.
 
  Three lists exist in our application for users to effectively track their media consumption, which are In Progress, Planned, and Completed. Users can use the search functionality to find the particular media item they are looking for, and then easily add it to their media list where it can be easily be rated or changed to another list.
+ User can also use the trending list displayed on the main listing page to find new popular media item and add it to their media list.
 
 With analytics, we also hope that a user can be more informed in making decisions about their habits if their analytics show they consume too much (or too little!) media.
 
@@ -118,15 +119,11 @@ Authentication occurs with a username/password paradigm that would be found in a
   - Created HTML pages for main listing page, custom list page, and search page.
   - Implemented API calls to generate top trending media on landing page and main listing page and configured API calls for search.
   - Fixed the main listing page with left and right arrows and querying from the database.
-  - Responsible for API calls, retrieved information, and display results for books and music especially.
+  - Responsible for API calls, retrieved information, and display results for books and music specifically.
   - Completed the search function on search page to display the results and linked all search bar on all pages.
-  - Helped with the "add" button to add media to the wishlist.
+  - Helped with the "add" button to add media to the Planned list.
   - Restyled all pages so that they are consistent in format and styling.
-<<<<<<< HEAD
   - Created menubar to navigate between pages and configured server for those links. 
-=======
-  - Created menubar to navigate between pages.
->>>>>>> f7be1eb35a14a10bd08695829a2586b4ad256ae5
   - Helped with cleaning up the code throughout the project.
   - Constantly deployed the updated project to Heroku.
 

@@ -4,7 +4,6 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { connectDB, initializeTables, changeItemList, addUserEntry, getUserEntries, removeUserEntry, updateUserRating, accountAge, itemCount, itemsStarted, averageTime, averageRating } from './database.js';
 import { findUser, addUser, changePassword, changeName } from './auth.js';
-import { getTopIMDB, imdbSearch } from '../client/imdb-functions.js';
 import { MiniCrypt } from './miniCrypt.js';
 
 
