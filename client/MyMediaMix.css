@@ -50,12 +50,12 @@ body {
 }
 
 /*index.html*/
-.login{
+.login {
   margin-top: 10px;
   margin-right: 10px;
 }
 
-.content{
+.content {
   position: absolute;
   display: grid;
   width: 1200px;
@@ -73,7 +73,7 @@ body {
   color: black;
 }
 
-.list-container{
+.list-container {
   padding: 20px;
   position: absolute;
   height: auto;
@@ -83,15 +83,15 @@ body {
   text-align: center;
 }
 
-.image-col{
+.image-col {
   margin-top: 20px;
 }
-.title-col{
+.title-col {
   font-weight: bolder;
   font-size: 18px;
   color: #866ec7;
 }
-.btn-primary{
+.btn-primary {
   background-color: #866ec7 !important;
   border: none;
   font-weight: bold;
@@ -102,30 +102,29 @@ body {
   box-shadow: none;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   border: 1px solid #866ec7 !important;
   background-color: white !important;
   color: #866ec7 !important;
   font-weight: bold;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   border-color: #866ec7 !important;
   color: #866ec7 !important;
   font-weight: bold;
   background-color: white !important;
 }
 
-.btn-outline-primary:hover{
+.btn-outline-primary:hover {
   border-color: white !important;
   background-color: #866ec7 !important;
-  color: white!important;
+  color: white !important;
   font-weight: bold;
 }
 
-
 /*Search.html*/
-.homeButton{
+.homeButton {
   margin: 20px;
 }
 
@@ -148,7 +147,7 @@ body {
   padding-left: 10px;
 }
 
-.select-medium{
+.select-medium {
   margin: 20px;
 }
 
@@ -156,15 +155,15 @@ body {
   margin-left: 20px;
 }
 
-.account-logout-btn{
+.account-logout-btn {
   margin: 30px 20px;
 }
 
-.account-logout-btn form{
+.account-logout-btn form {
   margin: 5px;
 }
 
-.search-result{
+.search-result {
   text-align: center;
   font-weight: bolder;
   color: black;
@@ -172,19 +171,19 @@ body {
   margin-top: 30px;
 }
 
-#searchList{
+#searchList {
   margin-top: 20px;
   padding: 20px;
   height: auto;
   width: 1500px;
 }
 
-.search-container{
+.search-container {
   display: grid;
   grid-template-columns: 200px 500px 500px;
 }
 
-.search-content{
+.search-content {
   display: grid;
   width: 100%;
   height: auto;
@@ -193,17 +192,17 @@ body {
   font-family: Georgia, serif;
 }
 
-.search-title{
+.search-title {
   font-weight: bolder;
   color: #866ec7;
   font-size: 20px !important;
 }
 
-.search-description{
+.search-description {
   font-size: 18px !important;
 }
 
-.add-button{
+.add-button {
   font-size: 20px;
   font-weight: bold;
 }
@@ -214,14 +213,14 @@ body {
 }
 
 /*Sign-up.html*/
-.sign-up-form{
+.sign-up-form {
   width: 500px;
   border-radius: 10px;
   height: auto;
   background-color: #f1f1f1;
 }
 
-.sign-up-container{
+.sign-up-container {
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -229,7 +228,7 @@ body {
   display: grid;
 }
 
-.sign-up-title{
+.sign-up-title {
   text-align: center;
   font-weight: bolder;
   color: #866ec7;
@@ -238,14 +237,14 @@ body {
   margin-top: 20px;
 }
 
-.form-group label{
+.form-group label {
   color: #866ec7;
   font-family: Georgia, serif;
   font-size: 20px;
   margin: 10px 0px;
 }
 
-#password-verify{
+#password-verify {
   margin-top: 5px;
   margin-bottom: 20px;
 }
@@ -255,7 +254,7 @@ body {
   height: auto;
 }
 
-.account-title{
+.account-title {
   text-align: center;
   font-weight: bolder;
   color: black;
@@ -265,13 +264,13 @@ body {
   color: black;
 }
 
-.account-nav a.nav-link{
+.account-nav a.nav-link {
   font-size: 18px;
   color: #866ec7;
   font-family: Georgia, serif;
 }
 
-.account-container{
+.account-container {
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -279,37 +278,37 @@ body {
   display: grid;
 }
 
-.account-nav-container{
+.account-nav-container {
   width: 1000px;
 }
 
-.account-info-container{
+.account-info-container {
   width: 1000px;
   background-color: #f1f1f1;
   padding: 20px;
 }
 
-.change-title{
+.change-title {
   font-weight: bolder;
   color: black;
   font-family: Georgia, serif;
   font-size: 25px;
 }
 
-.change-name{
+.change-name {
   margin-top: 50px;
 }
 
-.change-password{
+.change-password {
   margin-top: 138px;
 }
 
 /*list.html*/
-.list-content{
+.list-content {
   margin: 20px;
 }
 
-.list-text{
+.list-text {
   font-weight: bolder;
   color: black;
   font-family: Georgia, serif;
@@ -345,7 +344,7 @@ body {
   display: grid;
   grid-template-columns: repeat(7, auto);
   margin-left: 0px;
-  background-color: #866ec7;;
+  background-color: #866ec7;
   height: 50px;
   padding: 10px 20px;
 }
@@ -374,7 +373,6 @@ body {
   margin: 20px;
 }
 
-
 /*Miscellaneous*/
 .centered {
   text-align: center;
@@ -385,12 +383,10 @@ body {
   margin: 20px;
 }
 
-
 .userName {
   /* float: right; */
   margin-left: 9px;
 }
-
 
 .show {
   margin: 20px;
@@ -402,7 +398,6 @@ body {
   height: 200px;
   margin: 20px 0px;
 }
-
 
 .clickable {
   cursor: pointer;
@@ -422,14 +417,13 @@ body {
   font-size: 30px;
 }
 
-.greeting{
+.greeting {
   font-size: 40px;
 }
 
 #greet-user {
   font-size: 40px;
 }
-
 
 .mediaItem {
   min-width: 100px;

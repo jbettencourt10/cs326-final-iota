@@ -1,6 +1,6 @@
 import { getTopBooks } from './book-functions.js';
 import { getTopIMDB } from './imdb-functions.js';
-import {getTopTracks} from './lastfm-functions.js';
+import { getTopTracks } from './lastfm-functions.js';
 
 
 window.addEventListener('load', loadLandingMediaList('Movies'));
@@ -8,7 +8,7 @@ window.addEventListener('load', loadLandingMediaList('Movies'));
 const signUpButton = document.getElementById('sign-up-button');
 signUpButton.addEventListener('click', () => {
   location.href = "/register";
-})
+});
 
 
 const booksButton = document.getElementById('books-index');
@@ -44,10 +44,10 @@ function landingMusic() {
 async function loadLandingMediaList(media) {
   document.getElementById('mediaList').innerHTML = '';
   let top100Media;
-  if (media === 'Movies' || media === 'TVs'){
+  if (media === 'Movies' || media === 'TVs') {
     top100Media = await getTopIMDB(media);
   }
-  else if (media === 'Books'){
+  else if (media === 'Books') {
     top100Media = await getTopBooks();
   }
   else {
@@ -67,10 +67,10 @@ async function loadLandingMediaList(media) {
 
     const img = document.createElement('img');
     img.width = 150;
-    if (media === 'Movies' || media === 'TVs'){
+    if (media === 'Movies' || media === 'TVs') {
       img.src = top100Media[i].image;
     }
-    else if (media === 'Books'){
+    else if (media === 'Books') {
       img.src = top100Media[i].book_image;
     }
     else {
@@ -87,10 +87,10 @@ async function loadLandingMediaList(media) {
     const title = document.createElement('div');
     title.classList.add('col');
     title.classList.add('title-col');
-    if (media === 'Movies' || media === 'TVs'){
+    if (media === 'Movies' || media === 'TVs') {
       title.innerHTML = top100Media[i].title;
     }
-    else if (media === 'Books'){
+    else if (media === 'Books') {
       title.innerHTML = `${top100Media[i].title} - ${top100Media[i].author}`;
     }
     else {
@@ -100,14 +100,14 @@ async function loadLandingMediaList(media) {
 
     const rating = document.createElement('div');
     rating.classList.add('col');
-    if (media === 'Movies' || media === 'TVs'){
-      if(top100Media[i].imDbRating){
+    if (media === 'Movies' || media === 'TVs') {
+      if (top100Media[i].imDbRating) {
         rating.innerHTML = `Rating: ${top100Media[i].imDbRating}`;
-      }else{
+      } else {
         rating.innerHTML = "Coming Soon";
       }
     }
-    else if (media === 'Books'){
+    else if (media === 'Books') {
       rating.innerHTML = `New Yorks Times Best Seller #${top100Media[i].rank}`;
     }
     else {

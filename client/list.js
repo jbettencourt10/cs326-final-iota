@@ -3,35 +3,35 @@ import { getTopIMDB } from "./imdb-functions.js";
 import { getTopTracks } from "./lastfm-functions.js";
 
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
-if (!mediaType){
+if (!mediaType) {
   mediaType = 'all';
 }
 generateList(mediaType);
 
-async function generateList(mediaType){
+async function generateList(mediaType) {
   //generate lists for inProgress, planned, and completed
   const listIndex = 0;
   const lists = ['inProgress', 'planned', 'completed'];
-  for(let listName in lists){
+  for (let listName in lists) {
     listName = lists[listName];
     const response = await fetch(`${document.location.origin}/getList?list=${listName}&offset=0&mediaType=${mediaType}`);
     const userList = await response.json();
     loadLists(mediaType, userList, listName, listIndex);
   }
   //generate trending list
-  if (mediaType === "all" || mediaType === "Movies"){
+  if (mediaType === "all" || mediaType === "Movies") {
     const trendingList = await getTopIMDB('Movies');
     loadTrendingList(mediaType, trendingList, listIndex);
   }
-  else if (mediaType === "Series"){
+  else if (mediaType === "Series") {
     const trendingList = await getTopIMDB("TVs");
     loadTrendingList(mediaType, trendingList, listIndex);
   }
-  else if (mediaType === "books"){
+  else if (mediaType === "books") {
     const trendingList = await getTopBooks();
     loadTrendingList(mediaType, trendingList, listIndex);
   }
-  else{
+  else {
     const trendingList = await getTopTracks();
     loadTrendingList(mediaType, trendingList, listIndex);
   }
@@ -42,50 +42,50 @@ async function generateList(mediaType){
  * @param {string} listName
  * @param {int} direction
  */
-async function shiftList(mediaType, list, listName, listIndex, direction){
+async function shiftList(mediaType, list, listName, listIndex, direction) {
   const listLength = list.length;
   const start = listIndex;
   const end = listIndex + 5;
-  if (direction === 1){
+  if (direction === 1) {
     //move right
-    if (listName !== "top"){
-      if (end + 5 <= listLength){
-        loadLists(mediaType, list, listName, listIndex+5);
+    if (listName !== "top") {
+      if (end + 5 <= listLength) {
+        loadLists(mediaType, list, listName, listIndex + 5);
       }
-      else if (listLength - 5 >= 0){
-        loadLists(mediaType, list, listName, listLength-5);
+      else if (listLength - 5 >= 0) {
+        loadLists(mediaType, list, listName, listLength - 5);
       }
-      else{
+      else {
         loadLists(mediaType, list, listName, 0);
       }
     }
-    else{
-      if (end + 5 <= listLength){
-        loadTrendingList(mediaType, list, listIndex+5);
+    else {
+      if (end + 5 <= listLength) {
+        loadTrendingList(mediaType, list, listIndex + 5);
       }
-      else if (listLength - 5 >= 0){
-        loadTrendingList(mediaType, list, listLength-5);
+      else if (listLength - 5 >= 0) {
+        loadTrendingList(mediaType, list, listLength - 5);
       }
-      else{
+      else {
         loadTrendingList(mediaType, list, 0);
       }
     }
   }
-  else if (direction === -1){
+  else if (direction === -1) {
     //move left
-    if (listName !== "top"){
-      if (start - 5 >= 0){
-        loadLists(mediaType, list, listName, listIndex-5);
+    if (listName !== "top") {
+      if (start - 5 >= 0) {
+        loadLists(mediaType, list, listName, listIndex - 5);
       }
-      else{
+      else {
         loadLists(mediaType, list, listName, 0);
       }
     }
-    else{
-      if (start - 5 >= 0){
-        loadTrendingList(mediaType, list, listIndex-5);
+    else {
+      if (start - 5 >= 0) {
+        loadTrendingList(mediaType, list, listIndex - 5);
       }
-      else{
+      else {
         loadTrendingList(mediaType, list, 0);
       }
     }
@@ -93,7 +93,7 @@ async function shiftList(mediaType, list, listName, listIndex, direction){
 }
 
 
-async function loadTrendingList(mediaType, list, listIndex){
+async function loadTrendingList(mediaType, list, listIndex) {
   const mediaList = document.getElementById('top');
   mediaList.innerHTML = '';
   const listLength = Math.min(5, list.length);
@@ -107,28 +107,28 @@ async function loadTrendingList(mediaType, list, listIndex){
   leftArrowContainer.appendChild(leftArrow);
   mediaList.appendChild(leftArrowContainer);
 
-  for (let i = listIndex; i < listIndex+5; ++i) {
+  for (let i = listIndex; i < listIndex + 5; ++i) {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('col', 'd-flex', 'align-items-center', 'justify-content-center', 'mediaItem');
     const row = document.createElement('div');
     row.classList.add('row');
     mediaItem.appendChild(row);
-    if(list[i]){
+    if (list[i]) {
       const mediaImageContainer = document.createElement('div');
       mediaImageContainer.classList.add('col');
       const mediaImage = document.createElement('img');
       mediaImage.width = 100;
-      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all') {
         mediaImage.src = list[i].image;
       }
-      else if (mediaType === 'books'){
+      else if (mediaType === 'books') {
         mediaImage.src = list[i].book_image;
       }
-      else{
-        if (list[i].image[2]['#text']){
+      else {
+        if (list[i].image[2]['#text']) {
           mediaImage.src = list[i].image[2]['#text'];
         }
-        else{
+        else {
           mediaImage.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
@@ -139,13 +139,13 @@ async function loadTrendingList(mediaType, list, listIndex){
 
       const mediaOptions = document.createElement('div');
       mediaOptions.classList.add('col');
-      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all') {
         mediaOptions.innerHTML = list[i].title;
       }
-      else if (mediaType === 'books'){
+      else if (mediaType === 'books') {
         mediaOptions.innerHTML = list[i].title;
       }
-      else{
+      else {
         mediaOptions.innerHTML = list[i].name;
       }
       // Add rating, update rating button, and dropdown to change list in form
@@ -155,40 +155,40 @@ async function loadTrendingList(mediaType, list, listIndex){
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
-      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all') {
         inputTitle.value = list[i].title;
       }
-      else if (mediaType === 'books'){
+      else if (mediaType === 'books') {
         inputTitle.value = list[i].title;
       }
-      else{
+      else {
         inputTitle.value = list[i].name;
       }
 
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all'){
+      if (mediaType === 'Movies' || mediaType === 'Series' || mediaType === 'all') {
         inputImage.value = list[i].image;
       }
-      else if (mediaType === 'books'){
+      else if (mediaType === 'books') {
         inputImage.value = list[i].book_image;
       }
-      else{
-        if (list[i].image[2]['#text']){
+      else {
+        if (list[i].image[2]['#text']) {
           inputImage.value = list[i].image[2]['#text'];
         }
-        else{
+        else {
           inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';
-      if (mediaType === 'Movies' || mediaType === 'all'){
+      if (mediaType === 'Movies' || mediaType === 'all') {
         inputMedium.value = 'Movies';
       }
-      else{
+      else {
         inputMedium.value = mediaType;
       }
 
@@ -206,20 +206,20 @@ async function loadTrendingList(mediaType, list, listIndex){
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
     }
-      mediaList.appendChild(mediaItem);
-    }
-    const rightArrowContainer = document.createElement('div');
-    rightArrowContainer.onclick = () => shiftList(mediaType, list, "top", listIndex, 1);
-    rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
-    const rightArrow = document.createElement('p');
-    rightArrow.classList.add('arrow');
-    rightArrow.innerHTML = '>';
-    rightArrowContainer.appendChild(rightArrow);
-    mediaList.appendChild(rightArrowContainer);
+    mediaList.appendChild(mediaItem);
+  }
+  const rightArrowContainer = document.createElement('div');
+  rightArrowContainer.onclick = () => shiftList(mediaType, list, "top", listIndex, 1);
+  rightArrowContainer.classList.add('col-1', 'd-flex', 'justify-content-start', 'align-items-center', 'clickable', 'arrowContainer');
+  const rightArrow = document.createElement('p');
+  rightArrow.classList.add('arrow');
+  rightArrow.innerHTML = '>';
+  rightArrowContainer.appendChild(rightArrow);
+  mediaList.appendChild(rightArrowContainer);
 }
 
 
-async function loadLists(mediaType, list, listName, listIndex){
+async function loadLists(mediaType, list, listName, listIndex) {
   const mediaList = document.getElementById(listName);
   mediaList.innerHTML = '';
   const listLength = Math.min(5, list.length);
@@ -238,7 +238,7 @@ async function loadLists(mediaType, list, listName, listIndex){
     const row = document.createElement('div');
     row.classList.add('row');
     mediaItem.appendChild(row);
-    if(list[i]){
+    if (list[i]) {
       const mediaImageContainer = document.createElement('div');
       mediaImageContainer.classList.add('col');
       const mediaImage = document.createElement('img');
@@ -250,9 +250,9 @@ async function loadLists(mediaType, list, listName, listIndex){
       row.appendChild(mediaImageContainer);
       const mediaOptions = document.createElement('div');
       mediaOptions.classList.add('col');
-      if(list[i].userrating){
+      if (list[i].userrating) {
         mediaOptions.innerHTML = list[i].title + " Rating: " + list[i].userrating;
-      }else{
+      } else {
         mediaOptions.innerHTML = list[i].title;
       }
       const form = document.createElement('form');
@@ -279,19 +279,19 @@ async function loadLists(mediaType, list, listName, listIndex){
       empty.value = 'empty';
       empty.innerHTML = 'Move to...';
       moveSelection.appendChild(empty);
-      if(listName !== 'inProgress'){
+      if (listName !== 'inProgress') {
         const inProgress = document.createElement('option');
         inProgress.value = 'inProgress';
         inProgress.innerHTML = 'In Progress';
         moveSelection.appendChild(inProgress);
       }
-      if(listName !== 'completed'){
+      if (listName !== 'completed') {
         const completed = document.createElement('option');
         completed.value = 'completed';
         completed.innerHTML = 'Completed';
         moveSelection.appendChild(completed);
       }
-      if(listName !== 'planned'){
+      if (listName !== 'planned') {
         const planned = document.createElement('option');
         planned.value = 'planned';
         planned.innerHTML = 'Planned';

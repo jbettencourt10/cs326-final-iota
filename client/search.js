@@ -5,11 +5,11 @@ import { searchAlbums } from "./lastfm-functions.js";
 const searchMedium = new URLSearchParams(window.location.search).get('medium');
 const searchTitle = new URLSearchParams(window.location.search).get('title');
 
-if (searchTitle !== '' && searchMedium !== 'empty'){
+if (searchTitle !== '' && searchMedium !== 'empty') {
   loadSearchList(searchMedium, searchTitle);
 }
-else{
-  alert('Please provide both Title and Medium for searching.')
+else {
+  alert('Please provide both Title and Medium for searching.');
 }
 
 async function loadSearchList(medium, title) {
@@ -20,22 +20,22 @@ async function loadSearchList(medium, title) {
   };
   let searchResults;
   let results;
-  if (medium === 'Movie' || medium === 'Series'){
+  if (medium === 'Movie' || medium === 'Series') {
     searchResults = await imdbSearch(query);
     results = searchResults.results;
   }
-  else if (medium === 'books'){
+  else if (medium === 'books') {
     searchResults = await searchBook(query);
-    results = searchResults.items
+    results = searchResults.items;
   }
-  else{
+  else {
     results = await searchAlbums(query);
   }
 
-  if (results.length === 0){
+  if (results.length === 0) {
     searchList.innerText = 'No result';
   }
-  else{
+  else {
     for (let i = 0; i < results.length; ++i) {
       const image = document.createElement('div');
       image.classList.add('col');
@@ -46,22 +46,22 @@ async function loadSearchList(medium, title) {
 
       const img = document.createElement('img');
       img.width = 100;
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series') {
         img.src = results[i].image;
       }
-      else if (medium === 'books'){
-        if (results[i].volumeInfo.imageLinks){
+      else if (medium === 'books') {
+        if (results[i].volumeInfo.imageLinks) {
           img.src = results[i].volumeInfo.imageLinks.smallThumbnail;
         }
-        else{
+        else {
           img.src = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
         }
       }
-      else{
-        if (results[i].image[2]['#text']){
+      else {
+        if (results[i].image[2]['#text']) {
           img.src = results[i].image[2]['#text'];
         }
-        else{
+        else {
           img.src = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
@@ -79,21 +79,21 @@ async function loadSearchList(medium, title) {
       title.classList.add('search-title');
       const description = document.createElement('p');
       description.classList.add('search-description');
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series') {
         title.innerHTML = results[i].title;
         description.innerHTML = results[i].description;
       }
-      else if (medium === 'books'){
-        if (results[i].volumeInfo.authors){
+      else if (medium === 'books') {
+        if (results[i].volumeInfo.authors) {
           title.innerHTML = `${results[i].volumeInfo.title}`;
           description.innerHTML = `by ${results[i].volumeInfo.authors[0]}`;
         }
-        else{
+        else {
           title.innerHTML = `${results[i].volumeInfo.title}`;
           description.innerHTML = '';
         }
       }
-      else{
+      else {
         title.innerHTML = `${results[i].name}`;
         description.innerHTML = `by ${results[i].artist}`;
       }
@@ -112,44 +112,44 @@ async function loadSearchList(medium, title) {
       const inputTitle = document.createElement('input');
       inputTitle.type = 'hidden';
       inputTitle.name = 'Title';
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series') {
         inputTitle.value = results[i].title;
       }
-      else if (medium === 'books'){
+      else if (medium === 'books') {
         inputTitle.value = results[i].volumeInfo.title;
       }
-      else{
+      else {
         inputTitle.value = results[i].name;
       }
       const inputImage = document.createElement('input');
       inputImage.type = 'hidden';
       inputImage.name = 'ImageLink';
-      if (medium === 'Movie' || medium === 'Series'){
+      if (medium === 'Movie' || medium === 'Series') {
         inputImage.value = results[i].image;
       }
-      else if (medium === 'books'){
-        if (results[i].volumeInfo.imageLinks){
+      else if (medium === 'books') {
+        if (results[i].volumeInfo.imageLinks) {
           inputImage.value = results[i].volumeInfo.imageLinks.smallThumbnail;
         }
-        else{
+        else {
           inputImage.value = 'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
         }
       }
-      else{
-        if (results[i].image[2]['#text']){
+      else {
+        if (results[i].image[2]['#text']) {
           inputImage.value = results[i].image[2]['#text'];
         }
-        else{
+        else {
           inputImage.value = 'https://player.listenlive.co/templates/StandardPlayerV4/webroot/img/default-cover-art.png';
         }
       }
       const inputMedium = document.createElement('input');
       inputMedium.type = 'hidden';
       inputMedium.name = 'Medium';
-      if (medium === "Movie"){
+      if (medium === "Movie") {
         inputMedium.value = "Movies";
       }
-      else{
+      else {
         inputMedium.value = medium;
       }
 
@@ -169,6 +169,6 @@ async function loadSearchList(medium, title) {
       searchList.appendChild(text);
       searchList.appendChild(add);
 
-     }
+    }
   }
 }

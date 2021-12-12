@@ -195,7 +195,7 @@ app.get('/add', async (req, res) => {
 
 // Get all entries from MediaEntries table for user
 app.get('/getList', async (req, res) => {
-  const result = await getUserEntries(db, { username: req.user, mediaType: req.query.mediaType,  list: req.query.list, offset: req.query.offset});
+  const result = await getUserEntries(db, { username: req.user, mediaType: req.query.mediaType, list: req.query.list, offset: req.query.offset });
   res.send(JSON.parse(JSON.stringify(result)));
 });
 
@@ -216,45 +216,45 @@ app.get('/updateItem', async (req, res) => {
 
 // Get account age of particular user
 app.get('/accountAge', async (req, res) => {
-  const result = await accountAge(db, {username:req.user});
+  const result = await accountAge(db, { username: req.user });
   res.send(JSON.parse(JSON.stringify(String(result[0]['?column?']))));
 });
 
 // Get media entry count of particular user
 app.get('/itemCount', async (req, res) => {
-  const result = await itemCount(db, {username:req.user, medium:req.query.mediaType, time:req.query.time});
+  const result = await itemCount(db, { username: req.user, medium: req.query.mediaType, time: req.query.time });
   res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
 // Get all items that have been started for a particular user
 app.get('/itemsStarted', async (req, res) => {
-  const result = await itemsStarted(db, {username:req.user, time:req.query.time});
+  const result = await itemsStarted(db, { username: req.user, time: req.query.time });
   res.send(JSON.parse(JSON.stringify(result[0].count)));
 });
 
 // Get average time of completion for a particular user
 app.get('/averageTime', async (req, res) => {
-  const result = await averageTime(db, {username:req.user, medium:req.query.mediaType});
-  if(result[0].avg === null){
+  const result = await averageTime(db, { username: req.user, medium: req.query.mediaType });
+  if (result[0].avg === null) {
     res.send(JSON.parse(JSON.stringify(String(0))));
-  }else{
+  } else {
     res.send(JSON.parse(JSON.stringify(result[0].avg)));
   }
 });
 
 // Get average rating of entries for particular user
 app.get('/averageRating', async (req, res) => {
-  const result = await averageRating(db, {username:req.user, medium:req.query.mediaType});
-  if(result[0].avg === null){
+  const result = await averageRating(db, { username: req.user, medium: req.query.mediaType });
+  if (result[0].avg === null) {
     res.send(JSON.parse(JSON.stringify(String(0))));
-  }else{
+  } else {
     res.send(JSON.parse(JSON.stringify(String(result[0].avg))));
   }
 });
 
 // Get full name of particular user
 app.get('/fullName', async (req, res) => {
-  const result = await fullName(db, {username:req.user});
+  const result = await fullName(db, { username: req.user });
   res.send(result[0].fullname);
 });
 
