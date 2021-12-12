@@ -1,9 +1,16 @@
+// Import pgPromise and miniCrypt
 import pgPromise from 'pg-promise';
 import { MiniCrypt } from './miniCrypt.js';
 
+// Create miniCrypt object
 const secureAuth = new MiniCrypt;
 
-
+/**
+ * Find a user with a particular username
+ * @param {Database Connection} database
+ * @param {string} username
+ * @returns users that fit particular username
+ */
 export async function findUser(database, username) {
     try {
         const result = await database.any({ text: 'Select * from Users where Username=$1', values: [username] });
@@ -14,6 +21,12 @@ export async function findUser(database, username) {
     }
 }
 
+/**
+ * Add a user to Users table
+ * @param {Database Connection} database
+ * @param {<string, string, string, string>} registerObject
+ * @returns success (true) or failure (false)
+ */
 export async function addUser(database, registerObject) {
     try {
         if ((await findUser(database, registerObject.username)).length > 0) {
@@ -28,6 +41,11 @@ export async function addUser(database, registerObject) {
     }
 }
 
+/**
+ * Change name of specified user to new name
+ * @param {Database Connection}} database
+ * @param {<string, string>} nameObject
+ */
 export async function changeName(database, nameObject) {
     try {
         await database.none({ text: 'UPDATE users set fullName=$1 where username=$2', values: [nameObject.name, nameObject.username] });
@@ -36,6 +54,11 @@ export async function changeName(database, nameObject) {
     }
 }
 
+/**
+ * Updates salt and hash for specified user
+ * @param {Database Connection} database
+ * @param {<string, string, string>} passwordObject
+ */
 export async function changePassword(database, passwordObject) {
     try {
         const saltHash = secureAuth.hash(passwordObject.password);
