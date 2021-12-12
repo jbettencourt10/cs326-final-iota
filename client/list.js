@@ -2,10 +2,6 @@ import { getTopBooks } from "./book-functions.js";
 import { getTopIMDB } from "./imdb-functions.js";
 import { getTopTracks } from "./lastfm-functions.js";
 
-//window.addEventListener('load', () => generateList);
-//window.addEventListener('load', greetUser);
-//window.addEventListener('load', () => loadTrendingList("all"));
-
 let mediaType = new URLSearchParams(window.location.search).get('mediaType');
 if (!mediaType){
   mediaType = 'all';
@@ -43,9 +39,9 @@ async function generateList(mediaType){
 }
 
 /**
- * 
- * @param {string} listName 
- * @param {int} direction 
+ *
+ * @param {string} listName
+ * @param {int} direction
  */
 async function shiftList(mediaType, list, listName, listIndex, direction){
   const listLength = list.length;
@@ -196,7 +192,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       else{
         inputMedium.value = mediaType;
       }
-      
+
 
       form.appendChild(inputTitle);
       form.appendChild(inputImage);
@@ -206,7 +202,7 @@ async function loadTrendingList(mediaType, list, listIndex){
       addButton.classList.add('btn', 'btn-primary');
       addButton.type = 'submit';
       addButton.value = 'Add';
-    
+
       form.appendChild(addButton);
       mediaOptions.appendChild(form);
       row.appendChild(mediaOptions);
@@ -331,11 +327,4 @@ async function loadLists(mediaType, list, listName, listIndex){
   rightArrow.innerHTML = '>';
   rightArrowContainer.appendChild(rightArrow);
   mediaList.appendChild(rightArrowContainer);
-}
-
-
-function greetUser(){
-  const url = window.location.pathname;
-  const userGreeting = document.getElementById('greet-user');
-  userGreeting.innerHTML = url.split('/').at(-1);
 }

@@ -1,5 +1,3 @@
-//Should change this to bootstrap row col later
-//limit search length or have a go to top button
 import { searchBook } from "./book-functions.js";
 import { imdbSearch } from "./imdb-functions.js";
 import { searchAlbums } from "./lastfm-functions.js";
@@ -156,7 +154,7 @@ async function loadSearchList(medium, title) {
       else{
         inputMedium.value = medium;
       }
-      
+
 
       form.appendChild(inputTitle);
       form.appendChild(inputImage);
@@ -173,7 +171,6 @@ async function loadSearchList(medium, title) {
       searchList.appendChild(text);
       searchList.appendChild(add);
 
-      //add "Add to Custom List" button
      }
   }
 }

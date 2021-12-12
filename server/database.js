@@ -1,5 +1,10 @@
+// Necessary pgPromise import
 import pgPromise from 'pg-promise';
 
+/**
+ * Connects to database with tables MediaEntries and Users
+ * @returns Database connection
+ */
 export async function connectDB() {
     const dbURL = process.env.DATABASE_URL || 'postgres://postgres:password@localhost:5432/postgres';
     const options = {
@@ -14,6 +19,10 @@ export async function connectDB() {
     return db;
 }
 
+/**
+ * Creates tables Users and MediaEntries in database if they do not exist
+ * @param {DatabaseConnection} database
+ */
 export async function initializeTables(database) {
     try {
         await database.none('CREATE TABLE IF NOT EXISTS Users(Username VARCHAR(30) PRIMARY KEY, Salt VARCHAR(64), Hash VARCHAR(256), FullName VARCHAR(50), CreationTime DATE)');
@@ -23,10 +32,16 @@ export async function initializeTables(database) {
     }
 }
 
+/**
+ *
+ * @param {DatabaseConnection} database
+ * @param {<string, string, string>} queryObject
+ * @returns
+ */
 export async function addUserEntry(database, queryObject) {
     try {
-        if((await database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium]})).length === 0){
-            await database.none({text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'planned', queryObject.imageLink]});
+        if ((await database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND title=$2 AND medium=$3', values: [queryObject.username, queryObject.title, queryObject.medium] })).length === 0) {
+            await database.none({ text: 'INSERT INTO MediaEntries (Username, Title, Medium, List, ImageLink) Values ($1, $2, $3, $4, $5)', values: [queryObject.username, queryObject.title, queryObject.medium, 'planned', queryObject.imageLink] });
             return true;
         }
         else {
@@ -40,11 +55,11 @@ export async function addUserEntry(database, queryObject) {
 
 export async function getUserEntries(database, queryObject) {
     try {
-        if(queryObject.mediaType === "all"){
+        if (queryObject.mediaType === "all") {
             const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND list=$2 OFFSET $3', values: [queryObject.username, queryObject.list, queryObject.offset] });
             return results;
         }
-        const results = database.any({text: 'SELECT * FROM MediaEntries WHERE username=$1 AND medium=$2 AND list=$3 OFFSET $4', values: [queryObject.username, queryObject.mediaType, queryObject.list, queryObject.offset]});
+        const results = database.any({ text: 'SELECT * FROM MediaEntries WHERE username=$1 AND medium=$2 AND list=$3 OFFSET $4', values: [queryObject.username, queryObject.mediaType, queryObject.list, queryObject.offset] });
         return results;
     } catch (error) {
         console.log(error);
@@ -75,12 +90,12 @@ export async function updateUserRating(database, queryObject) {
 // Does not consider cases where an item from planned gets moved directly to completed
 export async function changeItemList(database, queryObject) {
     try {
-        if(queryObject.newList === "inProgress"){
+        if (queryObject.newList === "inProgress") {
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date, timecompleted=NULL WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
-        }else if(queryObject.newList === "completed"){
+        } else if (queryObject.newList === "completed") {
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=current_date WHERE username=$2 AND title=$3 AND timestarted IS NULL', values: [queryObject.newList, queryObject.username, queryObject.title] });
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timecompleted=current_date WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
-        }else{
+        } else {
             await database.none({ text: 'UPDATE MediaEntries SET list=$1, timestarted=NULL, timecompleted=NULL WHERE username=$2 AND title=$3', values: [queryObject.newList, queryObject.username, queryObject.title] });
         }
         return true;
@@ -103,7 +118,7 @@ export async function accountAge(database, queryObject) {
 
 export async function itemCount(database, queryObject) {
     try {
-        if(queryObject.time === "week"){
+        if (queryObject.time === "week") {
             const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND medium=$2 AND timecompleted-timestarted < 7', values: [queryObject.username, queryObject.medium] });
             return response;
         }
@@ -117,7 +132,7 @@ export async function itemCount(database, queryObject) {
 
 export async function itemsStarted(database, queryObject) {
     try {
-        if(queryObject.time === "week"){
+        if (queryObject.time === "week") {
             const response = await database.any({ text: 'SELECT COUNT (*) FROM MediaEntries WHERE username=$1 AND timestarted IS NOT NULL AND timecompleted IS NULL AND current_date-timestarted < 7', values: [queryObject.username] });
             return response;
         }
