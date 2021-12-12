@@ -5,7 +5,6 @@ body,
   height: 100%;
 }
 body {
-  /*background-color: rgb(225, 247, 243);*/
   background-color: white;
 }
 
@@ -41,7 +40,6 @@ body {
 }
 
 .sidebar a:hover:not(.active) {
-  /*background-color: rgb(145, 145, 145);*/
   text-decoration: underline;
   color: white;
 }
@@ -382,25 +380,16 @@ body {
   text-align: center;
 }
 
-
-
-
-
-
-
-
 .sitename {
   float: left;
   margin: 20px;
 }
 
 
-
 .userName {
   /* float: right; */
   margin-left: 9px;
 }
-
 
 
 .show {
@@ -413,7 +402,6 @@ body {
   height: 200px;
   margin: 20px 0px;
 }
-
 
 
 .clickable {
